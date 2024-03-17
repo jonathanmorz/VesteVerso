@@ -5,27 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VesteVerso - Login</title>
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="container">
-        <img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso">
-        <form>
-            <h1>Login</h1>
-            <div id="usuario">
-                <span>Usuário</span> <br>
-                <input type="text"> <br>
-            </div>
-            <div id="senha">
-                <span>Senha</span> <br>
-                <input type="text">
-            </div>
-            <input type="checkbox"> <span>Lembrar de mim</span> <a href="#">Esqueceu a senha?</a> <br>
-            <button>Enviar</button> <br>
-            <span>Não tem uma conta? <a href="#">Inscrever-se</a></span> <br>
-            <span>Entrar com</span> <br>
-                <a href="#"><img src="../resources/images/google-logo.png" alt="" id="google"></a>
-                <a href="#" ><img src="../resources/images/facebook-logo.png" alt="" id="facebook"></a>
-        </form>
+        <div id="logo"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></div>
+        <div id="formulario">
+            <form>
+                <div id="conteudo-formulario">
+                    <div id="titulo">
+                        <h1 id="tiulo-login">Login</h1>
+                    </div>
+                    <div id="usuario">
+                        <span>Usuário</span> <br>
+                        <input type="text"> <br>
+                    </div>
+                    <div id="senha">
+                        <span>Senha</span> <br>
+                        <input type="text">
+                    </div>
+                    <div id="checkbox"><input type="checkbox"> <span>Lembrar de mim</span> <a href="#">Esqueceu a senha?</a> <br></div>
+                    <div id="botao"><button>Enviar <a href="#"></a></button> <br></div>
+                    <div id="inscrever-se"><span>Não tem uma conta? <a href="index.html">Inscrever-se</a></span> <br></div>
+                    <div id="entrar-com">
+                        <span>Entrar com</span> <br>
+                    </div>
+                    <div id="google-facebook">
+                            <a href="#"><img src="../resources/images/google-logo.png" alt="" id="google"></a>
+                            <a href="#" ><img src="../resources/images/facebook-logo.png" alt="" id="facebook"></a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
