@@ -8,8 +8,11 @@
 }
 
 body {
-    background-color: #431b77;
     font-family: "Josefin-Sans", sans-serif;
+}
+
+h1 {
+    font-size: 40px;
 }
 
 a {
@@ -21,23 +24,18 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 12%;
+    margin: 7% 12%;
 }
 
 #logo {
     align-items: center;
 }
-
-#formulario {
-    
-}
-
 form {
     background-color: #561AA4;
     color: #fff;
-    padding: 10px;
+    padding: 40px 55px;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 #titulo {
@@ -49,16 +47,38 @@ form {
 
 #usuario {
     display: flex;
-    padding: 10px 0px;
+    padding: 10px 0px 0px 20px;
+    
+    
+}
+
+#usuario-input {
+    display: flex;
+    padding: 0px 0px 10px 0px;
     justify-content: center;
     
 }
 
+
 #senha {
     display: flex;
-    padding: 10px 0px;
-    justify-content: center;
+    padding: 10px 0px 0px 20px;
     
+    
+}
+
+#senha-input {
+    display: flex;
+    padding: 0px 0px 10px 0px;
+    justify-content: center;    
+}
+
+.input-usuario-senha {
+    width: 230px;
+    height: 30px;
+    border-radius: 8px;
+    color: #561AA4;
+    border: 0px
 }
 
 #checkbox {
@@ -68,11 +88,22 @@ form {
     
 }
 
+#checkbox-lembrar {
+    background-color: #ffffff00;
+}
+
+#esqueceu-a-senha {
+    display: flex;
+    padding: 0px 0px 10px 0px;
+    justify-content: center;    
+}
+
 #botao {
     display: flex;
     padding: 10px 0px 15px 0px;
     justify-content: center;
-    
+    border: 0px;
+    color: #561AA4;
 }
 
 #inscrever-se {
@@ -80,6 +111,17 @@ form {
     padding: 10px 0px;
     justify-content: center;
     
+}
+
+#enviar {
+    width: 220px;
+    height: 45px;
+    border: 0px;
+    border-radius: 10px;
+    color: #561AA4;
+    font-family: "Josefin-Sans", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #entrar-com {
@@ -91,8 +133,8 @@ form {
 
 #google-facebook {
     display: flex;
-    padding: 10px 0px;
-    justify-content: center;
+    padding: 10px 89px;
+    justify-content: space-between;
     
 }
 
