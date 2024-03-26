@@ -30,6 +30,7 @@ a {
 #logo {
     align-items: center;
 }
+
 form {
     background-color: #561AA4;
     color: #fff;
@@ -41,15 +42,12 @@ form {
 #titulo {
     display: flex;
     padding: 10px 0px;
-    justify-content: center;
-    
+    justify-content: center; 
 }
 
 #usuario {
     display: flex;
-    padding: 10px 0px 0px 20px;
-    
-    
+    padding: 10px 0px 0px 5px; 
 }
 
 #usuario-input {
@@ -62,7 +60,7 @@ form {
 
 #senha {
     display: flex;
-    padding: 10px 0px 0px 20px;
+    padding: 10px 0px 0px 5px;
     
     
 }
@@ -89,7 +87,8 @@ form {
 }
 
 #checkbox-lembrar {
-    background-color: #ffffff00;
+    background: #561AA4;
+    accent-color: #561AA4;
 }
 
 #esqueceu-a-senha {

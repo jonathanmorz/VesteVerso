@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Josefin-Sans";
+    src: url(../resources/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: "Josefin-Sans-Italic";
+    src: url(../resources/fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
+}
+
+body {
+    background-color: #561AA4;
+    font-family: "Josefin-Sans";
+    margin: 0px;
+    font-size: 24px;
+}
+
+#linha-preta {
+    height: 1.5px;
+    width: 600px;
+}
+
+#div-geral {
+    justify-content: center;
+    margin: 0px;
+}
+
+form {    
+    background-color: white;
+    padding: 40px 55px;
+    margin: 30px 100px;
+    border-radius: 50px;
+}
+
+#bem-vindo {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center; 
+}
+
+#linha-preta-div {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center; 
+}
+#cadastre-se {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center; 
+}
+
+.input-class {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center;
+}
+
+.input {
+    width: 600px;
+    height: 60px;
+    /*As linhas entre os dois comentários (quando juntas) estão fazendo com que a borda dos inputs fiquem com cores diferentes*/
+    border-radius: 25px;
+    border-color: #561AA4;
+    /*As linhas entre os dois comentários (quando juntas) estão fazendo com que a borda dos inputs fiquem com cores diferentes*/
+    font-size: 20px;
+}
+
+#botao {
+    display: flex;
+    padding: 10px 0px;
+    justify-content: center; 
+}
+
+button {
+    width: 600px;
+    height: 60px;
+    border-radius: 25px;
+    border-color: #ffffff00;
+    background-color: #561AA4;
+    font-size: 20px;
+    color: #ffd;
+}
