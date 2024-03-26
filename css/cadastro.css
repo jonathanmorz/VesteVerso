@@ -42,6 +42,7 @@ form {
     padding: 10px 0px;
     justify-content: center; 
 }
+
 #cadastre-se {
     display: flex;
     padding: 10px 0px;
@@ -50,16 +51,16 @@ form {
 
 .input-class {
     display: flex;
-    padding: 10px 0px;
+    padding: 10px;
     justify-content: center;
 }
 
-.input {
+input {
     width: 600px;
     height: 60px;
     /*As linhas entre os dois comentários (quando juntas) estão fazendo com que a borda dos inputs fiquem com cores diferentes*/
     border-radius: 25px;
-    border-color: #561AA4;
+    border: #561AA4 solid;
     /*As linhas entre os dois comentários (quando juntas) estão fazendo com que a borda dos inputs fiquem com cores diferentes*/
     font-size: 20px;
 }
