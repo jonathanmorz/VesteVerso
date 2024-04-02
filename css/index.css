@@ -117,3 +117,13 @@ nav > a:hover {
     width: 98.9%;
     padding: 0px 0px 0px 1em;
 }
+
+#instagram {
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 40px;
+    border: 2px solid;
+    border-radius: 10px;
+}
