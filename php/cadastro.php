@@ -1,25 +1,20 @@
 <?php
+$nome = $_POST['input-nome-completo'];
+$username = $_POST['input-username'];
+$Senha = $_POST['input-senha'];
+$checksenha = $_POST['input-repetir-senha'];
+$email = $_POST['input-email'];
+$cpf = $_POST['input-cpf'];
+$telefone = $_POST['input-tel'];
+$endereco = $_POST['input-endereco'];
+$cep = $_POST['input-cep'];
 
 include('connection.php');
 
-$nome = $_POST['nome-completo'];
-$username = $_POST['username'];
-$senha = $_POST['senha'];
-$checksenha = $_POST['repetir-senha'];
-$email = $_POST['e-mail'];
-$CPF = $_POST['cpf'];
-$telefone = $_POST['Telefone'];
-$endereco = $_POST['endereco'];
-$cep = $_POST['cep'];
-
-if ($senha != $checksenha){
-    echo("As senhas não correspondem");
-}
-
-$sql = "INSERT into clientes(nome, usuario, email, senha, telefone, cpf, endereco, cep) VALUES('$nome','$username','$email','$senha','$telefone','$cpf','$endereco','$cep')";
+    $sql = "INSERT into clientes(nome, username, email, senha, telefone, cpf, endereco, cep) VALUES('$nome','$username','$email','$Senha','$telefone','$cpf','$endereco','$cep')";
 
     $rs = mysqli_query($mysqli, $sql);
 
-    header("Location: ../html/login.html");
+    header('Location:../html/login.html');
 
 ?>

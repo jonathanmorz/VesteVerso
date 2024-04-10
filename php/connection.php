@@ -1,10 +1,14 @@
 <?php
 
-$user='root';
-$password='';
+$usuario='root';
+$senha='';
 $database='store';
 $host='localhost';
 
-$mysqli - new mysqli($host, $user, $password, $database);
+$mysqli = new mysqli($host, $usuario, $senha, $database);
+
+if($mysqli->error) {
+    die("Falha ao conectar ao banco de dados: " .$mysqli->error);
+}
 
 ?>
