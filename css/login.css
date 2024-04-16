@@ -18,6 +18,8 @@ html, body {
 
 body {
     font-family: "Josefin-Sans", sans-serif;
+    background-image: url(../resources/images/fundo-login.png);
+    background-repeat: no-repeat;
 }
 
 h1 {
