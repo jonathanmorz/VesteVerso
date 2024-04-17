@@ -35,51 +35,59 @@
         <a href="#">Promoções</a>
     </nav>
 
-    <container>
+    <div id="container">
         <div id="imagem-produto">
-            <img src="../resources/images/roupas/0002.jpg" alt="Camisa Manga Longa Feminina">
+            <img src="../resources/images/roupas/0002.jpg" alt="Camisa Manga Longa Feminina" id="img-produto">
         </div>
-        <div id="nome-produto">
-            <h2>Camisa Manga Longa Feminina</h2>
+        <div id="div-conteudo">
+            <div id="nome-produto">
+                <h2>Camisa Manga Longa Feminina</h2>
+            </div>
+            <div id="preco-produto">
+                <h2>R$64,90</h2>
+            </div>
+            <div id="frete">
+                <img src="../resources/images/frete.png" alt="Ícone de Frete Caminhão">
+                <input type="text" placeholder="Digite seu CEP">
+
+            </div>
+            <div id="tamanho-produto">
+                <div class="text">
+                    <h3>Tamanho</h3>
+                </div>
+            </div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-dark active">
+                      <input type="radio" name="options" id="option1" autocomplete="off"> P
+                    </label>
+                    <label class="btn btn-outline-dark">
+                      <input type="radio" name="options" id="option2" autocomplete="off"> M
+                    </label>
+                    <label class="btn btn-outline-dark">
+                      <input type="radio" name="options" id="option3" autocomplete="off">G
+                    </label>
+                    <label class="btn btn-outline-dark">
+                      <input type="radio" name="options" id="option4" autocomplete="off"> GG
+                    </label>
+                </div>
+            
+            <div id="quantidade-produto">
+                <div class="text"><span>Quantidade</span></div>
+            </div>
+                <div id="button-quantity">
+                    <button onclick="diminuir()" id="botao-quantidade--">-</button>
+                    <input type="number" id="quantidade" value="0">
+                    <button onclick="aumentar()" id="botao-quantidade-+">+</button>
+                </div>
+            <div id="favoritar">
+                <img src="../resources/images/coracao-preto.png" alt="Coração Favorito" id="coracao-favoritar" onclick="trocarImagem()">
+            </div>
+            <div id="div-button">
+                <div class="class-botoes"><button id="adicionar-carrinho">Adicionar ao Carrinho</button></div>
+                <div class="class-botoes"><button id="comprar-agora">Comprar Agora</button></div>
+            </div>
         </div>
-        <div id="preco-produto">
-            <h2>R$64,90</h2>
-        </div>
-        <div id="frete">
-            <img src="../resources/images/frete.png" alt="Ícone de Frete Caminhão">
-            <span>Frete</span>
-            <span> Duque de Caxias, Rio de Janeiro</span>
-            <span>Preço: R$9,67</span>
-        </div>
-        <div id="tamanho-produto">
-            <h3>Tamanho</h3>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-outline-dark active">
-                  <input type="radio" name="options" id="option1" autocomplete="off"> P
-                </label>
-                <label class="btn btn-outline-dark">
-                  <input type="radio" name="options" id="option2" autocomplete="off"> M
-                </label>
-                <label class="btn btn-outline-dark">
-                  <input type="radio" name="options" id="option3" autocomplete="off">G
-                </label>
-                <label class="btn btn-outline-dark">
-                  <input type="radio" name="options" id="option4" autocomplete="off"> GG
-                </label>
-              </div>
-        </div>
-        
-        <div id="quantidade-produto">
-            <button onclick="diminuir()" id="botao-quantidade--">-</button>
-            <input type="number" id="quantidade" value="0">
-            <button onclick="aumentar()" id="botao-quantidade-+">+</button>
-        </div>
-        <div id="favoritar">
-            <img src="../resources/images/coracao-preto.png" alt="Coração Favorito" id="coracao-favoritar" onclick="trocarImagem()">
-        </div>
-        <div class="class-botoes"><button id="adicionar-carrinho">Adicionar ao Carrinho</button></div>
-        <div class="class-botoes"><button id="comprar-agora">Comprar Agora</button></div>
-    </container>
+    </div>
 
 
         <script>

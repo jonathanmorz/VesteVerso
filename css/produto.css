@@ -111,24 +111,17 @@ nav > a:hover {
     text-decoration: none;
 }
 
+h2 {
+    font-size: 30px;
+}
+
 #imagem-produto {
-    display: flex;
-}
-
-#nome-produto {
-    display: flex;
-}
-
-#preco-produto {
-    display: flex;
-}
-
-#frete {
-    display: flex;
+    display: inline-flex;
 }
 
 #tamanho-produto {
     display: flex;
+    padding-bottom: 10px;
 }
 
 #quantidade-produto {
@@ -142,6 +135,7 @@ nav > a:hover {
 #favoritar {
     display: flex;
 }
+
 
 .class-botoes {
     display: flex;
@@ -159,7 +153,28 @@ nav > a:hover {
     width: 200px;
     height: 70px;
     background-color: #561AA4;
-    border: white 5px solid;
+    border: #561AA4 5px solid;
     border-radius: 10px;
     font-size: 20px;
+    color: #fff;
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 150px 0px 40px;
+}
+
+#img-produto {
+    max-height: 800px;
+    min-height: 800px;
+}
+
+#div-conteudo {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+#div-button {
+    display: inline-flex;
 }
