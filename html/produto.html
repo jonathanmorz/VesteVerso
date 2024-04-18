@@ -75,15 +75,15 @@
                 <div class="text"><span>Quantidade</span></div>
             </div>
                 <div id="button-quantity">
-                    <button onclick="diminuir()" id="botao-quantidade--">-</button>
-                    <input type="number" id="quantidade" value="0">
-                    <button onclick="aumentar()" id="botao-quantidade-+">+</button>
+                    <div class="botoes-quantidade"><button onclick="diminuir()" id="botao-quantidade-menos">-</button></div>
+                    <div class="botoes-quantidade"><input type="number" id="quantidade" value="0"></div>
+                    <div class="botoes-quantidade"><button onclick="aumentar()" id="botao-quantidade-mais">+</button></div>
                 </div>
             <div id="favoritar">
                 <img src="../resources/images/coracao-preto.png" alt="Coração Favorito" id="coracao-favoritar" onclick="trocarImagem()">
             </div>
             <div id="div-button">
-                <div class="class-botoes"><button id="adicionar-carrinho">Adicionar ao Carrinho</button></div>
+                <div class="class-botoes" id="div-botao-carrinho"><button id="adicionar-carrinho">Adicionar ao Carrinho</button></div>
                 <div class="class-botoes"><button id="comprar-agora">Comprar Agora</button></div>
             </div>
         </div>
