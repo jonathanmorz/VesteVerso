@@ -126,8 +126,33 @@ nav > a:hover {
     border: 2px solid;
     border-radius: 10px;
 }
-header.sticky{
-    background: #291343;
-    padding: 20px 10%;
-    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+.produtos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    gap: 2rem;
+}
+.row{
+   position: relative;
+   transition: all .40s;
+}
+.row img{
+    width:15%;
+    height: auto;
+    transition: all .40s;
+    border-radius: 60%;
+}
+.row img:hover{
+    transform: scale(0.9);
+}
+.texto-produto h5{
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    color:#fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #291343;
+    padding: 3px 10px;
+    border-radius: 2px;
 }

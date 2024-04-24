@@ -95,8 +95,3 @@ header {
 #div-favorito {
     display: inline;
 }
-header.sticky{
-    background: #291343;
-    padding: 20px 10%;
-    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
-}
