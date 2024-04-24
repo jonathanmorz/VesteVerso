@@ -13,11 +13,15 @@
 }
 
 html, body {
-    min-height: 100vh;
+    max-height: 100vh;
+    max-height: 100vh;
 }
 
 body {
     font-family: "Josefin-Sans", sans-serif;
+    background-image: url(../resources/images/fundo-login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
