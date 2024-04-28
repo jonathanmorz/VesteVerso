@@ -70,13 +70,10 @@
                       <input type="radio" name="options" id="option4" autocomplete="off"> GG
                     </label>
                 </div>
-            
-            <div id="quantidade-produto">
                 <div class="text"><span>Quantidade</span></div>
-            </div>
-                <div id="button-quantity">
+                <div id="quantidade-produto">
                     <div class="botoes-quantidade"><button onclick="diminuir()" id="botao-quantidade-menos">-</button></div>
-                    <div class="botoes-quantidade"><input type="number" id="quantidade" value="0"></div>
+                    <div class="botoes-quantidade"><input type="number" id="quantidade" value="0" min="0" max="9"></div>
                     <div class="botoes-quantidade"><button onclick="aumentar()" id="botao-quantidade-mais">+</button></div>
                 </div>
             <div id="favoritar">

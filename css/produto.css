@@ -113,7 +113,7 @@ nav > a:hover {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 2.5rem;
 }
 
 #imagem-produto {
@@ -168,15 +168,18 @@ h2 {
 
 #quantidade {
     margin: none;
-    padding: 0px;
+    padding: 0px 0px 2px 1em;
     border-top: 2px black solid;
     border-bottom: 2px black solid;
     border-left: 0px;
     border-right: 0px;
+    width: 40px;
+        
 }
 
 #botao-quantidade-menos {
-    padding: 0px;
+    margin: none;
+    padding: 0px 0px 2px 3px;
     border-top: 2px black solid;
     border-bottom: 2px black solid;
     border-left: 2px black solid;
@@ -186,14 +189,14 @@ h2 {
 }
 
 #botao-quantidade-mais {
-    padding: 0px 3px 0px 0px;
+    margin: none;
+    padding: 0px 3px 2px 0px;
     border-top: 2px black solid;
     border-bottom: 2px black solid;
     border-right: 2px black solid;
     border-left: 0px;
     border-radius: 0px 10px 10px 0px;
-    background-color: #fff;
-    
+    background-color: #fff;    
 }
 
 .botoes-quantidade {
@@ -203,8 +206,8 @@ h2 {
 }
 
 #img-produto {
-    max-height: 800px;
-    min-height: 800px;
+    max-height: 40vmax;
+    
 }
 
 #div-conteudo {
@@ -215,3 +218,9 @@ h2 {
 #div-button {
     display: inline-flex;
 }
+
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+  }
