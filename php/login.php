@@ -1,9 +1,9 @@
 <?php
 include("connection.php");
 
-if(isset($_POST['User']) || isset($_POST['Password'])) 
+if(isset($_POST['Usuario']) || isset($_POST['Password'])) 
 {
-    if(strlen($_POST['User']) == 0)
+    if(strlen($_POST['Usuario']) == 0)
     {
         echo("Preencha seu usuário");
     }
@@ -13,7 +13,7 @@ if(isset($_POST['User']) || isset($_POST['Password']))
     }
     else
     {
-        $usuario = $mysqli->real_escape_string($_POST['User']);
+        $usuario = $mysqli->real_escape_string($_POST['Usuario']);
         $Senha = $mysqli->real_escape_string($_POST['Password']);
 
 
