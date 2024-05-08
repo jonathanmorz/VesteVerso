@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php
+$prod_html = '<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -70,10 +71,13 @@
                       <input type="radio" name="options" id="option4" autocomplete="off"> GG
                     </label>
                 </div>
+            
+            <div id="quantidade-produto">
                 <div class="text"><span>Quantidade</span></div>
-                <div id="quantidade-produto">
+            </div>
+                <div id="button-quantity">
                     <div class="botoes-quantidade"><button onclick="diminuir()" id="botao-quantidade-menos">-</button></div>
-                    <input type="number" id="quantidade" value="0" min="0" max="9">
+                    <div class="botoes-quantidade"><input type="number" id="quantidade" value="0"></div>
                     <div class="botoes-quantidade"><button onclick="aumentar()" id="botao-quantidade-mais">+</button></div>
                 </div>
             <div id="favoritar">
@@ -116,4 +120,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
-</html>
+</html>';
+$prod_html_2 = 
+?>
