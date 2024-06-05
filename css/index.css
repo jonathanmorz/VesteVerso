@@ -182,5 +182,12 @@ footer {
 }
 
 #footer-content {
-    justify-items: center;    
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#logos-footer {
+    display: flex;
+    flex-flow: row;
 }
