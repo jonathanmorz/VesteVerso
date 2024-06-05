@@ -37,7 +37,7 @@
     </nav>
    
     <div id="div-form">
-        <form action="../php/salvar.php" method="POST">
+        <form action="../php/salvar.php" enctype="multipart/form-data" method="POST">
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Título do Produto</label>
               <div class="col-sm-10">
@@ -78,12 +78,12 @@
             
                 <div class="form-group">
                   <label for="exampleFormControlFile1">Imagem do Produto</label>
-                  <input type="file" class="form-control-file" id="img" name="imagem">
+                  <input type="file" class="form-control-file" name="arquivo">
                 </div>
              
             <div class="form-group row">
               <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" name="upload" class="btn btn-primary">Enviar</button>
               </div>
             </div>
           </form>
