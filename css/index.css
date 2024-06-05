@@ -122,11 +122,47 @@ a > h5, h6 {
     text-decoration: none;
 }
 
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-produto {
+    margin: 0 0.5em;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: #e1e1e1;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+.card-produto {
+    padding: 10px;
+    border: rgb(170, 170, 170) 1px solid;
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 150%;
+}
+
+h3 {
+    font-size: 130%;
+    color: #535353;
+}
+
 #produtos {
-    display: inline-flex;
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .div-card {
+    display: flex;
     padding: 10px 0px 0px 50px;
 }
 
