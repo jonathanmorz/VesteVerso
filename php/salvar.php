@@ -19,7 +19,7 @@ if(isset($_FILES['arquivo'])) {
     $novoNomeDoArquivo = uniqid();
     $extensao = strtolower(pathinfo($nomeDoArquivo,PATHINFO_EXTENSION));
 
-    if($extensao != "jpg" && $extensao != "png")
+    if($extensao != "jpg" && $extensao != "png" && $extensao != "jpeg")
         die("Tipo de arquivo não aceito, necessário ser jpg ou png.");
 
     $path = $pasta . $novoNomeDoArquivo . "." . $extensao;    
