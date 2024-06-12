@@ -1,7 +1,6 @@
 * {
     margin: 0px;
     padding: 0px;
-    text-align: justify
 }
 
 html, body {
@@ -114,7 +113,7 @@ nav > a:hover {
 }
 
 h1 {
-    padding: 1rem 0px 0px 2rem;
+    padding: 0px 0px 1rem 2rem;
 }
 
 a > h5, h6 {
@@ -145,25 +144,25 @@ a > h5, h6 {
     padding: 10px;
     border: rgb(170, 170, 170) 1px solid;
     border-radius: 10px;
-}
-
+    }
+    
 h2 {
     font-size: 150%;
-}
-
+    }
+        
 h3 {
     font-size: 130%;
     color: #535353;
-}
-
+    }
+            
 #produtos {
     display: flex;
     flex-flow: row nowrap;
 }
-
-.div-card {
-    display: flex;
-    padding: 10px 0px 0px 50px;
+                
+.titulo-produto {
+    text-align: start;
+    word-wrap: break-word;
 }
 
 .button-card-outline {
@@ -176,9 +175,13 @@ h3 {
     font-weight: bold;
 }
 
+.carousel {
+    padding-bottom: 40px;
+}
+
 footer {
     background-color: #291343;
-    color: #fff;
+    color: #eeeeee;
 }
 
 #footer-content {
@@ -187,7 +190,17 @@ footer {
     align-items: center;
 }
 
+#sobre-footer {
+    padding-top: 20px;
+}
+
+#social-footer {
+    display: flex;
+    flex-flow: row;
+}
+
 #logos-footer {
     display: flex;
     flex-flow: row;
+    padding-left: 5px;
 }
