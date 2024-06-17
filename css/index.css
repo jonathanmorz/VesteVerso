@@ -7,7 +7,6 @@ html, body {
     min-height: 100vh;
 }
 
-
 .login-drop {
     text-decoration: none;
     color: #fff;
@@ -154,6 +153,16 @@ h3 {
     font-size: 130%;
     color: #535353;
     }
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000;
+}
             
 #produtos {
     display: flex;
@@ -165,14 +174,29 @@ h3 {
     word-wrap: break-word;
 }
 
+.div-botao {
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-between;
+}
+
+.coracao-favoritar {
+    width: 20%;
+    height: 20%;
+}
+
 .button-card-outline {
+    width: 70%;
     background-color: #fff;
     color: #561aa4;
-    padding: 5px;
-    border: 5px #561aa4 solid;
+    border: 3px #561aa4 solid;
     border-radius: 10px;
-    font-size: 15.4px;
+    font-size: 77%;
     font-weight: bold;
+}
+
+#coracao-favoritar {
+    cursor: pointer;
 }
 
 .carousel {

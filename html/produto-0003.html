@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto XYZ - VesteVerso</title>
+    <title>Camisa Lilás - VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/produto.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
@@ -37,24 +37,24 @@
 
     <div id="container">
         <div id="imagem-produto">
-            <img src="../resources/images/roupas/0002.jpeg" alt="Camisa Manga Longa Feminina" id="img-produto">
+            <img src="../resources/images/roupas/0003.jpeg" alt="Camisa Manga Longa Feminina" id="img-produto">
         </div>
         <div id="div-conteudo">
             <div id="nome-produto">
-                <h2>Camisa Manga Longa Feminina</h2>
+                <h2>Camisa Lilás Feminina</h2>
             </div>
             <div id="preco-produto">
-                <h2>R$64,90</h2>
+                <h3>R$72,50</h3>
             </div>
             <div id="frete">
-                <h3>Frete:</h3>
+                <h4>Frete:</h4>
                 <img src="../resources/images/frete.png" alt="Ícone de Frete Caminhão">
-                <input type="text" placeholder="Digite seu CEP">
+                <input type="text" placeholder="Digite seu CEP" id="input-cep">
 
             </div>
             <div id="tamanho-produto">
                 <div class="text">
-                    <h3>Tamanho</h3>
+                    <h4>Tamanho:</h4>
                 </div>
             </div>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -71,18 +71,18 @@
                       <input type="radio" name="options" id="option4" autocomplete="off"> GG
                     </label>
                 </div>
-                <div class="text"><span>Quantidade</span></div>
+                <div class="text"><h4>Quantidade:</h4></div>
                 <div id="quantidade-produto">
                     <div class="botoes-quantidade"><button onclick="diminuir()" id="botao-quantidade-menos">-</button></div>
                     <input type="number" id="quantidade" value="0" min="0" max="9">
                     <div class="botoes-quantidade"><button onclick="aumentar()" id="botao-quantidade-mais">+</button></div>
                 </div>
-            <div id="favoritar">
-                <img src="../resources/images/coracao-preto.png" alt="Coração Favorito" id="coracao-favoritar" onclick="trocarImagem()">
-            </div>
-            <div id="div-button">
-                <div class="class-botoes" id="div-botao-carrinho"><button id="adicionar-carrinho">Adicionar ao Carrinho</button></div>
-                <div class="class-botoes"><button id="comprar-agora">Comprar Agora</button></div>
+                <div id="div-button">
+                    <div class="class-botoes" id="div-botao-carrinho"><button id="adicionar-carrinho">Adicionar ao Carrinho</button></div>
+                    <div class="class-botoes"><button id="comprar-agora">Comprar Agora</button></div>
+                    <div id="favoritar">
+                        <img src="../resources/images/coracao-roxo-grande.png" alt="Coração Favorito" id="coracao-favoritar" onclick="trocarImagem()">
+                    </div>
             </div>
         </div>
     </div>
@@ -108,10 +108,10 @@
         <script>
             function trocarImagem() {
                 var coracaofavoritar = document.getElementById('coracao-favoritar');
-                if (coracaofavoritar.src.match("../resources/images/coracao-preto.png")) {
-                    coracaofavoritar.src = "../resources/images/coracao-solido-preto.png";
+                if (coracaofavoritar.src.match("../resources/images/coracao-roxo-grande.png")) {
+                    coracaofavoritar.src = "../resources/images/coracao-solido-roxo-grande.png";
                 } else {
-                    coracaofavoritar.src = "../resources/images/coracao-preto.png";
+                    coracaofavoritar.src = "../resources/images/coracao-roxo-grande.png";
                 }
             }
         </script>
