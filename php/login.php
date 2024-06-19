@@ -35,7 +35,7 @@ if(isset($_POST['Usuario']) || isset($_POST['Password']))
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];
 
-            header("Location: ../html/index.html");
+            header("Location: ../php/index.php");
 
         }
         else

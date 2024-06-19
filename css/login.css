@@ -88,7 +88,8 @@ form {
     height: 30px;
     border-radius: 8px;
     color: #561AA4;
-    border: 0px
+    border: 0px;
+    padding: 0px 0px 0px 5px;
 }
 
 #checkbox {
