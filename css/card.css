@@ -1,0 +1,64 @@
+*{
+    margin: 0px;
+}
+
+.card-produto {
+    padding: 10px;
+    border: rgb(170, 170, 170) 1px solid;
+    border-radius: 10px;
+}
+
+.imagem-card {
+    width: 30vh; 
+}
+
+img {
+display: inline-flex;
+}
+
+h2 {
+    font-size: 130%;
+    display: inline-flex;
+}
+
+h3 {
+    font-size: 130%;
+    color: #535353;
+    display: inline-flex;
+}
+
+a {
+    display: inline-flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+#produtos {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.titulo-produto {
+    display: inline-flex;
+    text-align: start;
+    word-wrap: break-word;
+}
+
+.div-botao {
+    display: flex;
+}
+
+.button-card-outline {
+    background-color: #fff;
+    color: #561aa4;
+    border: 3px #561aa4 solid;
+    border-radius: 10px;
+    font-size: 77%;
+    font-weight: bold;
+}

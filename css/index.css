@@ -189,11 +189,6 @@ a:hover {
     justify-content: space-between;
 }
 
-.coracao-favoritar {
-    width: 20%;
-    height: 20%;
-}
-
 .button-card-outline {
     width: 70%;
     background-color: #fff;
@@ -202,10 +197,6 @@ a:hover {
     border-radius: 10px;
     font-size: 77%;
     font-weight: bold;
-}
-
-#coracao-favoritar {
-    cursor: pointer;
 }
 
 .carousel {

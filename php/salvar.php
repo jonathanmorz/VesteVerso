@@ -28,7 +28,7 @@ if(isset($_FILES['arquivo'])) {
 
     if($deu_certo)
     {
-        $sql = "INSERT into produto(categoria, preco, nome_prod, path) VALUES('$categoria','$preco','$nome','$path')";
+        $sql = "INSERT into produtos(categoria, preco, nome, imagem) VALUES('$categoria','$preco','$nome','$path')";
 
     $rs = mysqli_query($mysqli, $sql);
 
