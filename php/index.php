@@ -29,8 +29,8 @@ if (isset($_SESSION['id'])) {
 <body>
     <header>
     <div id="div-logo"><a href="index.php"><img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo"></a></div>
-        <form action="">
-          <div id="div-barra-pesquisa"><input type="search" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa"><img src="../resources/images/lupa.png" alt="lupa-pesquisa" id="img-lupa"></button></input></div>
+        <form action="pesquisa.php" method="GET">
+          <div id="div-barra-pesquisa"><input type="text" name="query" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa" type="submit"><img src="../resources/images/lupa.png" alt="lupa-pesquisa" id="img-lupa"></button></input></div>
         </form>
         <div id="div-direita-header">
             <div id="div-dropdown">
