@@ -5,9 +5,18 @@ $nome = $mysqli->real_escape_string($_POST['nome-produto']);
 $descricao = $mysqli->real_escape_string($_POST['desc-produto']);
 $preco = $mysqli->real_escape_string($_POST['preco']);
 $categoria = $mysqli->real_escape_string($_POST['gridRadios']);
-$em_alta = $mysqli->real_escape_string($_POST['em_alta']);
-$promocao = $mysqli->real_escape_string($_POST['promocao']);
 $quantidade = $mysqli->real_escape_string($_POST['quantidade']);
+
+if(array_key_exists('em_alta', $_POST)) {
+    $em_alta = 1;
+} else {
+    $em_alta = 0;
+}
+if(array_key_exists('promocao', $_POST)) {
+    $promocao = 1;
+} else {
+    $promocao = 0;
+}
 
 if(isset($_FILES['arquivo'])) {
     $arquivo = $_FILES['arquivo'];
