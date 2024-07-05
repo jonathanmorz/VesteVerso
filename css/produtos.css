@@ -177,7 +177,7 @@ h2 {
     color: #fff;
 }
 
-#container {
+container {
     display: flex;
     justify-content: space-between;
     padding: 10px 150px 0px 40px;

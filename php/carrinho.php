@@ -5,78 +5,16 @@ $sql = "SELECT id, nome, preco, imagem FROM produtos";
 $result = $mysqli->query($sql);
 
 echo '<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VesteVerso</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/card.css">
   <link rel="stylesheet" href="../css/coracao-favoritar.css">
   <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    .produtos {
-      display: flex;
-      flex-wrap: wrap;
-      }
-      .cards-wrapper {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-    }
-    .card-produto {
-      padding: 10px;
-      border: 1px solid rgb(170, 170, 170);
-      border-radius: 10px;
-      display: inline-flex;
-      margin: 10px;
-    }
-    .imagem-card {
-      width: 30vh; 
-      display: inline-flex;
-    }
-    img {
-      display: inline-flex;
-    }
-    h2, h3 {
-      font-size: 130%;
-      display: inline-flex;
-    }
-    h3 {
-      color: #535353;
-    }
-    a {
-      display: inline-flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: #000;
-    }
-    a:hover {
-      text-decoration: none;
-      color: #000;
-    }
-    .titulo-produto {
-      display: inline-flex;
-      text-align: start;
-      word-wrap: break-word;
-    }
-    .div-botao {
-      display: flex;
-      justify-content: space-between;
-    }
-    .button-card-outline {
-      background-color: #fff;
-      color: #561aa4;
-      border: 3px solid #561aa4;
-      border-radius: 10px;
-      font-size: 77%;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
     <header>

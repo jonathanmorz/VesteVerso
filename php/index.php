@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php'; // Inclui a conexão com o banco de dados
+include 'connection.php';
 
 $username = '';
 

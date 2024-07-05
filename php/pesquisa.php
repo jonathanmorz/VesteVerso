@@ -1,11 +1,26 @@
 <?php
+session_start();
+include 'connection.php'; // Inclui a conexão com o banco de dados
+
+$username = '';
+
+if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+    $sql = "SELECT username FROM clientes WHERE id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+}
 include 'connection.php';
 
 $query = $_GET['query'];
 $sql = "SELECT id, nome, preco, imagem FROM produtos WHERE nome LIKE '%$query%'";
 $result = $mysqli->query($sql);
-
-echo '<!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
@@ -46,9 +61,6 @@ echo '<!DOCTYPE html>
       width: 30vh; 
       display: inline-flex;
     }
-    img {
-      display: inline-flex;
-    }
     h2, h3 {
       font-size: 130%;
       display: inline-flex;
@@ -56,7 +68,7 @@ echo '<!DOCTYPE html>
     h3 {
       color: #535353;
     }
-    a {
+    .card-produto > a  {
       display: inline-flex;
       flex-direction: column;
       text-decoration: none;
@@ -73,6 +85,7 @@ echo '<!DOCTYPE html>
     }
     .div-botao {
       display: flex;
+      justify-content: space-between;
     }
     .button-card-outline {
       background-color: #fff;
@@ -122,8 +135,9 @@ echo '<!DOCTYPE html>
         <a href="#">Promoções</a>
     </nav>
   <h4>Resultados da Pesquisa: </h4>
-  <div class="produtos">';
-if ($result->num_rows > 0) {
+  <div class="produtos">
+<?php
+  if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo '<div class="cards-wrapper">
                 <div class="card-produto d-none d-md-block">
@@ -150,7 +164,7 @@ if ($result->num_rows > 0) {
               </div>';
     }
 } else {
-    echo "Nenhum resultado encontrado.";
+    echo "Nenhum produto foi encontrado, tente novamente usando palavras-chave.";
 }
 echo '</div>';
 $mysqli->close();

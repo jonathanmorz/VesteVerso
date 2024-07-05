@@ -2,8 +2,12 @@
 include('connection.php');
 
 $nome = $mysqli->real_escape_string($_POST['nome-produto']);
+$descricao = $mysqli->real_escape_string($_POST['desc-produto']);
 $preco = $mysqli->real_escape_string($_POST['preco']);
 $categoria = $mysqli->real_escape_string($_POST['gridRadios']);
+$em_alta = $mysqli->real_escape_string($_POST['em_alta']);
+$promocao = $mysqli->real_escape_string($_POST['promocao']);
+$quantidade = $mysqli->real_escape_string($_POST['quantidade']);
 
 if(isset($_FILES['arquivo'])) {
     $arquivo = $_FILES['arquivo'];
@@ -28,11 +32,11 @@ if(isset($_FILES['arquivo'])) {
 
     if($deu_certo)
     {
-        $sql = "INSERT into produtos(categoria, preco, nome, imagem) VALUES('$categoria','$preco','$nome','$path')";
+        $sql = "INSERT into produtos(categoria, preco, nome, imagem, descricao, em_alta, promocao, quantidade) VALUES('$categoria','$preco','$nome','$path','$descricao','$em_alta','$promocao','$quantidade')";
 
     $rs = mysqli_query($mysqli, $sql);
 
-    header("Location:../html/cadastro-produto.html");
+    header("Location:../php/cadastro-produto.php");
 
     }
 
