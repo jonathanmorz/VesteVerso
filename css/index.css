@@ -7,6 +7,10 @@ html, body {
     min-height: 100vh;
 }
 
+body {
+    overflow: overlay;
+}
+
 .login-drop {
     text-decoration: none;
     color: #fff;
@@ -50,13 +54,19 @@ header {
 }
 
 #div-direita-header {
-    padding: 0px 15px;
-    justify-content: space-between;
+    padding: 0px 10px;
+    justify-content: space-around;
+    display: inline-flex;
+}
+
+.img-header {
+    padding: 0px 8px;
 }
 
 #div-dropdown {
     display: inline-flex;
     padding: 0px;
+    margin: 0px;
 }
 
 .dropdown2:hover .dropdown-menu{
@@ -83,6 +93,7 @@ header {
     padding: 0px 0px 10px 10px;
     border-radius: 10px;
     border: none;
+    margin: 0;
 }
 
 #botao-logout {
@@ -90,15 +101,6 @@ header {
     color: #ffffff;
     border: none;
     cursor: pointer;
-}
-
-#div-carrinho {
-    display: inline;
-    padding: 0px 10px 0px 5px;
-}
-
-#div-favorito {
-    display: inline;
 }
 
 nav {
@@ -127,82 +129,6 @@ a > h5, h6 {
     text-decoration: none;
 }
 
-.cards-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .card-produto {
-    margin: 0 0.5em;
-  }
-
-  
-.carousel-control-prev,
-.carousel-control-next {
-    background-color: #561aa4;
-    width: 5vh;
-    height: 5vh;
-    border-radius: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0 3vh;
-}
-
-.card-produto {
-    padding: 10px;
-    border: rgb(170, 170, 170) 1px solid;
-    border-radius: 10px;
-    }
-    
-h2 {
-    font-size: 130%;
-    }
-        
-h3 {
-    font-size: 130%;
-    color: #535353;
-    }
-
-a {
-    text-decoration: none;
-    color: #000;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #000;
-}
-            
-#produtos {
-    display: flex;
-    flex-flow: row nowrap;
-}
-                
-.titulo-produto {
-    text-align: start;
-    word-wrap: break-word;
-}
-
-.div-botao {
-    display: flex;
-    flex-flow: nowrap;
-    justify-content: space-between;
-}
-
-.button-card-outline {
-    width: 70%;
-    background-color: #fff;
-    color: #561aa4;
-    border: 3px #561aa4 solid;
-    border-radius: 10px;
-    font-size: 77%;
-    font-weight: bold;
-}
-
-.carousel {
-    padding-bottom: 40px;
-}
-
 footer {
     background-color: #291343;
     color: #eeeeee;
@@ -227,4 +153,48 @@ footer {
     display: flex;
     flex-flow: row;
     padding-left: 5px;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    width: 13px;
+    height: 9px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #0000008c;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-corner {
+    border-radius: 10px;
+  }
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #561aa4;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 3vh;
+}
+
+.carousel {
+    padding-bottom: 40px;
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-direction: row nowrap;
+  }
+  
+  #overflow {
+    display: flex;
+    flex-direction: row nowrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 3em;
+    padding-left: 3em;
 }

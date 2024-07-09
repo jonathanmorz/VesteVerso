@@ -1,3 +1,20 @@
+<?php
+session_start();
+include 'connection.php';
+
+$username = '';
+
+if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+    $sql = "SELECT username FROM clientes WHERE id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,29 +22,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
-        <div id="div-logo"><a href="index.html"><img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo"></a></div>
-        <form action="">
-          <div id="div-barra-pesquisa"><input type="search" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa"><img src="../resources/images/lupa.png" alt="lupa-pesquisa" id="img-lupa"></button></input></div>
+    <div id="div-logo"><a href="index.php"><img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo"></a></div>
+        <form action="pesquisa.php" method="GET">
+          <div id="div-barra-pesquisa"><input type="text" name="query" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa" type="submit"><img src="../resources/images/lupa.png" alt="lupa-pesquisa" id="img-lupa"></button></input></div>
         </form>
         <div id="div-direita-header">
             <div id="div-dropdown">
                 <ul id="ul-dropdown">
-                    <li type="none" class="dropdown"><a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user">
-                    <div class="dropdown-menu">
-                        <a href="Cadastro.html" class="login-drop">Cadastre-se</a>
-                        <a href="login.html" class="login-drop">Entrar</a>
-                    </div>
+                    <li class="dropdown" type="none">
+                        <a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user"></a>
+                        <div class="dropdown-menu">
+                            <?php if ($username): ?>
+                                <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
+                                <div><a href="logout.php"><button name="logout" id="botao-logout">Sair</button></a></div>
+                            <?php else: ?>
+                                <a href="../html/Cadastro.html" class="login-drop">Cadastre-se</a>
+                                <a href="../html/login.html" class="login-drop">Entrar</a>
+                            <?php endif; ?>
+                        </div>
                     </li>
                 </ul>
             </div>
-        <div id="div-carrinho"><img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho"></div>
-        <div id="div-favorito"><img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito"></div>
+            <div id="div-carrinho">
+                <img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho">
+            </div>
+            <div id="div-favorito">
+                <img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito">
+            </div>
         </div>
     </header>
     <nav>
@@ -71,7 +98,7 @@
         <div class="carousel-item active">
           <div class="cards-wrapper">
           <div class="card-produto">
-            <a href="produto-0001.html">
+            <a href="produto-0001.php">
               <img src="../resources/images/roupas/0001.JPG" alt="imagem-roupa" style="width: 30vh;">
                 <h2 class="titulo-produto">Camisa de Gola</h2>
                 <h3 class="titulo-produto">R$56,90</h3>
@@ -90,7 +117,7 @@
                 </script>
           </div>
           <div class="card-produto d-none d-md-block">
-            <a href="produto-0002.html">
+            <a href="produto-0002.php">
               <img src="../resources/images/roupas/0002.jpeg" alt="imagem-roupa" style="width: 30vh;">
                 <h2 class="titulo-produto">Camisa com Manga</h2>
                 <h3 class="titulo-produto">R$42,30</h3>
@@ -109,7 +136,7 @@
                 </script>
           </div>
           <div class="card-produto d-none d-md-block">
-            <a href="produto-0003.html">
+            <a href="produto-0003.php">
               <img src="../resources/images/roupas/0003.jpeg" alt="imagem-roupa" style="width: 30vh;">
                 <h2 class="titulo-produto">Camisa Lilás</h2>
                 <h3 class="titulo-produto">R$72,50</h3>
@@ -128,7 +155,7 @@
                 </script>
           </div>
           <div class="card-produto d-none d-md-block">
-            <a href="produto-0004.html">
+            <a href="produto-0004.php">
               <img src="../resources/images/roupas/0004.jpeg" alt="imagem-roupa" style="width: 30vh;">
                 <h2 class="titulo-produto">Camisa Curta</h2>
                 <h3 class="titulo-produto">R$35,60</h3>
@@ -147,7 +174,7 @@
                   </script></div>
           </div>
           <div class="card-produto d-none d-md-block">
-            <a href="produto-0005.html">
+            <a href="produto-0005.php">
               <img src="../resources/images/roupas/0005.jpeg" alt="imagem-roupa" style="width: 30vh;">
                 <h2 class="titulo-produto">Camiseta Oversized</h2>
                 <h3 class="titulo-produto">R$98,20</h3>
@@ -170,7 +197,7 @@
         <div class="carousel-item">
           <div class="cards-wrapper">
             <div class="card-produto">
-              <a href="produto-0011.html">
+              <a href="produto-0011.php">
                 <img src="../resources/images/roupas/0011.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Camisa Verde</h2>
                   <h3 class="titulo-produto">R$72,50</h3>
@@ -189,7 +216,7 @@
                   </script></div>
             </div>
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0012.html">
+              <a href="produto-0012.php">
                 <img src="../resources/images/roupas/0012.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Camisa Oversized</h2>
                   <h3 class="titulo-produto">R$35,60</h3>
@@ -208,7 +235,7 @@
                   </script></div>
             </div>
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0013.html">
+              <a href="produto-0013.php">
                 <img src="../resources/images/roupas/0013.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Camisa com Botão</h2>
                   <h3 class="titulo-produto">R$98,20</h3>
@@ -228,7 +255,7 @@
             </div>
             
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0014.html">
+              <a href="produto-0014.php">
                 <img src="../resources/images/roupas/0014.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Camisa Gola Alta</h2>
                   <h3 class="titulo-produto">R$125,40</h3>
@@ -247,7 +274,7 @@
                   </script></div>
             </div>
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0015.html">
+              <a href="produto-0015.php">
                 <img src="../resources/images/roupas/0015.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Camiseta Verde</h2>
                   <h3 class="titulo-produto">R$84,70</h3>
@@ -270,7 +297,7 @@
         <div class="carousel-item">
           <div class="cards-wrapper">
             <div class="card-produto">
-              <a href="produto-0021.html">
+              <a href="produto-0021.php">
                 <img src="../resources/images/roupas/0021.JPG" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Macacão Feminino</h2>
                   <h3 class="titulo-produto">R$98,20</h3>
@@ -290,7 +317,7 @@
                   
             </div>
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0022.html">
+              <a href="produto-0022.php">
                 <img src="../resources/images/roupas/0022.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Conjunto Pijama</h2>
                   <h3 class="titulo-produto">R$125,40</h3>
@@ -309,7 +336,7 @@
                   </script></div>
             </div>
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0023.html">
+              <a href="produto-0023.php">
                 <img src="../resources/images/roupas/0023.JPG" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Conjunto Suéter</h2>
                   <h3 class="titulo-produto">R$84,70</h3>
@@ -328,7 +355,7 @@
                   </script></div>
             </div>
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0024.html">
+              <a href="produto-0024.php">
                 <img src="../resources/images/roupas/0024.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Vestido Cami </h2>
                   <h3 class="titulo-produto">R$63,80</h3>
@@ -347,7 +374,7 @@
                   </script></div>
             </div>
             <div class="card-produto d-none d-md-block">
-              <a href="produto-0025.html">
+              <a href="produto-0025.php">
                 <img src="../resources/images/roupas/0025.jpeg" alt="imagem-roupa" style="width: 30vh;">
                   <h2 class="titulo-produto">Conjunto Saia e Top</h2>
                   <h3 class="titulo-produto">R$110,90</h3>
@@ -410,7 +437,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
-
-       
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

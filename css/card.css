@@ -6,10 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   }
-  .cards-wrapper {
-    display: inline-flex;
-    flex-direction: row;
-}
+
 .card-produto {
   padding: 10px;
   border: 1px solid rgb(170, 170, 170);

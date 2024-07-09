@@ -22,21 +22,24 @@ if (isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/card.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
+
 </head>
 <body>
-    <header>
+<header>
     <div id="div-logo"><a href="index.php"><img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo"></a></div>
         <form action="pesquisa.php" method="GET">
           <div id="div-barra-pesquisa"><input type="text" name="query" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa" type="submit"><img src="../resources/images/lupa.png" alt="lupa-pesquisa" id="img-lupa"></button></input></div>
         </form>
         <div id="div-direita-header">
-            <div id="div-dropdown">
+            
                 <ul id="ul-dropdown">
                     <li class="dropdown" type="none">
-                        <a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user"></a>
+                        <a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user" class="img-header"></a>
                         <div class="dropdown-menu">
                             <?php if ($username): ?>
                                 <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
@@ -48,13 +51,12 @@ if (isset($_SESSION['id'])) {
                         </div>
                     </li>
                 </ul>
-            </div>
-            <div id="div-carrinho">
-                <img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho">
-            </div>
-            <div id="div-favorito">
-                <img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito">
-            </div>
+            
+            
+                <img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho" class="img-header">
+            
+                <img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito" class="img-header">
+            
         </div>
     </header>
     <nav>
@@ -92,319 +94,41 @@ if (isset($_SESSION['id'])) {
           </div>
 
     <h1>Em destaque</h1>
-
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="cards-wrapper">
-          <div class="card-produto">
-            <a href="produto-0001.php">
-              <img src="../resources/images/roupas/0001.JPG" alt="imagem-roupa" style="width: 30vh;">
-                <h2 class="titulo-produto">Camisa de Gola</h2>
-                <h3 class="titulo-produto">R$56,90</h3>
-            </a>
-              <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button> 
-                <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar" onclick="trocarImagem()"></div>
-                <script>
-                  function trocarImagem() {
-                      var coracaofavoritar = document.getElementById('coracao-favoritar');
-                      if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                      } else {
-                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                      }
-                  }
-                </script>
-          </div>
-          <div class="card-produto d-none d-md-block">
-            <a href="produto-0002.php">
-              <img src="../resources/images/roupas/0002.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                <h2 class="titulo-produto">Camisa com Manga</h2>
-                <h3 class="titulo-produto">R$42,30</h3>
-            </a>
-              <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar1" onclick="trocarImagem1()"></div>
-                <script>
-                  function trocarImagem1() {
-                      var coracaofavoritar = document.getElementById('coracao-favoritar1');
-                      if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                      } else {
-                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                      }
-                  }
-                </script>
-          </div>
-          <div class="card-produto d-none d-md-block">
-            <a href="produto-0003.php">
-              <img src="../resources/images/roupas/0003.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                <h2 class="titulo-produto">Camisa Lilás</h2>
-                <h3 class="titulo-produto">R$72,50</h3>
-            </a>
-              <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar2" onclick="trocarImagem2()"></div>
-                <script>
-                  function trocarImagem2() {
-                      var coracaofavoritar = document.getElementById('coracao-favoritar2');
-                      if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                      } else {
-                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                      }
-                  }
-                </script>
-          </div>
-          <div class="card-produto d-none d-md-block">
-            <a href="produto-0004.php">
-              <img src="../resources/images/roupas/0004.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                <h2 class="titulo-produto">Camisa Curta</h2>
-                <h3 class="titulo-produto">R$35,60</h3>
-            </a>
-              <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar3" onclick="trocarImagem3()">
-                  <script>
-                    function trocarImagem3() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar3');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-          </div>
-          <div class="card-produto d-none d-md-block">
-            <a href="produto-0005.php">
-              <img src="../resources/images/roupas/0005.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                <h2 class="titulo-produto">Camiseta Oversized</h2>
-                <h3 class="titulo-produto">R$98,20</h3>
-            </a>
-              <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar4" onclick="trocarImagem4()">
-                <script>
-                  function trocarImagem4() {
-                      var coracaofavoritar = document.getElementById('coracao-favoritar4');
-                      if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                      } else {
-                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                      }
-                  }
-                </script></div>
-          </div>
-        </div>
-        </div>
-        <div class="carousel-item">
-          <div class="cards-wrapper">
-            <div class="card-produto">
-              <a href="produto-0011.php">
-                <img src="../resources/images/roupas/0011.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Camisa Verde</h2>
-                  <h3 class="titulo-produto">R$72,50</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar5" onclick="trocarImagem5()">
-                  <script>
-                    function trocarImagem5() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar5');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0012.php">
-                <img src="../resources/images/roupas/0012.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Camisa Oversized</h2>
-                  <h3 class="titulo-produto">R$35,60</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar6" onclick="trocarImagem6()">
-                  <script>
-                    function trocarImagem6() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar6');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0013.php">
-                <img src="../resources/images/roupas/0013.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Camisa com Botão</h2>
-                  <h3 class="titulo-produto">R$98,20</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar7" onclick="trocarImagem7()">
-                  <script>
-                    function trocarImagem7() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar7');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-            
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0014.php">
-                <img src="../resources/images/roupas/0014.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Camisa Gola Alta</h2>
-                  <h3 class="titulo-produto">R$125,40</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar8" onclick="trocarImagem8()">
-                  <script>
-                    function trocarImagem8() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar8');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0015.php">
-                <img src="../resources/images/roupas/0015.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Camiseta Verde</h2>
-                  <h3 class="titulo-produto">R$84,70</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar9" onclick="trocarImagem9()">
-                  <script>
-                    function trocarImagem9() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar9');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="cards-wrapper">
-            <div class="card-produto">
-              <a href="produto-0021.php">
-                <img src="../resources/images/roupas/0021.JPG" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Macacão Feminino</h2>
-                  <h3 class="titulo-produto">R$98,20</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar10" onclick="trocarImagem10()">
-                  <script>
-                    function trocarImagem10() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar10');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-                  
-            </div>
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0022.php">
-                <img src="../resources/images/roupas/0022.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Conjunto Pijama</h2>
-                  <h3 class="titulo-produto">R$125,40</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar11" onclick="trocarImagem11()">
-                  <script>
-                    function trocarImagem11() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar11');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0023.php">
-                <img src="../resources/images/roupas/0023.JPG" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Conjunto Suéter</h2>
-                  <h3 class="titulo-produto">R$84,70</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar12" onclick="trocarImagem12()">
-                  <script>
-                    function trocarImagem12() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar12');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0024.php">
-                <img src="../resources/images/roupas/0024.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Vestido Cami </h2>
-                  <h3 class="titulo-produto">R$63,80</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar13" onclick="trocarImagem13()">
-                  <script>
-                    function trocarImagem13() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar13');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-            <div class="card-produto d-none d-md-block">
-              <a href="produto-0025.php">
-                <img src="../resources/images/roupas/0025.jpeg" alt="imagem-roupa" style="width: 30vh;">
-                  <h2 class="titulo-produto">Conjunto Saia e Top</h2>
-                  <h3 class="titulo-produto">R$110,90</h3>
-              </a>
-                <div class="div-botao"><button class="button-card-outline">Adicionar ao Carrinho</button>
-                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar14" onclick="trocarImagem14()">
-                  <script>
-                    function trocarImagem14() {
-                        var coracaofavoritar = document.getElementById('coracao-favoritar14');
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                            coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                    }
-                  </script></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-
+<div id="overflow">
+    <?php $sql = "SELECT * FROM produtos WHERE em_alta = 1";    
+          $result = $mysqli->query($sql);
+    
+          if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+              echo '<div class="cards-wrapper">
+                        <div class="card-produto  d-md-block">
+                          <a href="produto.php?id=' . $row["id"] . '">
+                            <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 30vh;">
+                            <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+                            <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
+                          </a>
+                          <div class="div-botao">
+                            <button class="button-card-outline">Adicionar ao Carrinho</button>
+                            <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
+                            <script>
+                              function trocarImagem' . $row["id"] . '() {
+                                var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
+                                if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
+                                  coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
+                                } else {
+                                  coracaofavoritar.src = "../resources/images/coracao-roxo.png";
+                                }
+                              }
+                            </script>
+                          </div>
+                        </div>
+                        </div>';
+            }
+        } else {
+            echo "0 resultados";
+        }
+        ?>
+</div>
     <footer>
       <div id="footer-content">
           <div id="sobre-footer">
