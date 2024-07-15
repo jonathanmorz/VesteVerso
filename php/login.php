@@ -44,4 +44,25 @@ if(isset($_POST['Usuario']) || isset($_POST['Password']))
         }
     }
 }
+
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['id'])) {
+    header('Location:login2.php');
+    exit;
+}
+
+$userId = $_SESSION['id'];
+
+// Restaurar carrinho a partir dos cookies, se existir
+if (isset($_COOKIE["carrinho_$userId"])) {
+    $_SESSION['carrinho'] = unserialize($_COOKIE["carrinho_$userId"]);
+    setcookie("carrinho_$userId", '', time() - 3600, "/"); // Limpa o cookie
+} else {
+    if (!isset($_SESSION['carrinho'])) {
+        $_SESSION['carrinho'] = array();
+    }
+}
+
 ?>

@@ -22,7 +22,7 @@ if (isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/presets.css">
     <link rel="stylesheet" href="../css/card.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
@@ -53,9 +53,9 @@ if (isset($_SESSION['id'])) {
                 </ul>
             
             
-                <img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho" class="img-header">
+                <a href="carrinho.php"><img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho" class="img-header"></a>
             
-                <img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito" class="img-header">
+                <a href=""><img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito" class="img-header"></a>
             
         </div>
     </header>
