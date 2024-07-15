@@ -1,0 +1,32 @@
+h1 {
+    padding-top: 40px;
+}
+
+container {
+    padding-left: 40px;
+}
+
+#form-produto {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px 600px 0px 0px;
+}
+
+#imagem-produto {
+    display: inline-flex;
+    width: 300px;
+}
+
+#div-conteudo {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+#botao {
+    width: 200px;
+    background-color: #561AA4;
+    border: #561AA4 5px solid;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #fff;
+}

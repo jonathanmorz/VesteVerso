@@ -40,7 +40,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($produto['nome']); ?> - VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/produtos.css">
+    <link rel="stylesheet" href="../css/produto.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
     
@@ -89,7 +89,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         </div>
         <div id="div-conteudo">
             <div id="nome-produto">
-                <h1 class="produto-descricao"><?php echo nl2br(htmlspecialchars($produto['nome'])); ?></h1>
+                <h1 class="produto-descricao"><?php echo nl2br(htmlspecialchars($produto['descricao'])); ?></h1>
             </div>
             <div id="preco-produto">
                 <h2 class="produto-preco">R$<?php echo number_format($produto['preco'], 2, ',', '.'); ?></h2>

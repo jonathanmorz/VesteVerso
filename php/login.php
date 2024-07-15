@@ -55,14 +55,14 @@ if (!isset($_SESSION['id'])) {
 
 $userId = $_SESSION['id'];
 
-// Restaurar carrinho a partir dos cookies, se existir
-if (isset($_COOKIE["carrinho_$userId"])) {
-    $_SESSION['carrinho'] = unserialize($_COOKIE["carrinho_$userId"]);
-    setcookie("carrinho_$userId", '', time() - 3600, "/"); // Limpa o cookie
-} else {
-    if (!isset($_SESSION['carrinho'])) {
-        $_SESSION['carrinho'] = array();
-    }
+// Restaura o carrinho do banco de dados
+$stmt = $pdo->prepare("SELECT produto_id, quantidade FROM carrinho WHERE user_id = :user_id");
+$stmt->execute(['user_id' => $userId]);
+$carrinho = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$_SESSION['carrinho'] = [];
+foreach ($carrinho as $item) {
+    $_SESSION['carrinho'][$item['produto_id']] = $item['quantidade'];
 }
 
 ?>
