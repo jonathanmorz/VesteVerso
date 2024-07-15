@@ -23,8 +23,8 @@ if (isset($_SESSION['id'])) {
     <title>VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/card.css">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 
@@ -60,10 +60,10 @@ if (isset($_SESSION['id'])) {
         </div>
     </header>
     <nav>
-        <a href="#">Roupas Masculinas</a>
-        <a href="#">Roupas Femininas</a>
-        <a href="#">Roupas Infantis</a>
-        <a href="#">Promoções</a>
+        <a href="roupa-masc.php">Roupas Masculinas</a>
+        <a href="roupa-fem.php">Roupas Femininas</a>
+        <a href="roupa-inf.php">Roupas Infantis</a>
+        <a href="roupa-promo.php">Promoções</a>
     </nav>
     
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -101,14 +101,14 @@ if (isset($_SESSION['id'])) {
           if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
               echo '<div class="cards-wrapper">
-                        <div class="card-produto  d-md-block">
+                        <div class="card-produto d-md-block">
                           <a href="produto.php?id=' . $row["id"] . '">
                             <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 30vh;">
                             <h2 class="titulo-produto">' . $row["nome"] . '</h2>
                             <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
                           </a>
                           <div class="div-botao">
-                            <button class="button-card-outline">Adicionar ao Carrinho</button>
+                            <button class="button-card-outline"><a href="enviar-carrinho.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
                             <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
                             <script>
                               function trocarImagem' . $row["id"] . '() {

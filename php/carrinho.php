@@ -1,78 +1,113 @@
 <?php
-include 'connection.php';
-
-$sql = "SELECT id, nome, preco, imagem FROM produtos";
-$result = $mysqli->query($sql);
-
-echo '<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VesteVerso</title>
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/card.css">
-  <link rel="stylesheet" href="../css/coracao-favoritar.css">
-  <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
-</head>
-<body>
-    <header>
-        <div id="div-logo"><a href="index.html"><img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo"></a></div>
-        <form action="">
-          <div id="div-barra-pesquisa"><input type="search" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa"><img src="../resources/images/lupa.png" alt="lupa-pesquisa" id="img-lupa"></button></input></div>
-        </form>
-        <div id="div-direita-header">
-            <div id="div-dropdown">
-                <ul id="ul-dropdown">
-                    <li type="none" class="dropdown"><a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user">
-                    <div class="dropdown-menu">
-                        <a href="Cadastro.html" class="login-drop">Cadastre-se</a>
-                        <a href="login.html" class="login-drop">Entrar</a>
-                    </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
-    <nav>
-        <a href="#">Roupas Masculinas</a>
-        <a href="#">Roupas Femininas</a>
-        <a href="#">Roupas Infantis</a>
-        <a href="#">Promoções</a>
-    </nav>
-  <div class="produtos">';
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo '<div class="cards-wrapper">
-                <div class="card-produto d-none d-md-block">
-                  <a href="produto-' . $row["id"] . '.php">
-                    <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 30vh;">
-                    <h2 class="titulo-produto">' . $row["nome"] . '</h2>
-                    <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
-                  </a>
-                  <div class="div-botao">
-                    <button class="button-card-outline">Adicionar ao Carrinho</button>
-                    <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
-                    <script>
-                      function trocarImagem' . $row["id"] . '() {
-                        var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                      }
-                    </script>
-                  </div>
-                </div>
-              </div>';
-    }
-} else {
-    echo "0 resultados";
-}
-echo '</div>';
-$mysqli->close();
+      session_start();
+       
+      if(!isset($_SESSION['carrinho'])){
+         $_SESSION['carrinho'] = array();
+      }
+       
+      //adiciona produto
+       
+      if(isset($_GET['acao'])){
+          
+         //ADICIONAR CARRINHO
+         if($_GET['acao'] == 'add'){
+            $id = intval($_GET['id']);
+            if(!isset($_SESSION['carrinho'][$id])){
+               $_SESSION['carrinho'][$id] = 1;
+            }else{
+               $_SESSION['carrinho'][$id] += 1;
+            }
+         }
+          
+         //REMOVER CARRINHO
+         if($_GET['acao'] == 'del'){
+            $id = intval($_GET['id']);
+            if(isset($_SESSION['carrinho'][$id])){
+               unset($_SESSION['carrinho'][$id]);
+            }
+         }
+          
+         //ALTERAR QUANTIDADE
+         if($_GET['acao'] == 'up'){
+            if(is_array($_POST['prod'])){
+               foreach($_POST['prod'] as $id => $qtd){
+                  $id  = intval($id);
+                  $qtd = intval($qtd);
+                  if(!empty($qtd) || $qtd <> 0){
+                     $_SESSION['carrinho'][$id] = $qtd;
+                  }else{
+                     unset($_SESSION['carrinho'][$id]);
+                  }
+               }
+            }
+         }
+       
+      }
 ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Video Aula sobre Carrinho de Compras</title>
+</head>
+ 
+<body>
+<table>
+    <caption>Carrinho de Compras</caption>
+    <thead>
+          <tr>
+            <th width="244">Produto</th>
+            <th width="79">Quantidade</th>
+            <th width="89">Pre&ccedil;o</th>
+            <th width="100">SubTotal</th>
+            <th width="64">Remover</th>
+          </tr>
+    </thead>
+            <form action="?acao=up" method="post">
+    <tfoot>
+            <tr>
+            <td colspan="5"><a href="index.php">Continuar Comprando</a></td>
+    </tfoot>
+      
+    <tbody>
+               <?php
+                     if(count($_SESSION['carrinho']) == 0){
+                        echo '<tr><td colspan="5">Não há produto no carrinho</td></tr>';
+                     }else{
+                        require("connection.php");
+                                                               $total = 0;
+                        foreach($_SESSION['carrinho'] as $id => $qtd){
+                              $sql   = "SELECT *  FROM produtos WHERE id= '$id'";
+							  $query = $mysqli->query($sql)or die(mysql_error());
+
+                              $ln = mysqli_fetch_array($query);
+                               
+                              $nome  = $ln['nome'];
+                              $preco = number_format($ln['preco'], 2, ',', '.');
+                              $sub   = number_format($ln['preco'] * $qtd, 2, ',', '.');
+                               
+                              $total += $ln['preco'] * $qtd;
+                            
+                           echo '<tr>       
+                                 <td>'.$nome.'</td>
+                                 <td><input type="text" size="3" name="prod['.$id.']" value="'.$qtd.'" /></td>
+                                 <td>R$ '.$preco.'</td>
+                                 <td>R$ '.$sub.'</td>
+                                 <td><a href="?acao=del&id='.$id.'">Remove</a></td>
+                              </tr>';
+                        }
+                           $total = number_format($total, 2, ',', '.');
+                           echo '<tr>
+                                    <td colspan="4">Total</td>
+                                    <td>R$ '.$total.'</td>
+                              </tr>';
+                     }
+               ?>
+    
+     </tbody>
+        </form>
+</table>
+ 
 </body>
 </html>

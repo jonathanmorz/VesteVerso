@@ -77,10 +77,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         </div>
     </header>
     <nav>
-        <a href="#">Roupas Masculinas</a>
-        <a href="#">Roupas Femininas</a>
-        <a href="#">Roupas Infantis</a>
-        <a href="#">Promoções</a>
+        <a href="roupa-masc.php">Roupas Masculinas</a>
+        <a href="roupa-fem.php">Roupas Femininas</a>
+        <a href="roupa-inf.php">Roupas Infantis</a>
+        <a href="roupa-promo.php">Promoções</a>
     </nav>
 
     <container>

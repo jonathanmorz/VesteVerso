@@ -33,7 +33,7 @@
                     <div id="esqueceu-a-senha">
                         <a href="#">Esqueceu a senha?</a>
                     </div>
-                    <div id="botao"><button id="enviar">Entrar<a href="#"></a></button> <br></div>
+                    <div id="botao"><button id="enviar">Entrar</button> <br></div>
                     <div id="inscrever-se"><span>Não tem uma conta? <a href="cadastro.html">Inscrever-se</a></span> <br></div>
                     <div id="entrar-com">
                         <span>Entrar com</span> <br>

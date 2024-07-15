@@ -132,6 +132,7 @@ a > h5, h6 {
 footer {
     background-color: #291343;
     color: #eeeeee;
+    margin-top: 3em;
 }
 
 #footer-content {
@@ -155,20 +156,20 @@ footer {
     padding-left: 5px;
 }
 
-::-webkit-scrollbar {
+#overflow::-webkit-scrollbar {
     background: transparent;
     width: 13px;
     height: 9px;
-  }
+}
   
-  ::-webkit-scrollbar-thumb {
+#overflow::-webkit-scrollbar-thumb {
     background: #0000008c;
     border-radius: 10px;
-  }
+}
 
-  ::-webkit-scrollbar-corner {
+#overflow::-webkit-scrollbar-corner {
     border-radius: 10px;
-  }
+}
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -186,15 +187,12 @@ footer {
 }
 
 .cards-wrapper {
-    display: flex;
-    flex-direction: row nowrap;
+    display: inline-flex;
+    flex-wrap: nowrap;
   }
   
-  #overflow {
+#overflow {
     display: flex;
-    flex-direction: row nowrap;
     flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 3em;
-    padding-left: 3em;
+    overflow-x: scroll;
 }

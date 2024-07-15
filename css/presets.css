@@ -1,7 +1,6 @@
 * {
     margin: 0px;
     padding: 0px;
-    text-align: justify
 }
 
 html, body {
@@ -20,7 +19,7 @@ html, body {
 
 header {
     display: flex;
-    background-color: #F6DDCC; /*botei essa cor só pra header não ficar branca junto dom o fundo */
+    background-color: #291343;
     height: 100px;
     justify-content: space-between;
     padding: 31px;
@@ -34,16 +33,15 @@ header {
     width: 600px;
     height: 40px;
     border: none;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px;
     padding: 10px;
 }
 
 #button-pesquisa {
-    height: 40px;
-    width: 40px;
     background-color: white;
     border: none;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 10px;
+    margin-left: -30px;
 }
 
 #img-lupa {
@@ -52,13 +50,19 @@ header {
 }
 
 #div-direita-header {
-    padding: 0px 15px;
-    justify-content: space-between;
+    padding: 0px 10px;
+    justify-content: space-around;
+    display: inline-flex;
+}
+
+.img-header {
+    padding: 0px 8px;
 }
 
 #div-dropdown {
     display: inline-flex;
     padding: 0px;
+    margin: 0px;
 }
 
 .dropdown2:hover .dropdown-menu{
@@ -85,13 +89,65 @@ header {
     padding: 0px 0px 10px 10px;
     border-radius: 10px;
     border: none;
+    margin: 0;
 }
 
-#div-carrinho {
-    display: inline;
-    padding: 0px 10px 0px 5px;
+#botao-logout {
+    background-color: #291343;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
 }
 
-#div-favorito {
-    display: inline;
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 130px;
+}
+
+nav > a {
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+nav > a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+h1 {
+    padding: 0px 0px 1rem 2rem;
+}
+
+a > h5, h6 {
+    color: #000;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #291343;
+    color: #eeeeee;
+    margin-top: 3em;
+}
+
+#footer-content {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#sobre-footer {
+    padding-top: 20px;
+}
+
+#social-footer {
+    display: flex;
+    flex-flow: row;
+}
+
+#logos-footer {
+    display: flex;
+    flex-flow: row;
+    padding-left: 5px;
 }

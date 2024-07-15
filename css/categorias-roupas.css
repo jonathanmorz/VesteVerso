@@ -1,0 +1,8 @@
+.cards-wrapper {
+    display: inline-flex;
+    flex-direction: row;
+  }
+#produtos {
+    display: inline-flex;
+    flex-direction: row;
+}

@@ -129,45 +129,46 @@ $result = $mysqli->query($sql);
         </div>
     </header>
     <nav>
-        <a href="#">Roupas Masculinas</a>
-        <a href="#">Roupas Femininas</a>
-        <a href="#">Roupas Infantis</a>
-        <a href="#">Promoções</a>
+        <a href="roupa-masc.php">Roupas Masculinas</a>
+        <a href="roupa-fem.php">Roupas Femininas</a>
+        <a href="roupa-inf.php">Roupas Infantis</a>
+        <a href="roupa-promo.php">Promoções</a>
     </nav>
   <h4>Resultados da Pesquisa: </h4>
   <div class="produtos">
+
 <?php
   if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo '<div class="cards-wrapper">
-                <div class="card-produto d-none d-md-block">
-                  <a href="produto-' . $row["id"] . '.php">
-                    <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 30vh;">
-                    <h2 class="titulo-produto">' . $row["nome"] . '</h2>
-                    <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
-                  </a>
-                  <div class="div-botao">
-                    <button class="button-card-outline">Adicionar ao Carrinho</button>
-                    <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
-                    <script>
-                      function trocarImagem' . $row["id"] . '() {
-                        var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
-                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                        } else {
-                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                        }
-                      }
-                    </script>
-                  </div>
-                </div>
-              </div>';
-    }
-} else {
-    echo "Nenhum produto foi encontrado, tente novamente usando palavras-chave.";
+      echo '<div class="cards-wrapper">
+      <div class="card-produto d-md-block">
+        <a href="produto.php?id=' . $row["id"] . '">
+          <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 30vh;">
+          <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+          <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
+        </a>
+        <div class="div-botao">
+          <button class="button-card-outline">Adicionar ao Carrinho</button>
+          <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
+          <script>
+            function trocarImagem' . $row["id"] . '() {
+              var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
+              if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
+                coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
+              } else {
+                coracaofavoritar.src = "../resources/images/coracao-roxo.png";
+              }
+            }
+          </script>
+        </div>
+      </div>
+      </div>';
 }
-echo '</div>';
+} else {
+echo "0 resultados";
+}
 $mysqli->close();
 ?>
+</div>
 </body>
 </html>

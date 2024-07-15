@@ -57,12 +57,6 @@ if (isset($_SESSION['id'])) {
             </div>
         </div>
     </header>
-    <nav>
-        <a href="#">Roupas Masculinas</a>
-        <a href="#">Roupas Femininas</a>
-        <a href="#">Roupas Infantis</a>
-        <a href="#">Promoções</a>
-    </nav>
    
     <div id="div-form">
         <form action="../php/salvar.php" enctype="multipart/form-data" method="POST">
