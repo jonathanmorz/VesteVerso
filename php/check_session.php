@@ -23,5 +23,16 @@ if (!isset($_SESSION['id']) && isset($_COOKIE['session_token'])) {
             $_SESSION['carrinho'][$item['produto_id']] = $item['quantidade'];
         }
     }
+
+    // Verificar o papel do usuário
+    if (isset($_SESSION['id'])) {
+        $stmt = $pdo->prepare("SELECT cargo FROM clientes WHERE id = :user_id");
+        $stmt->execute(['user_id' => $_SESSION['id']]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    if ($user) {
+        $_SESSION['cargo'] = $user['cargo'];
+    }
 }
 ?>

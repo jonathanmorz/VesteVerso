@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php'; // Inclui a conexão com o banco de dados
+include 'connection.php';
 
 $username = '';
 
@@ -20,6 +20,7 @@ $query = $_GET['query'];
 $sql = "SELECT id, nome, preco, imagem FROM produtos WHERE nome LIKE '%$query%'";
 $result = $mysqli->query($sql);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -148,7 +149,7 @@ $result = $mysqli->query($sql);
           <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
         </a>
         <div class="div-botao">
-          <button class="button-card-outline">Adicionar ao Carrinho</button>
+          <button class="button-card-outline"><a href="enviar-carrinho.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
           <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
           <script>
             function trocarImagem' . $row["id"] . '() {

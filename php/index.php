@@ -103,7 +103,7 @@ if (isset($_SESSION['id'])) {
               echo '<div class="cards-wrapper">
                         <div class="card-produto d-md-block">
                           <a href="produto.php?id=' . $row["id"] . '">
-                            <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 30vh;">
+                            <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 13rem;">
                             <h2 class="titulo-produto">' . $row["nome"] . '</h2>
                             <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
                           </a>
