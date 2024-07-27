@@ -25,6 +25,7 @@ img {
 h2, h3 {
   font-size: 130%;
   display: inline-flex;
+  word-wrap: break-word;
 }
 h3 {
   color: #535353;
@@ -42,7 +43,12 @@ a:hover {
 .titulo-produto {
   display: inline-flex;
   text-align: start;
-  word-wrap: break-word;
+}
+.nome-produto {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; 
+  width: 13em;
 }
 .div-botao {
   display: flex;

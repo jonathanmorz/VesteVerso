@@ -55,7 +55,7 @@ if (isset($_SESSION['id'])) {
             
                 <a href="carrinho.php"><img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho" class="img-header"></a>
             
-                <a href=""><img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito" class="img-header"></a>
+                <a href="favoritos.php"><img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito" class="img-header"></a>
             
         </div>
     </header>
@@ -104,12 +104,14 @@ if (isset($_SESSION['id'])) {
                         <div class="card-produto d-md-block">
                           <a href="produto.php?id=' . $row["id"] . '">
                             <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 13rem;">
-                            <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+                            <div class="nome-produto">
+                              <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+                            </div>
                             <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
                           </a>
                           <div class="div-botao">
                             <button class="button-card-outline"><a href="enviar-carrinho.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
-                            <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
+                            <a href="enviar-favoritos.php?acao=add&id='.$row['id'].'"><img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()"></a>
                             <script>
                               function trocarImagem' . $row["id"] . '() {
                                 var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");

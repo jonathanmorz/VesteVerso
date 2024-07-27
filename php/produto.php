@@ -62,7 +62,7 @@ $mysqli->close();
             <div id="div-dropdown">
                 <ul id="ul-dropdown">
                     <li class="dropdown" type="none">
-                        <a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user"></a>
+                        <a id="menu-drop" href="#.php"><img src="../resources/images/user.png" alt="user" class="img-header"></a>
                         <div class="dropdown-menu">
                             <?php if ($username): ?>
                                 <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
@@ -76,7 +76,7 @@ $mysqli->close();
                 </ul>
             </div>
             <div id="div-carrinho">
-                <img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho">
+            <a id="menu-drop" href="carrinho.php"><img src="../resources/images/carrinho.png" alt="user" class="img-header"></a>
             </div>
             <div id="div-favorito">
                 <img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito">

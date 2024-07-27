@@ -54,7 +54,7 @@ if (isset($_SESSION['id'])) {
             
                 <ul id="ul-dropdown">
                     <li class="dropdown" type="none">
-                        <a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user" class="img-header"></a>
+                        <a id="menu-drop" href="carrinho.php"><img src="../resources/images/user.png" alt="user" class="img-header"></a>
                         <div class="dropdown-menu">
                             <?php if ($username): ?>
                                 <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
