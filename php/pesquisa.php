@@ -17,23 +17,26 @@ $result = $mysqli->query($sql);
   <title>Resultados da Pesquisa - VesteVerso</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/presets.css">
+  <link rel="stylesheet" href="../css/pesquisa.css">
   <link rel="stylesheet" href="../css/coracao-favoritar.css">
   <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <?php
-    echo htmlHeader($username);
-  ?>
-  <h4>Resultados da Pesquisa: </h4>
-  <div class="produtos">
-  <?php
-    $result = $mysqli->query($sql);
-    $row = $result->fetch_assoc();
-    echo htmlCardsPadrao($row, $result)
-  ?>
-  </div>
-  <?php
-    htmlFooter();
-  ?>
+      echo htmlHeader($username);
+      ?>
+    <div id="conteudo">
+    <h4>Resultados da Pesquisa: </h4>
+    <div class="produtos">
+    <?php
+      $result = $mysqli->query($sql);
+      $row = $result->fetch_assoc();
+      echo htmlCardsPadrao($row, $result)
+    ?>
+    </div>
+    </div>
+    <?php
+      htmlFooter();
+    ?>
 </body>
 </html>

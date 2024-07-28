@@ -1,0 +1,7 @@
+#conteudo {
+    margin: 10px;
+}
+
+.card-produto > img {
+    width: 2vh;
+}

@@ -46,11 +46,11 @@ header {
 }
 
 #img-lupa {
-    height: 20px;
+    height: 23px;
 }
 
 #div-direita-header {
-    padding: 0px 10px;
+    margin-top: -2.5px;
     justify-content: space-around;
     display: inline-flex;
 }
@@ -142,7 +142,7 @@ a > h5, h6 {
     border: 1px solid rgb(170, 170, 170);
     border-radius: 10px;
     display: inline-flex;
-    margin: 10px;
+    margin: 5px;
     align-items: flex-start;
 }
 
@@ -190,7 +190,7 @@ h3 {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; 
-    width: 13em;
+    width: 12em;
 }
 
 .div-botao {
