@@ -1,4 +1,4 @@
-.cards-wrapper {
+.cards-no-wrap {
     display: inline-flex;
     flex-direction: row;
   }

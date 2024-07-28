@@ -7,6 +7,7 @@ html, body {
     min-height: 100vh;
 }
 
+/*Header*/
 .login-drop {
     text-decoration: none;
     color: #fff;
@@ -46,7 +47,6 @@ header {
 
 #img-lupa {
     height: 20px;
-    padding: 0px 0px 3px 10px;
 }
 
 #div-direita-header {
@@ -124,7 +124,91 @@ a > h5, h6 {
     color: #000;
     text-decoration: none;
 }
+/*Header*/
 
+/*Cards*/
+.produtos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cards-wrapper {
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+
+.card-produto {
+    padding: 10px;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 10px;
+    display: inline-flex;
+    margin: 10px;
+    align-items: flex-start;
+}
+
+.imagem-card {
+    width: 30vh; 
+    display: inline-flex;
+}
+
+img {
+    display: inline-flex;
+}
+
+h2, h3 {
+    font-size: 130%;
+    display: inline-flex;
+    word-wrap: break-word;
+}
+
+h3 {
+    color: #535353;
+}
+
+.card-produto > a {
+    display: inline-flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #000;
+}
+
+.card-produto > a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.button-card-outline > a {
+    color: #561AA4;
+}
+
+.titulo-produto {
+    display: inline-flex;
+    text-align: start;
+}
+
+.nome-produto {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    width: 13em;
+}
+
+.div-botao {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-card-outline {
+    background-color: #fff;
+    color: #561aa4;
+    border: 3px solid #561aa4;
+    border-radius: 10px;
+    font-size: 77%;
+    font-weight: bold;
+}
+/*Cards*/
+
+/*Footer*/
 footer {
     background-color: #291343;
     color: #eeeeee;
@@ -151,3 +235,4 @@ footer {
     flex-flow: row;
     padding-left: 5px;
 }
+/*Footer*/

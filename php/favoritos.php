@@ -1,12 +1,15 @@
 <?php
-      session_start();
-       
+   include 'connection.php';
+   include 'presets.php';
+?>
+
+<?php
       if(!isset($_SESSION['favoritos'])){
          $_SESSION['favoritos'] = array();
       }
        
       //adiciona produto
-       
+      
       if(isset($_GET['acao'])){
           
          //ADICIONAR CARRINHO
@@ -18,7 +21,7 @@
                $_SESSION['favoritos'][$id] += 1;
             }
          }
-          
+         
          //REMOVER CARRINHO
          if($_GET['acao'] == 'del'){
             $id = intval($_GET['id']);
@@ -45,22 +48,6 @@
       }
 ?>
 
-<?php
-include 'connection.php';
-
-$username = '';
-
-if (isset($_SESSION['id'])) {
-    $userId = $_SESSION['id'];
-    $sql = "SELECT username FROM clientes WHERE id = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $userId);
-    $stmt->execute();
-    $stmt->bind_result($username);
-    $stmt->fetch();
-    $stmt->close();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -76,41 +63,9 @@ if (isset($_SESSION['id'])) {
 
 </head>
 <body>
-<header>
-    <div id="div-logo"><a href="index.php"><img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo"></a></div>
-        <form action="pesquisa.php" method="GET">
-          <div id="div-barra-pesquisa"><input type="text" name="query" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa" type="submit"><img src="../resources/images/lupa.png" alt="lupa-pesquisa" id="img-lupa"></button></input></div>
-        </form>
-        <div id="div-direita-header">
-            
-                <ul id="ul-dropdown">
-                    <li class="dropdown" type="none">
-                        <a id="menu-drop" href="#"><img src="../resources/images/user.png" alt="user" class="img-header"></a>
-                        <div class="dropdown-menu">
-                            <?php if ($username): ?>
-                                <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
-                                <div><a href="logout.php"><button name="logout" id="botao-logout">Sair</button></a></div>
-                            <?php else: ?>
-                                <a href="../html/Cadastro.html" class="login-drop">Cadastre-se</a>
-                                <a href="../html/login.html" class="login-drop">Entrar</a>
-                            <?php endif; ?>
-                        </div>
-                    </li>
-                </ul>
-            
-            
-                <a href="carrinho.php"><img src="../resources/images/carrinho.png" alt="carrinho" id="carrinho" class="img-header"></a>
-            
-                <a href="favoritos.php"><img src="../resources/images/coracao-solido.png" alt="coracao-favorito" id="coracao-favorito" class="img-header"></a>
-            
-        </div>
-    </header>
-    <nav>
-        <a href="roupa-masc.php">Roupas Masculinas</a>
-        <a href="roupa-fem.php">Roupas Femininas</a>
-        <a href="roupa-inf.php">Roupas Infantis</a>
-        <a href="roupa-promo.php">Promoções</a>
-    </nav>
+   <?php
+      echo htmlHeader($username);
+   ?>
    <div id="conteudo">
       <table>
          <thead>
