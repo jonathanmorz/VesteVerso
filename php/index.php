@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/presets.css">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 
@@ -27,7 +27,7 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner" style="height: 25em;">
+      <div class="carousel-inner" >
         <div class="carousel-item active">
           <img class="d-block w-100" src="../resources/images/banner-1.jpg" alt="Primeiro Slide">
         </div>

@@ -48,21 +48,25 @@ if (isset($_SESSION['id'])) {
     ?>
     <h1>Editar Produto</h1>
     <container>
-        <form action="atualizar-produto.php" method="POST" id="form-produto">
-            <img src="<?php echo $produto['imagem']; ?>" id="imagem-produto">
-            <div id="div-conteudo">
-                <input type="hidden" name="id" value="<?php echo $produto['id']; ?>">
-                <label for="nome">Nome:</label>
-                <input type="text" name="nome" value="<?php echo $produto['nome']; ?>" required><br>
-                <label for="descricao">Descrição:</label>
-                <textarea name="descricao" required><?php echo $produto['descricao']; ?></textarea><br>
-                <label for="preco">Preço:</label>
-                <input type="number" step="0.01" name="preco" value="<?php echo $produto['preco']; ?>" required><br>
-                <label for="quantidade">Quantidade:</label>
-                <input type="number" name="quantidade" value="<?php echo $produto['quantidade']; ?>" required><br>
-                <div id="div-botao"><button type="submit" id="botao">Atualizar</button></div>
-            </div>
-        </form>
+    <form action="atualizar-produto.php" method="POST" id="form-produto" enctype="multipart/form-data">
+    <img src="<?php echo $produto['imagem']; ?>" id="imagem-produto">
+    <div id="div-conteudo">
+        <input type="hidden" name="id" value="<?php echo $produto['id']; ?>">
+        <input type="hidden" name="imagem_atual" value="<?php echo $produto['imagem']; ?>">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="<?php echo $produto['nome']; ?>" required><br>
+        <label for="descricao">Descrição:</label>
+        <textarea name="descricao" required><?php echo $produto['descricao']; ?></textarea><br>
+        <label for="preco">Preço:</label>
+        <input type="number" step="0.01" name="preco" value="<?php echo $produto['preco']; ?>" required><br>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" name="quantidade" value="<?php echo $produto['quantidade']; ?>" required><br>
+        <label for="imagem">Imagem:</label>
+        <input type="file" name="imagem"><br>
+        <div id="div-botao"><button type="submit" id="botao">Atualizar</button></div>
+    </div>
+</form>
+
     </container>
 
     <?php

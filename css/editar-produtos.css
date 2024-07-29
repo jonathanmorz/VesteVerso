@@ -8,6 +8,7 @@ container {
 
 #form-produto {
     display: flex;
+    align-items: start;
     justify-content: space-evenly;
     padding: 0px 600px 0px 0px;
 }
