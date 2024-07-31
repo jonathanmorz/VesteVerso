@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fileNameCmps = explode(".", $fileName);
         $fileExtension = strtolower(end($fileNameCmps));
 
-        $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
+        $allowedfileExtensions = array('jpg', 'png', 'jpeg');
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // Caminho onde a imagem será salva
             $uploadFileDir = 'arquivos/';
