@@ -84,7 +84,7 @@
          <tbody>
                      <?php
                            if(count($_SESSION['favoritos']) == 0){
-                              echo '<tr><td colspan="5">Não há produto no carrinho</td></tr>';
+                              echo '<tr><td colspan="5">Não há produtos favoritos</td></tr>';
                            }else{
                               require("connection.php");
                                                                      $total = 0;
