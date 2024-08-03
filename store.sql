@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31/07/2024 às 20:44
+-- Tempo de geração: 03/08/2024 às 07:56
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -32,21 +32,19 @@ CREATE TABLE `carrinho` (
   `user_id` int(11) NOT NULL,
   `produto_id` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
+  `atualizado_em` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Estrutura para tabela `categoria`
+-- Despejando dados para a tabela `carrinho`
 --
 
-CREATE TABLE `categoria` (
-  `cod_categoria` int(11) NOT NULL,
-  `nome_categoria` varchar(15) DEFAULT NULL,
-  `descricao` varchar(80) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `carrinho` (`id`, `user_id`, `produto_id`, `quantidade`, `criado_em`, `atualizado_em`) VALUES
+(10, 4, 1, 1, '2024-07-18 00:22:05', '2024-07-18 00:22:05'),
+(11, 4, 2, 3, '2024-07-18 00:22:05', '2024-07-18 00:22:05'),
+(18, 1, 3, 1, '2024-07-28 07:53:42', '2024-07-28 07:53:42'),
+(19, 1, 4, 1, '2024-07-28 07:53:42', '2024-07-28 07:53:42');
 
 -- --------------------------------------------------------
 
@@ -56,14 +54,14 @@ CREATE TABLE `categoria` (
 
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
-  `nome` varchar(20) DEFAULT NULL,
+  `nome` varchar(30) DEFAULT NULL,
   `username` varchar(20) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `senha` varchar(30) DEFAULT NULL,
-  `telefone` int(12) DEFAULT NULL,
-  `cpf` int(11) DEFAULT NULL,
-  `endereco` varchar(50) DEFAULT NULL,
-  `cep` varchar(40) DEFAULT NULL,
+  `email` varchar(40) DEFAULT NULL,
+  `senha` varchar(20) DEFAULT NULL,
+  `telefone` varchar(12) DEFAULT NULL,
+  `cpf` varchar(11) DEFAULT NULL,
+  `endereco` varchar(40) DEFAULT NULL,
+  `cep` varchar(8) DEFAULT NULL,
   `cargo` varchar(20) NOT NULL DEFAULT 'cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -72,7 +70,10 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `username`, `email`, `senha`, `telefone`, `cpf`, `endereco`, `cep`, `cargo`) VALUES
-(1, 'Yuri Lopes', 'yuzzy', 'tpnvlnd@gmail.com', 'luiz1227', 374897, 2147483647, 'kaljdkaljd9384', '473983947987', 'cliente');
+(1, 'Yuri Lopes', 'yuzzy', 'tpnvlnd@gmail.com', 'luiz1227', '21982893856', '140.961.387', 'Rua Frei Alexandre', '21230070', 'admin'),
+(2, 'dwads', '', '', '', '', '', '', '', 'cliente'),
+(3, 'Tico Teco', 'Tetoticoteco', 'Tecotico@gmail.com', '12345678', '21982893856', '29712474647', 'Rua Frei Alexandre', '21230070', 'cliente'),
+(4, 'Daniel Dias', 'danielnoites07', 'robloxlandia456123@gmail.com', 'Ba456123', '21 982324256', '02374802753', 'Rua Gonçalves Crespo, 22', '25032904', 'cliente');
 
 -- --------------------------------------------------------
 
@@ -85,33 +86,8 @@ CREATE TABLE `favoritos` (
   `user_id` int(11) NOT NULL,
   `produto_id` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `pagamento`
---
-
-CREATE TABLE `pagamento` (
-  `cod_pagamento` int(11) NOT NULL,
-  `forma_pagamento` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `pedido`
---
-
-CREATE TABLE `pedido` (
-  `cod_pedido` int(11) NOT NULL,
-  `cod_prod` int(11) DEFAULT NULL,
-  `preco` float DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `desconto` int(11) DEFAULT NULL
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp(),
+  `atualizado_em` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -122,30 +98,37 @@ CREATE TABLE `pedido` (
 
 CREATE TABLE `produtos` (
   `id` int(11) NOT NULL,
-  `categoria` varchar(25) DEFAULT NULL,
-  `preco` float DEFAULT NULL,
-  `nome` varchar(40) DEFAULT NULL,
+  `nome` varchar(100) NOT NULL,
+  `quantidade` int(5) NOT NULL,
+  `preco` double(5,2) NOT NULL,
   `imagem` varchar(100) NOT NULL,
-  `data_upload` datetime NOT NULL DEFAULT current_timestamp(),
-  `descricao` text DEFAULT NULL,
-  `quantidade` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `categoria` varchar(20) DEFAULT NULL,
+  `descricao` varchar(120) NOT NULL,
   `em_alta` tinyint(1) NOT NULL,
   `promocao` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Despejando dados para a tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `categoria`, `preco`, `nome`, `imagem`, `data_upload`, `descricao`, `quantidade`, `created_at`, `updated_at`, `em_alta`, `promocao`) VALUES
-(1, 'roupa_fem', 125.4, 'Camisa Rosa', 'arquivos/6662043f412c8.jpeg', '2024-06-06 15:47:27', NULL, 0, '2024-07-31 18:18:29', '2024-07-31 18:26:27', 1, 0),
-(2, 'roupa_fem', 56.9, 'Camisa de gola', 'arquivos/666204775121d.jpg', '2024-06-06 15:48:23', NULL, 0, '2024-07-31 18:18:29', '2024-07-31 18:26:45', 1, 0),
-(3, 'roupa_masc', 72.5, 'Camisa polo preta', 'arquivos/666204a020a16.jpeg', '2024-06-06 15:49:04', NULL, 0, '2024-07-31 18:18:29', '2024-07-31 18:28:05', 1, 0),
-(4, 'roupa_inf', 125.4, 'Camiseta xadrez estampada', 'arquivos/666204c37c6ca.jpeg', '2024-06-06 15:49:39', NULL, 0, '2024-07-31 18:18:29', '2024-07-31 18:29:12', 1, 0),
-(5, 'roupa_fem', 84.7, 'Camiseta oversized preta', 'arquivos/666204e4b1265.jpeg', '2024-06-06 15:50:12', NULL, 0, '2024-07-31 18:18:29', '2024-07-31 18:29:12', 1, 0),
-(6, 'roupa_fem', 99.99, 'Teste', 'arquivos/66aa8312be66b.jpeg', '2024-07-31 15:31:46', 'Teste', 100, '2024-07-31 18:31:46', '2024-07-31 18:31:46', 1, 0);
+INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `preco`, `imagem`, `categoria`, `descricao`, `em_alta`, `promocao`) VALUES
+(1, 'Camisa de Gola', 100, 56.90, 'arquivos/668dbacead06e.jpg', 'roupa_fem', 'Camisa de Gola Feminina Branca', 1, 0),
+(2, 'Camisa Longa', 100, 42.30, 'arquivos/0002.jpeg', 'roupa_fem', 'Camisa Manga Longa Feminina ', 1, 0),
+(3, 'Camisa Lilás', 100, 72.50, 'arquivos/668dbb42822eb.jpeg', 'roupa_fem', 'Camisa Lilás Feminina', 1, 0),
+(4, 'Camisa Curta', 100, 35.60, 'arquivos/668dbb6d08172.jpeg', 'roupa_fem', 'Camisa Manga Curta Feminina', 1, 0),
+(5, 'Camiseta Oversized ', 100, 92.20, 'arquivos/668dbce26760d.jpeg', 'roupa_fem', 'Camiseta Oversized Feminina Branca', 1, 0),
+(6, 'Cropped Rosa', 100, 125.40, 'arquivos/668dbd39286e0.jpeg', 'roupa_fem', 'Cropped Rosa Feminino Com Manga', 0, 0),
+(7, 'Camiseta Oversized', 100, 84.70, 'arquivos/668dbd5c8936e.jpeg', 'roupa_fem', 'Camiseta Oversized Feminina Preta', 0, 0),
+(8, 'Cropped Preto', 100, 63.80, 'arquivos/668dbd80de81e.jpeg', 'roupa_fem', 'Cropped Preto Feminino', 0, 0),
+(9, 'Camisa Social', 100, 110.90, 'arquivos/668dbda0d3707.jpeg', 'roupa_fem', 'Camisa Social Feminina com Botão', 0, 0),
+(10, 'Camisa T-Shirt', 100, 42.30, 'arquivos/668dbdbf3834b.jpeg', 'roupa_fem', 'Camisa T-Shirt Feminina', 0, 0),
+(11, 'Camisa Verde', 100, 72.50, 'arquivos/668dbde50610a.jpeg', 'roupa_masc', 'Camisa Básica Verde', 1, 0),
+(12, 'Camisa Oversized', 100, 35.60, 'arquivos/668dbe0841e7d.jpeg', 'roupa_masc', 'Camisa Oversized Grafite', 1, 0),
+(13, 'Camisa Social', 100, 98.20, 'arquivos/668dbe28d4ad6.jpeg', 'roupa_masc', 'Camisa Social Com Botão', 1, 0),
+(14, 'Camisa Gola Alta', 100, 125.40, 'arquivos/668dbe868622b.jpeg', 'roupa_masc', 'Camisa Gola Alta Masculina', 1, 0),
+(15, 'Camiseta Verde', 100, 84.70, 'arquivos/668f0f404583c.jpeg', 'roupa_masc', 'Camiseta Gráfica Verde', 1, 0),
+(16, 'Camiseta Curta', 100, 63.80, 'arquivos/66a6118d18d05.jpeg', 'roupa_masc', 'Camiseta de Manga Curta', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -154,8 +137,8 @@ INSERT INTO `produtos` (`id`, `categoria`, `preco`, `nome`, `imagem`, `data_uplo
 --
 
 CREATE TABLE `user_sessions` (
+  `token_id` int(11) NOT NULL,
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
   `session_token` varchar(255) NOT NULL,
   `expires_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -172,12 +155,6 @@ ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `categoria`
---
-ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`cod_categoria`);
-
---
 -- Índices de tabela `clientes`
 --
 ALTER TABLE `clientes`
@@ -190,19 +167,6 @@ ALTER TABLE `favoritos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `pagamento`
---
-ALTER TABLE `pagamento`
-  ADD PRIMARY KEY (`cod_pagamento`);
-
---
--- Índices de tabela `pedido`
---
-ALTER TABLE `pedido`
-  ADD PRIMARY KEY (`cod_pedido`),
-  ADD KEY `cod_prod` (`cod_prod`);
-
---
 -- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -212,8 +176,8 @@ ALTER TABLE `produtos`
 -- Índices de tabela `user_sessions`
 --
 ALTER TABLE `user_sessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`token_id`),
+  ADD KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -223,19 +187,13 @@ ALTER TABLE `user_sessions`
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `categoria`
---
-ALTER TABLE `categoria`
-  MODIFY `cod_categoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `favoritos`
@@ -244,38 +202,26 @@ ALTER TABLE `favoritos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `pedido`
---
-ALTER TABLE `pedido`
-  MODIFY `cod_pedido` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `user_sessions`
 --
 ALTER TABLE `user_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `token_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para tabelas despejadas
 --
 
 --
--- Restrições para tabelas `pedido`
---
-ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`cod_prod`) REFERENCES `produtos` (`id`);
-
---
 -- Restrições para tabelas `user_sessions`
 --
 ALTER TABLE `user_sessions`
-  ADD CONSTRAINT `user_sessions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `clientes` (`id`);
+  ADD CONSTRAINT `user_sessions_ibfk_1` FOREIGN KEY (`id`) REFERENCES `clientes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
