@@ -116,10 +116,6 @@ nav > a:hover {
     text-decoration: none;
 }
 
-h1 {
-    padding: 0px 0px 1rem 2rem;
-}
-
 a > h5, h6 {
     color: #000;
     text-decoration: none;
@@ -205,6 +201,8 @@ h3 {
     border-radius: 10px;
     font-size: 77%;
     font-weight: bold;
+    padding-left: 2.5px;
+    padding-right: 2.5px;
 }
 /*Cards*/
 

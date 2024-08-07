@@ -14,56 +14,6 @@
       $stmt->close();
    }
 ?>
-<?php
-function htmlHeader($username = null) 
-{
-    ob_start();
-    ?>
-    <header>
-      <div id="div-logo">
-        <a href="index.php">
-          <img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo">
-        </a>
-      </div>
-
-      <form action="pesquisa.php" method="GET">
-        <div id="div-barra-pesquisa">
-          <input type="text" name="query" placeholder="Digite sua pesquisa..." id="input-pesquisa"><button id="button-pesquisa" type="submit">
-              <img src="../resources/images/loupe.svg" alt="lupa-pesquisa" id="img-lupa">
-          </button></input>
-        </div>
-      </form>
-      
-      <div id="div-direita-header">        
-                  <ul id="ul-dropdown">
-                      <li class="dropdown" type="none">
-                          <a id="menu-drop" href="#"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
-                          <div class="dropdown-menu">
-                              <?php if ($username): ?>
-                                  <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
-                                  <div><a href="logout.php"><button name="logout" id="botao-logout">Sair</button></a></div>
-                              <?php else: ?>
-                                  <a href="../html/Cadastro.html" class="login-drop">Cadastre-se</a>
-                                  <a href="../html/login.html" class="login-drop">Entrar</a>
-                              <?php endif; ?>
-                          </div>
-                      </li>
-                  </ul>
-                  <a href="carrinho.php"><img src="../resources/images/carrinho.svg" alt="carrinho" id="carrinho" class="img-header" height="51px" width="51px"></a>
-                  <a href="favoritos.php"><img src="../resources/images/solid-heart.svg" alt="coracao-favorito" id="coracao-favorito" class="img-header" height="51px" width="51px"></a>
-              
-      </div>
-    </header>
-    <nav>
-      <a href="roupa-masc.php">Roupas Masculinas</a>
-      <a href="roupa-fem.php">Roupas Femininas</a>
-      <a href="roupa-inf.php">Roupas Infantis</a>
-      <a href="roupa-promo.php">Promoções</a>
-    </nav>
-    <?php
-    return ob_get_clean();
-}
-?>
 
 <?php
 function htmlHeaderNoNavBar($username = null) 
@@ -107,8 +57,25 @@ function htmlHeaderNoNavBar($username = null)
     </header>
     <?php
     return ob_get_clean();
-}
+  }
    ?>
+
+<?php
+function htmlHeader($username = null) 
+{
+    ob_start();
+    ?>
+    <?php echo htmlHeaderNoNavBar($username) ?> 
+    <nav>
+      <a href="roupa-masc.php">Roupas Masculinas</a>
+      <a href="roupa-fem.php">Roupas Femininas</a>
+      <a href="roupa-inf.php">Roupas Infantis</a>
+      <a href="roupa-promo.php">Promoções</a>
+    </nav>
+    <?php
+    return ob_get_clean();
+}
+?>
 
 <?php
 function htmlCardsPadrao($row, $result) 
@@ -118,10 +85,10 @@ function htmlCardsPadrao($row, $result)
         while($row = $result->fetch_assoc()) {
             $html .= '<div class="cards-wrapper">
             <div class="card-produto d-md-block">
-                            <a href="produto.php?id=' . $row["id"] . '">
-                            <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
-                            <div class="nome-produto">
-                            <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+            <a href="produto.php?id=' . $row["id"] . '">
+            <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
+            <div class="nome-produto">
+            <h2 class="titulo-produto">' . $row["nome"] . '</h2>
                                 </div>
                                 <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
                                 </a>
