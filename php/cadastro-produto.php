@@ -17,7 +17,7 @@
 </head>
 <body>
     <?php
-         echo htmlHeaderNoNavBar($username);
+         echo htmlHeaderNoNavBar($username, $role);
     ?>
    
     <div id="div-form">

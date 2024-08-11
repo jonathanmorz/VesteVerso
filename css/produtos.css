@@ -1,5 +1,19 @@
+h1 {
+    padding-left: 30px;
+}
+
 #div-tabela {
-    padding-left: 10px;
+    padding-left: 30px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
 }
 
 table {
@@ -8,15 +22,17 @@ table {
 
 th {
     padding-right: 15px;
+    padding-left: 5px;
     border: 3px #291343 solid;
 }
 
 td {
     padding-right: 20px;
+    padding-left: 5px;
     border: 3px #291343 solid;
 }
 
 .link-acao {
     color: #561aa4;
-    text-decoration: underline;
+    text-decoration: none;
 }

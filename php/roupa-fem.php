@@ -17,7 +17,7 @@
 </head>
 <body>
     <?php
-      echo htmlHeader($username);
+      echo htmlHeader($username, $role);
     ?>
     <h1>Produtos</h1>
     <div id="produtos">

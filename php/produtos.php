@@ -47,7 +47,7 @@ if (isset($_SESSION['id'])) {
 </head>
 <body>
     <?php
-        echo htmlHeaderNoNavBar($username);
+        echo htmlHeaderNoNavBar($username, $role);
     ?>
     <h1>Lista de Produtos</h1>
     <div id="div-tabela">

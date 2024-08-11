@@ -18,7 +18,7 @@
 </head>
 <body>
   <?php
-    echo htmlHeader($username);
+    echo htmlHeader($username, $role);
   ?>
     
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

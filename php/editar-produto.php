@@ -44,7 +44,7 @@ if (isset($_SESSION['id'])) {
 </head>
 <body>
     <?php
-        echo htmlHeader($username);
+        echo htmlHeader($username, $role);
     ?>
     <h1>Editar Produto</h1>
     <container>

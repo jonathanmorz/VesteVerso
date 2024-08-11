@@ -64,7 +64,7 @@
 </head>
 <body>
    <?php
-      echo htmlHeader($username);
+      echo htmlHeader($username, $role);
    ?>
    <div id="conteudo">
       <table>

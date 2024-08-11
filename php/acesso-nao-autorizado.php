@@ -17,7 +17,7 @@
 </head>
 <body>
     <?php
-        echo htmlHeader($username);
+        echo htmlHeaderNoNavBar($username, $role);
     ?>
 
     <p style="padding-left: 20px;">Você não tem autorização para entrar nessa página, por favor, entre como administrador. <a href="login2.php">Clique aqui para fazer login</a></p>

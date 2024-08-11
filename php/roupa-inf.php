@@ -33,7 +33,7 @@ if (isset($_SESSION['id'])) {
 </head>
 <body>
   <?php
-    echo htmlHeader($username);
+    echo htmlHeader($username, $role);
   ?>
 
   <div id="produtos">

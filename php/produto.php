@@ -43,7 +43,7 @@ $mysqli->close();
 </head>
 <body>
     <?php
-        echo htmlHeader($username);
+        echo htmlHeader($username, $role);
     ?>
 
     <container>

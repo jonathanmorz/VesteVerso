@@ -2,21 +2,22 @@
    include 'connection.php';
    session_start(); 
    $username = '';
+   $role = '';
    
    if (isset($_SESSION['id'])) {
       $userId = $_SESSION['id'];
-      $sql = "SELECT username FROM clientes WHERE id = ?";
+      $sql = "SELECT username, cargo FROM clientes WHERE id = ?";
       $stmt = $mysqli->prepare($sql);
       $stmt->bind_param("i", $userId);
       $stmt->execute();
-      $stmt->bind_result($username);
+      $stmt->bind_result($username, $role);
       $stmt->fetch();
       $stmt->close();
    }
 ?>
 
 <?php
-function htmlHeaderNoNavBar($username = null) 
+function htmlHeaderNoNavBar($username = null, $role) 
 {
     ob_start();
     ?>
@@ -40,9 +41,13 @@ function htmlHeaderNoNavBar($username = null)
                       <li class="dropdown" type="none">
                           <a id="menu-drop" href="#"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
                           <div class="dropdown-menu">
-                              <?php if ($username): ?>
+                              <?php if ($username && $role == "cliente"): ?>
+                                  <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span>
+                                  <a href="logout.php" class="link-header">Sair</a>
+                              <?php elseif ($username && $role == "admin"): ?>
                                   <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
-                                  <div><a href="logout.php"><button name="logout" id="botao-logout">Sair</button></a></div>
+                                  <a href="produtos.php" class="link-header">Lista de produtos</a>
+                                  <a href="logout.php" class="link-header">Sair</a>
                               <?php else: ?>
                                   <a href="../html/Cadastro.html" class="login-drop">Cadastre-se</a>
                                   <a href="../html/login.html" class="login-drop">Entrar</a>
@@ -61,11 +66,11 @@ function htmlHeaderNoNavBar($username = null)
    ?>
 
 <?php
-function htmlHeader($username = null) 
+function htmlHeader($username = null, $role) 
 {
     ob_start();
     ?>
-    <?php echo htmlHeaderNoNavBar($username) ?> 
+    <?php echo htmlHeaderNoNavBar($username, $role) ?> 
     <nav>
       <a href="roupa-masc.php">Roupas Masculinas</a>
       <a href="roupa-fem.php">Roupas Femininas</a>

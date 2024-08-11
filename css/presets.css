@@ -8,6 +8,16 @@ html, body {
 }
 
 /*Header*/
+.link-header {
+    color: #fff;
+    text-decoration: none;
+}
+
+.link-header:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
 .login-drop {
     text-decoration: none;
     color: #fff;
