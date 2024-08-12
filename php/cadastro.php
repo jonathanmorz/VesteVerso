@@ -1,14 +1,4 @@
-<?php
-$nome = $_POST['nome-completo'];
-$username = $_POST['username'];
-$Senha = $_POST['senha'];
-$SenhaBBB = $_POST['SenhaB'];
-$email = $_POST['email'];
-$cpf = $_POST['cpf'];
-$telefone = $_POST['tel'];
-$endereco = $_POST['endereco'];
-$cep = $_POST['cep'];
-$cadastrohtml = '<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +9,7 @@ $cadastrohtml = '<!DOCTYPE html>
 </head>
 <body>
     <div id="div-geral">
-            <form action="../php/cadastro.php" method="POST">
+            <form action="cadastro.php" method="POST">
                 <div id="conteudo-formulario">
                     <div id="bem-vindo">
                         <h1>Bem-Vindo ao nosso site</h1>
@@ -30,9 +20,6 @@ $cadastrohtml = '<!DOCTYPE html>
                     </div>
                         <div class="input-class"><input type="text" placeholder="Nome completo: " name="nome-completo"> <br></div>
                         <div class="input-class" id="username"><input type="text" placeholder="Nome de usuário:" name="username"> <br></div>
-                        <div class="input-class">
-                            <h4 id="email-incorreto">Já existe uma conta com esse e-mail!</h4>
-                        </div>
                         <div class="input-class" id="e-mail"><input type="email" placeholder="E-mail:" name="email"> <br></div>
                         <div class="input-class" id="senha"><input type="password" placeholder="Senha:" name="senha"> <br></div>
                         <div class="input-class" id="senha"><input type="password" placeholder="Repetir Senha:" name="SenhaB"> <br></div>
@@ -45,7 +32,20 @@ $cadastrohtml = '<!DOCTYPE html>
             </form>
     </div>
 </body>
-</html>';
+</html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome-completo'];
+    $username = $_POST['username'];
+    $Senha = $_POST['senha'];
+    $SenhaBBB = $_POST['SenhaB'];
+    $email = $_POST['email'];
+    $cpf = $_POST['cpf'];
+    $telefone = $_POST['tel'];
+    $endereco = $_POST['endereco'];
+    $cep = $_POST['cep'];
+
 
 include('connection.php');
 
@@ -59,18 +59,21 @@ if($quantidade == 1){
     }
 else{
 
-if($Senha == $SenhaBBB){
+    if ($Senha == $SenhaBBB) {
+        $stmt = $mysqli->prepare("INSERT INTO clientes (nome, username, email, senha, telefone, cpf, endereco, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssss", $nome, $username, $email, $Senha, $telefone, $cpf, $endereco, $cep);
+    
+        if ($stmt->execute()) {
+            header('Location: login.php');
+            exit();
+        } else {
+            echo "Erro ao cadastrar: " . $stmt->error;
+        }
+        $stmt->close();
+    } else {
+        echo "As senhas não conferem";
+    }
 
-    $sql = "INSERT into clientes(nome, username, email, senha, telefone, cpf, endereco, cep) VALUES('$nome', '$username', '$email', '$Senha', '$telefone', '$cpf', '$endereco', '$cep')";
-
-    $rs = mysqli_query($mysqli, $sql);
-
-    header('Location:../html/login.html');
 }
-
-else{
-    echo("As senhas não conferem");
-}
-
 }
 ?>
