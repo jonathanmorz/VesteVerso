@@ -34,46 +34,46 @@
 </body>
 </html>
 
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['nome-completo'];
-    $username = $_POST['username'];
-    $Senha = $_POST['senha'];
-    $SenhaBBB = $_POST['SenhaB'];
-    $email = $_POST['email'];
-    $cpf = $_POST['cpf'];
-    $telefone = $_POST['tel'];
-    $endereco = $_POST['endereco'];
-    $cep = $_POST['cep'];
+    htmlentities($nome = $_POST['nome-completo']);
+    htmlentities($username = $_POST['username']);
+    htmlentities($senha = $_POST['senha']);
+    htmlentities($senhaConfirmacao = $_POST['senha-confirmacao']);
+    htmlentities($email = $_POST['email']);
+    htmlentities($cpf = $_POST['cpf']);
+    htmlentities($telefone = $_POST['tel']);
+    htmlentities($endereco = $_POST['endereco']);
+    htmlentities($cep = $_POST['cep']);
 
+    include('connection.php');
 
-include('connection.php');
+    $stmt = $mysqli->prepare("SELECT * FROM clientes WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-$sql_code = "SELECT * FROM clientes WHERE email = '$email'";
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL" . $mysqli->error) ;
-
-$quantidade = $sql_query->num_rows;
-
-if($quantidade == 1){
-        echo($cadastrohtml);
-    }
-else{
-
-    if ($Senha == $SenhaBBB) {
-        $stmt = $mysqli->prepare("INSERT INTO clientes (nome, username, email, senha, telefone, cpf, endereco, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssss", $nome, $username, $email, $Senha, $telefone, $cpf, $endereco, $cep);
-    
-        if ($stmt->execute()) {
-            header('Location: login.php');
-            exit();
-        } else {
-            echo "Erro ao cadastrar: " . $stmt->error;
-        }
-        $stmt->close();
+    if($result->num_rows > 0){
+        echo "Este e-mail já está cadastrado.";
+        exit();
     } else {
-        echo "As senhas não conferem";
+        if ($senha === $senhaConfirmacao) {
+            $stmt = $mysqli->prepare("INSERT INTO clientes (nome, username, email, senha, telefone, cpf, endereco, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("ssssssss", $nome, $username, $email, $senha, $telefone, $cpf, $endereco, $cep);
+    
+            if ($stmt->execute()) {
+                header('Location: login.php');
+                exit();
+            } else {
+                echo "Erro ao cadastrar: " . $stmt->error;
+            }
+        } else {
+            echo "As senhas não conferem.";
+        }
     }
 
-}
+    $stmt->close();
+    $mysqli->close();
 }
 ?>
