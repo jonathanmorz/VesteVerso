@@ -43,14 +43,30 @@ body {
     justify-content: center; 
 }
 
-#cadastre-se {
+#selecionar-titulo {
     display: flex;
     padding: 10px 0px;
+    justify-content: center; 
+}
+#pix {
+    display: flex;
+    padding: 30px 0px;
+    justify-content: center;   
+}
+#credito-debito {
+    display: flex;
+    padding: 30px 0px;
+    justify-content: center; 
+}
+#boleto {
+    display: flex;
+    padding: 30px 0px;
     justify-content: center; 
 }
 
 #div-botao-pagamento {
 display: flex;
+padding: 30px;
 justify-content: center; 
 }
 
