@@ -1,4 +1,3 @@
-
 * {
     margin: 0px;
     padding: 0px;
@@ -48,20 +47,16 @@ body {
     padding: 10px 0px;
     justify-content: center; 
 }
-#pix {
-    display: flex;
-    padding: 30px 0px;
-    justify-content: center;   
+
+#metodos-pagamento {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(3, 1fr);
+    margin: 0 auto;
 }
-#credito-debito {
+
+.form-check {
     display: flex;
-    padding: 30px 0px;
-    justify-content: center; 
-}
-#boleto {
-    display: flex;
-    padding: 30px 0px;
-    justify-content: center; 
 }
 
 #div-botao-pagamento {
