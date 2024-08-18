@@ -9,43 +9,94 @@
 </head>
 <body>
     <div id="div-geral">
-            <form action="cadastro.php" method="POST">
+            <form action="cadastro.php" method="POST" id="formulario">
                 <div id="conteudo-formulario">
-                    <div id="bem-vindo">
-                        <h1>Bem-Vindo ao nosso site</h1>
-                    </div>
-                        <div id="linha-preta-div"><img src="../resources/images/pixel-linha.jpg" alt="linha preta" id="linha-preta"></div>
                     <div id="cadastre-se">
-                        <h2>Cadastre-se</h2>
+                        <h1>Cadastre-se</h2>
                     </div>
-                        <div class="input-class"><input type="text" placeholder="Nome completo: " name="nome-completo"> <br></div>
-                        <div class="input-class" id="username"><input type="text" placeholder="Nome de usuário:" name="username"> <br></div>
-                        <div class="input-class" id="e-mail"><input type="email" placeholder="E-mail:" name="email"> <br></div>
-                        <div class="input-class" id="senha"><input type="password" placeholder="Senha:" name="senha"> <br></div>
-                        <div class="input-class" id="senha"><input type="password" placeholder="Repetir Senha:" name="SenhaB"> <br></div>
-                        <div class="input-class" id="cpf"><input type="text" placeholder="CPF:" name="cpf"> <br></div>
-                        <div class="input-class" id="endereco"><input type="text" placeholder="Endereço:" name="endereco"> <br></div>
-                        <div class="input-class" id="Telefone"><input type="text" placeholder="Telefone:" name="tel"> <br></div>
-                        <div class="input-class" id="cep"><input type="text" placeholder="CEP:" name="cep"> <br></div>
-                        <div id="botao"><button>Continuar</button></div>
+                    <div class="label-div">
+                        <h2>Nome Completo:</h2>
+                    </div>
+                    <div class="input-class">
+                        <input type="text" name="nome-completo"> 
+                    </div>
+                    <div class="label-div">
+                        <h2>Nome de Usuário:</h2>
+                    </div>
+                    <div class="input-class" id="username">
+                        <input type="text" name="username"> 
+                    </div>
+                    <div class="label-div">
+                        <h2>Email:</h2>
+                    </div>
+                    <div class="input-class" id="e-mail">
+                        <input type="email" name="email"> 
+                    </div>
+                    <div class="label-div">
+                        <h2>Senha:</h2>
+                    </div>
+                    <div class="input-class" id="senha">
+                        <input type="password" name="senha"> 
+                    </div>
+                    <div class="label-div">
+                        <h2>Repetir Senha:</h2>
+                    </div>
+                    <div class="input-class" id="senha">
+                        <input type="password" name="SenhaB"> 
+                    </div>
+                    
+                    <div class="mensagemErro" id="erroSenha"></div>
+                    
+                    <div class="label-div">
+                        <h2>CPF:</h2>
+                    </div>
+                    <div class="input-class" id="cpf">
+                        <input type="text" name="cpf"> 
+                    </div>
+                    <div class="label-div">
+                        <h2>Endereço:</h2>
+                    </div>
+                    <div class="input-class" id="endereco">
+                        <input type="text" name="endereco"> 
+                    </div>
+                    <div class="label-div">
+                        <h2>Telefone:</h2>
+                    </div>
+                    <div class="input-class" id="Telefone">
+                        <input type="text" name="tel"> 
+                    </div>
+                    <div class="label-div">
+                        <h2>CEP:</h2>
+                    </div>
+                    <div class="input-class" id="cep">
+                        <input type="text" name="cep"> 
+                    </div>
                 </div>
+            </div>
+            
+            <div id="logo">
+                <img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso">
+                <div id="botao"><button type="submit" id="enviar">Continuar</button></div>
             </form>
     </div>
+
+    <script src="../js/ajax-cadastro.js">
+    </script>
 </body>
 </html>
 
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    htmlentities($nome = $_POST['nome-completo']);
-    htmlentities($username = $_POST['username']);
-    htmlentities($senha = $_POST['senha']);
-    htmlentities($senhaConfirmacao = $_POST['senha-confirmacao']);
-    htmlentities($email = $_POST['email']);
-    htmlentities($cpf = $_POST['cpf']);
-    htmlentities($telefone = $_POST['tel']);
-    htmlentities($endereco = $_POST['endereco']);
-    htmlentities($cep = $_POST['cep']);
+    $nome = htmlentities($_POST['nome-completo']);
+    $username = htmlentities($_POST['username']);
+    $senha = htmlentities($_POST['senha']);
+    $senhaConfirmacao = htmlentities($_POST['SenhaB']);
+    $email = htmlentities($_POST['email']);
+    $cpf = htmlentities($_POST['cpf']);
+    $telefone = htmlentities($_POST['tel']);
+    $endereco = htmlentities($_POST['endereco']);
+    $cep = htmlentities($_POST['cep']);
 
     include('connection.php');
 
@@ -56,15 +107,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($result->num_rows > 0){
         echo "Este e-mail já está cadastrado.";
-        exit();
     } else {
         if ($senha === $senhaConfirmacao) {
             $stmt = $mysqli->prepare("INSERT INTO clientes (nome, username, email, senha, telefone, cpf, endereco, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssssss", $nome, $username, $email, $senha, $telefone, $cpf, $endereco, $cep);
     
             if ($stmt->execute()) {
-                header('Location: login.php');
-                exit();
+                echo "success";
             } else {
                 echo "Erro ao cadastrar: " . $stmt->error;
             }
