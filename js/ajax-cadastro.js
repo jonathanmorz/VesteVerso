@@ -1,37 +1,38 @@
-document.getElementById('enviar').addEventListener('click', function(event) {
-   event.preventDefault();
-   
-   var formData = new FormData(document.querySelector('form'));
-
-   var xhr = new XMLHttpRequest();
-   xhr.open('POST', 'cadastro.php', true);
-
-   var nome = document.getElementsByName('nome-completo')[0];
-   var username = document.getElementsByName('username')[0];
-   var email = document.getElementsByName('email')[0];
-   var senha = document.getElementsByName('senha')[0];
-   var senhab = document.getElementsByName('SenhaB')[0];
-   var cpf = document.getElementsByName('cpf')[0];
-   var enfereco = document.getElementsByName('endereco')[0];
-   var tel = document.getElementsByName('tel')[0];
-   var cep = document.getElementsByName('cep')[0];
-
-   if (senha.value !== senhab.value) {
-        erroSenha.textContent = 'As senhas não coincidem';
-        return;
-   }
-
-   xhr.onreadystatechange = function() {
-        if(xhr.readyState === 4 && xhr.status === 200) {
-            var response = xhr.responseText.trim();
-            
-            if(response === 'success') {
-                window.location.href = '../php/login.php';
-            } else {
-                alert(response);
-            }
+var form = document.getElementsByTagName('form')[0];
+        form.addEventListener("submit", getData);
+        function sendData(method, uri, header, data, serverResponse) {
+            let httpRequest = new XMLHttpRequest();
+            httpRequest.open(method, uri);
+            httpRequest.setRequestHeader("X-Content-Type-Options", header);
+            httpRequest.send(data);
+            httpRequest.onreadystatechange = serverResponse;
         }
-   }
-
-   xhr.send(formData);
-})
+        function getData(event) {
+            event.preventDefault();
+            let data = {
+                name: form.name.value,
+                lastname: form.lastname.value,
+                email: form.email.value,
+                password:form.password.value,
+                confirm: form.confirm.value,
+                accept: form.accept.checked
+            }
+            fetch(".register", {
+                headers: new Headers({"X-Content-Type-Options": "multipart/for"}),
+                method: "POST",
+                body: JSON.stringify(data),
+            })
+            .then((response) => {
+                const responseStatus = {
+                    200:() => { alert("Dados enviados com sucesso."); },
+                    400:() => { alert("Este cadastro já existe."); },
+                    404:() => { alert("Tente realizar o cadastro mais tarde."); }
+                }
+                if (responseStatus[response.status]) {
+                    let responseUser = responseStatus[response.status];
+                    responseUser();
+                } else {
+                    alert("Realize o cadastro novamente.");
+                }
+            })
+        }
