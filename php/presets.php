@@ -51,8 +51,8 @@ function htmlHeaderNoNavBar($username = null, $role)
                                   <a href="produtos.php" class="link-header">Lista de produtos</a>
                                   <a href="logout.php" class="link-header">Sair</a>
                               <?php else: ?>
-                                  <a href="../html/Cadastro.html" class="login-drop">Cadastre-se</a>
-                                  <a href="../html/login.html" class="login-drop">Entrar</a>
+                                  <a href="../php/Cadastro.php" class="login-drop">Cadastre-se</a>
+                                  <a href="../php/login2.php" class="login-drop">Entrar</a>
                               <?php endif; ?>
                           </div>
                       </li>

@@ -97,32 +97,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefone = htmlentities($_POST['tel']);
     $endereco = htmlentities($_POST['endereco']);
     $cep = htmlentities($_POST['cep']);
-
-    include('connection.php');
-
-    $stmt = $mysqli->prepare("SELECT * FROM clientes WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if($result->num_rows > 0){
-        echo "Este e-mail já está cadastrado.";
-    } else {
-        if ($senha === $senhaConfirmacao) {
-            $stmt = $mysqli->prepare("INSERT INTO clientes (nome, username, email, senha, telefone, cpf, endereco, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssssssss", $nome, $username, $email, $senha, $telefone, $cpf, $endereco, $cep);
-    
-            if ($stmt->execute()) {
-                echo "success";
-            } else {
-                echo "Erro ao cadastrar: " . $stmt->error;
-            }
-        } else {
-            echo "As senhas não conferem.";
-        }
-    }
-
-    $stmt->close();
-    $mysqli->close();
 }
+include('connection.php');
+
+$stmt = $mysqli->prepare("INSERT INTO clientes (nome, username, email, senha, telefone, cpf, endereco, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", $nome, $username, $email, $senha, $telefone, $cpf, $endereco, $cep);
+$stmt->execute()
+
 ?>
