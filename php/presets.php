@@ -3,14 +3,16 @@
    session_start(); 
    $username = '';
    $role = '';
+   $email = '';
+   $fullname = '';
    
    if (isset($_SESSION['id'])) {
       $userId = $_SESSION['id'];
-      $sql = "SELECT username, cargo FROM clientes WHERE id = ?";
+      $sql = "SELECT username, cargo, email, nome FROM clientes WHERE id = ?";
       $stmt = $mysqli->prepare($sql);
       $stmt->bind_param("i", $userId);
       $stmt->execute();
-      $stmt->bind_result($username, $role);
+      $stmt->bind_result($username, $role, $email, $fullname);
       $stmt->fetch();
       $stmt->close();
    }

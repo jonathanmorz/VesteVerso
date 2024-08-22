@@ -3,12 +3,6 @@
    require_once 'presets.php';
 ?>
 
-<?php
-// Verificar se está conectado a uma conta
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -30,9 +24,9 @@
     <div id="informacoes">
       <h1><strong> Minhas Informações: </strong></h1>
       <ul id="lista">
-        Usuário: <br>
-        Nome completo: <br>
-        E-mail:
+        Usuário: <?php echo htmlspecialchars($username); ?><br>
+        Nome completo: <?php echo htmlspecialchars($fullname); ?><br>
+        E-mail: <?php echo htmlspecialchars($email); ?>
 
       </ul>
         
