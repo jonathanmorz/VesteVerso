@@ -39,18 +39,28 @@
                 <div id="pix" class="form-check">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="radio-pix" value="opcao1" checked>
                     <label class="form-check-label" for="radio-pix">PIX</label>
-                    <img src="../resources/images/logo-pix.png" width="50" height="50">
+                    <img src="../resources/images/logo-pix.png"   class="image" width="30px" height="30px">
                 </div>
-                <div id="credito-debito" class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="radio-credito" value="opcao2">
-                    <label class="form-check-label" for="radio-credito">Crédito ou Débito</label>
-                    <img src="../resources/images/logo-cartao.png" width="50" height="50">
+                <div id="debito" class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="radio-debito" value="opcao2" checked>
+                    <label class="form-check-label" for="radio-pix">Cartão de débito</label>
+                    <img src="../resources/images/logo-debito.png"  class="image" width="30px" height="30px">
+                </div>
+                <div id="credito" class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="radio-credito" value="opcao3">
+                    <label class="form-check-label" for="radio-credito">Cartão de crédito</label>
+                    <img src="../resources/images/logo-credito.png"  class="image" width="30px" height="30px">
                 </div>
                 <div id="boleto" class="form-check">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="radio-boleto" value="opcao4">
                     <label class="form-check-label" for="radio-boleto">Boleto</label>
-                    <img src="../resources/images/logo-boleto.png" width="50" height="50">
+                    <img src="../resources/images/logo-boleto2.png"  class="image" width="30px" height="30px">
                 
+                </div>
+                <div id="paypal" class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="radio-paypal" value="opcao5" checked>
+                    <label class="form-check-label" for="radio-pix">Paypal</label>
+                    <img src="../resources/images/logo-paypal.png" class="image" width="40px" height="40px">
                 </div>
             </div>
 

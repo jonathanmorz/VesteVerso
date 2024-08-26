@@ -51,7 +51,7 @@ body {
 #metodos-pagamento {
     display: grid;
     justify-content: center;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     margin: 0 auto;
 }
 
@@ -74,4 +74,9 @@ justify-content: center;
     background-color: #561AA4;
     font-size: 20px;
     color: #ffd;
+}
+
+.image{
+
+
 }
