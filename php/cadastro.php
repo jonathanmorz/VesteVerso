@@ -9,6 +9,7 @@
 </head>
 <body>
     <div id="div-geral">
+        <div id="error-msg"></div>
             <form action="cadastro.php" method="POST" id="formulario">
                 <div id="conteudo-formulario">
                     <div id="cadastre-se">
@@ -18,31 +19,31 @@
                         <h2>Nome Completo:</h2>
                     </div>
                     <div class="input-class">
-                        <input type="text" name="nome-completo"> 
+                        <input type="text" name="nome-completo" value="teste"> 
                     </div>
                     <div class="label-div">
                         <h2>Nome de Usuário:</h2>
                     </div>
                     <div class="input-class" id="username">
-                        <input type="text" name="username"> 
+                        <input type="text" name="username" value="teste"> 
                     </div>
                     <div class="label-div">
                         <h2>Email:</h2>
                     </div>
                     <div class="input-class" id="e-mail">
-                        <input type="email" name="email"> 
+                        <input type="email" name="email" value="teste@teste.com"> 
                     </div>
                     <div class="label-div">
                         <h2>Senha:</h2>
                     </div>
                     <div class="input-class" id="senha">
-                        <input type="password" name="senha"> 
+                        <input type="password" name="senha" value="teste123">
                     </div>
                     <div class="label-div">
                         <h2>Repetir Senha:</h2>
                     </div>
                     <div class="input-class" id="senha">
-                        <input type="password" name="SenhaB"> 
+                        <input type="password" name="SenhaB" value="teste123"> 
                     </div>
                     
                     <div class="mensagemErro" id="erroSenha"></div>
@@ -84,24 +85,3 @@
     </script>
 </body>
 </html>
-
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = htmlentities($_POST['nome-completo']);
-    $username = htmlentities($_POST['username']);
-    $senha = htmlentities($_POST['senha']);
-    $senhaConfirmacao = htmlentities($_POST['SenhaB']);
-    $email = htmlentities($_POST['email']);
-    $cpf = htmlentities($_POST['cpf']);
-    $telefone = htmlentities($_POST['tel']);
-    $endereco = htmlentities($_POST['endereco']);
-    $cep = htmlentities($_POST['cep']);
-}
-include('connection.php');
-
-$stmt = $mysqli->prepare("INSERT INTO clientes (nome, username, email, senha, telefone, cpf, endereco, cep) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssssss", $nome, $username, $email, $senha, $telefone, $cpf, $endereco, $cep);
-$stmt->execute()
-
-?>

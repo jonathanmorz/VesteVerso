@@ -1,33 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-    var form = document.getElementById('formulario');
-    form.addEventListener("submit", getData);
+document.getElementById('formulario').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    let senhaA = document.querySelector('input[name="senha"]').value;
+    let senhaB = document.querySelector('input[name="SenhaB"]').value;
 
-    function getData(event) {
-        event.preventDefault();
-
-        let formData = new FormData(form);
-
-        fetch("cadastro.php", {
-            method: "POST",
-            body: formData,
-        })
-        .then(response => response.text())
-        .then(responseText => {
-            const responseStatus = {
-                "success": () => { alert("Dados enviados com sucesso."); },
-                "Este e-mail já está cadastrado.": () => { alert("Este cadastro já existe."); },
-                "As senhas não conferem.": () => { alert("As senhas não conferem."); },
-                "Erro ao cadastrar:": () => { alert("Tente realizar o cadastro mais tarde."); }
-            };
-
-            if (responseStatus[responseText]) {
-                responseStatus[responseText]();
-            } else {
-                alert("Erro desconhecido. Por favor, tente novamente.");
-            }
-        })
-        .catch(() => {
-            alert("Erro ao enviar dados. Tente novamente mais tarde.");
-        });
+    const formData = new FormData(this);
+    
+    if (senhaA.value !== senhaB.value){
+        window.alert('Senhas nao coincidem');
+    } else{
+    fetch('../php/enviar-cadastro.php', {
+        method: 'POST',
+        body: formData
+    });
     }
 });
