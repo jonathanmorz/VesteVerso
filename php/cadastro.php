@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/cadastro.css">
-    <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
-    <title>Cadastro - VesteVerso</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/cadastro.css">
+        <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
+        <title>Cadastro - VesteVerso</title>
+        <script src="../js/ajax-cadastro.js"></script>
 </head>
 <body>
     <div id="div-geral">
         <div id="error-msg"></div>
-            <form action="cadastro.php" method="POST" id="formulario">
+            <form action="enviar-cadastro.php" method="POST" id="formulario">
                 <div id="conteudo-formulario">
                     <div id="cadastre-se">
                         <h1>Cadastre-se</h2>
@@ -36,13 +37,13 @@
                     <div class="label-div">
                         <h2>Senha:</h2>
                     </div>
-                    <div class="input-class" id="senha">
+                    <div class="input-class" id="Bsenha">
                         <input type="password" name="senha" value="teste123">
                     </div>
                     <div class="label-div">
                         <h2>Repetir Senha:</h2>
                     </div>
-                    <div class="input-class" id="senha">
+                    <div class="input-class" id="Bsenha">
                         <input type="password" name="SenhaB" value="teste123"> 
                     </div>
                     
@@ -81,7 +82,5 @@
             </form>
     </div>
 
-    <script src="../js/ajax-cadastro.js">
-    </script>
 </body>
 </html>
