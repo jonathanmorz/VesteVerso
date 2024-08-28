@@ -9,7 +9,7 @@ document.getElementById('formulario').addEventListener('submit', function (event
     if (senhaA.value !== senhaB.value){
         window.alert('Senhas nao coincidem');
     } else{
-    fetch('../app.js', {
+    fetch('../php/enviar-cadastro.php', {
         method: 'POST',
         body: formData
     });

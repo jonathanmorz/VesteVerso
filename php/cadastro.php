@@ -6,12 +6,11 @@
         <link rel="stylesheet" href="../css/cadastro.css">
         <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
         <title>Cadastro - VesteVerso</title>
-        <script src="../js/ajax-cadastro.js"></script>
-</head>
-<body>
-    <div id="div-geral">
+    </head>
+    <body>
+        <div id="div-geral">
         <div id="error-msg"></div>
-            <form action="enviar-cadastro.php" method="POST" id="formulario">
+            <form action="cadastro.php" method="POST" id="formulario">
                 <div id="conteudo-formulario">
                     <div id="cadastre-se">
                         <h1>Cadastre-se</h2>
@@ -80,7 +79,8 @@
                 <img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso">
                 <div id="botao"><button type="submit" id="enviar">Continuar</button></div>
             </form>
-    </div>
-
-</body>
-</html>
+        </div>
+        
+        <script src="../js/ajax-cadastro.js"></script>
+    </body>
+    </html>
