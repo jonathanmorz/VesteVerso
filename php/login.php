@@ -1,6 +1,7 @@
 <?php
 include("connection.php");
 
+
 if(isset($_POST['Usuario']) || isset($_POST['Password'])) 
 {
     if(strlen($_POST['Usuario']) == 0)

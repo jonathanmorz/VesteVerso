@@ -10,7 +10,7 @@
     <body>
         <div id="div-geral">
         <div id="error-msg"></div>
-            <form action="cadastro.php" method="POST" id="formulario">
+            <form action="enviar-cadastro.php" method="POST" id="formulario">
                 <div id="conteudo-formulario">
                     <div id="cadastre-se">
                         <h1>Cadastre-se</h2>
