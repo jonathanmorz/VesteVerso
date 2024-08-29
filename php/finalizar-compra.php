@@ -51,12 +51,6 @@
                     <label class="form-check-label" for="radio-credito">Cartão de crédito</label>
                     <img src="../resources/images/logo-credito.png"  class="image" width="30px" height="30px">
                 </div>
-                <div id="boleto" class="form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="radio-boleto" value="opcao4">
-                    <label class="form-check-label" for="radio-boleto">Boleto</label>
-                    <img src="../resources/images/logo-boleto2.png"  class="image" width="30px" height="30px">
-                
-                </div>
                 <div id="paypal" class="form-check">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="radio-paypal" value="opcao5" checked>
                     <label class="form-check-label" for="radio-pix">Paypal</label>
