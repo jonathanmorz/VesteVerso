@@ -38,7 +38,7 @@ body {
 
 #linha-preta-div {
     display: flex;
-    padding: 10px 0px;
+    padding: 20px 0px;
     justify-content: center; 
 }
 
@@ -74,5 +74,25 @@ justify-content: center;
     background-color: #561AA4;
     font-size: 20px;
     color: #ffd;
+    transition: all .2s ease-in-out;
+}
+
+#botao-pagamento:hover{
+    background: #48178a;
+
+}
+
+.linha-preta-div2 {
+    display: flex;
+    padding: 3px 0px;
+    justify-content: center; 
+
+}
+
+.linha-preta2{
+    height: 25px;
+    width: 1.0px;
+    padding: 3px;
+
 }
 
