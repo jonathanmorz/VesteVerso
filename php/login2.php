@@ -17,7 +17,7 @@
 <body>
     <div id="container">
         <div id="logo"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></div>       
-            <form method="POST" id="loginForm">
+            <form action="../php/login.php" method="POST" id="loginForm">
                     <div id="titulo">
                         <h1 id="tiulo-login">Login</h1>
                     </div>
@@ -37,7 +37,7 @@
                     <div id="esqueceu-a-senha">
                         <a href="#">Esqueceu a senha?</a>
                     </div>
-                    <div id="botao"><button id="enviar" onclick="logar()">Entrar</button> <br></div>
+                    <div id="botao"><button id="enviar" onclick="">Entrar</button> <br></div>
                     <div id="inscrever-se"><span>Não tem uma conta? <a href="cadastro.php">Inscrever-se</a></span> <br></div>
             </form>
     </div>
@@ -46,7 +46,18 @@
 
 
         function logar(){
-            
+
+            var login = document.querySelector("input[name='Usuario']").value;
+            var senha = document.querySelector("input[name='Password']").value;
+
+            if(login == "<?php $usuario ?>" && senha == "<?php $Senha ?>"){
+                alert('Sucesso');
+                location.href = "login.php";
+            }else{
+                alert('Usuario ou senha incorretos');
+            }
+
+        }
 
     </script>
 

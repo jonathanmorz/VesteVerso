@@ -24,15 +24,6 @@ body {
     background-size: cover;
 }
 
-.div-erro {
-    display: inline-flex;
-    background-color: rgb(255, 131, 131);
-    color: #ff0000;
-    padding: 10px;
-    position: absolute;
-    transform: translate(275%, -1700%);
-}
-
 h1 {
     font-size: 40px;
 }
