@@ -48,22 +48,5 @@ if(isset($_POST['Usuario']) || isset($_POST['Password']))
 
 session_start();
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id'])) {
-    header('Location:login2.php');
-    exit;
-}
-
-$userId = $_SESSION['id'];
-
-// Restaura o carrinho do banco de dados
-$stmt = $pdo->prepare("SELECT produto_id, quantidade FROM carrinho WHERE user_id = :user_id");
-$stmt->execute(['user_id' => $userId]);
-$carrinho = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$_SESSION['carrinho'] = [];
-foreach ($carrinho as $item) {
-    $_SESSION['carrinho'][$item['produto_id']] = $item['quantidade'];
-}
 
 ?>
