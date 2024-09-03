@@ -1,7 +1,3 @@
-<?php
-   require_once 'login.php';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,7 +13,7 @@
 <body>
     <div id="container">
         <div id="logo"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></div>       
-            <form action="../php/login.php" method="POST" id="loginForm">
+            <form action="../php/login.php" method="POST">
                     <div id="titulo">
                         <h1 id="tiulo-login">Login</h1>
                     </div>
@@ -37,29 +33,17 @@
                     <div id="esqueceu-a-senha">
                         <a href="#">Esqueceu a senha?</a>
                     </div>
-                    <div id="botao"><button id="enviar" onclick="">Entrar</button> <br></div>
+                    <div id="botao"><button id="enviar">Entrar</button> <br></div>
                     <div id="inscrever-se"><span>Não tem uma conta? <a href="cadastro.php">Inscrever-se</a></span> <br></div>
+                    <div id="entrar-com">
+                        <span>Entrar com</span> <br>
+                    </div>
+                    <div id="google-facebook">
+                            <a href="#"><img src="../resources/images/google-logo.png" alt="" id="google"></a>
+                            <a href="#" ><img src="../resources/images/facebook-logo.png" alt="" id="facebook"></a>
+                    </div>
             </form>
     </div>
-
-    <script>
-
-
-        function logar(){
-
-            var login = document.querySelector("input[name='Usuario']").value;
-            var senha = document.querySelector("input[name='Password']").value;
-
-            if(login == "<?php $usuario ?>" && senha == "<?php $Senha ?>"){
-                alert('Sucesso');
-                location.href = "login.php";
-            }else{
-                alert('Usuario ou senha incorretos');
-            }
-
-        }
-
-    </script>
 
 </body>
 </html>
