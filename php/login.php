@@ -1,19 +1,10 @@
 <?php
 include("connection.php");
 
+    $usuario = 0;
+    $Senha = 0;
 
-if(isset($_POST['Usuario']) || isset($_POST['Password'])) 
-{
-    if(strlen($_POST['Usuario']) == 0)
-    {
-        echo("Preencha seu usuário");
-    }
-    elseif(strlen($_POST['Password']) == 0)
-    {
-        echo("Preencha sua senha");
-    }
-    else
-    {
+if(isset($_POST['Usuario']) || isset($_POST['Password'])) {
         $usuario = $mysqli->real_escape_string($_POST['Usuario']);
         $Senha = $mysqli->real_escape_string($_POST['Password']);
 
@@ -39,31 +30,10 @@ if(isset($_POST['Usuario']) || isset($_POST['Password']))
             header("Location: ../php/index.php");
 
         }
-        else
-        {
-            echo("Falha ao logar! E-Mail ou Senha incorretos");
-        }
-    }
+
 }
 
 session_start();
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id'])) {
-    header('Location:login2.php');
-    exit;
-}
-
-$userId = $_SESSION['id'];
-
-// Restaura o carrinho do banco de dados
-$stmt = $pdo->prepare("SELECT produto_id, quantidade FROM carrinho WHERE user_id = :user_id");
-$stmt->execute(['user_id' => $userId]);
-$carrinho = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$_SESSION['carrinho'] = [];
-foreach ($carrinho as $item) {
-    $_SESSION['carrinho'][$item['produto_id']] = $item['quantidade'];
-}
 
 ?>

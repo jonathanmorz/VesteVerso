@@ -1,8 +1,6 @@
 document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    let usuarioLogin = document.querySelector("input[name='Usuario']");
-    let senhaLogin = document.querySelector("input[name='Password']");
 
     const formData = new FormData(this);
 

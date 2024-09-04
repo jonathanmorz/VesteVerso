@@ -1,6 +1,7 @@
 <?php
-include 'connection.php';
-include 'presets.php';
+require_once 'connection.php';
+require_once 'presets.php';
+require_once 'check-session.php';
 ?>
 
 <?php
