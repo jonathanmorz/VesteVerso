@@ -10,10 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body onload="load()">
     <div id="container">
         <div id="logo"><a href="index.php"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></a></div>       
-            <form method="POST" id="loginForm">
+            <form action="login.php" method="POST" id="loginForm">
 
                     <div id="titulo">
                         <h1 id="tiulo-login">Login</h1>
@@ -34,7 +34,7 @@
                     <div id="esqueceu-a-senha">
                         <a href="#">Esqueceu a senha?</a>
                     </div>
-                    <div id="botao"><button id="enviar">Entrar</button> <br></div>
+                    <div id="botao"><button id="enviar" onclick="logar()">Entrar</button> <br></div>
                     <div id="inscrever-se"><span>Não tem uma conta? <a href="cadastro.php">Inscrever-se</a></span> <br></div>
                     <div id="entrar-com">
                         <span>Entrar com</span> <br>
@@ -47,23 +47,36 @@
     </div>
     <script>
 
-        function logar(){
-            var login = document.querySelector("input[name='Usuario']").value;
-            var senha = document.querySelector("input[name='Password']").value;
-
-            if(login == "<?php $usuario ?>" && senha == "<?php $Senha ?>"){
-                alert('Sucesso');
-                location.href = "login.php";
-            } else if (login !== "<?php $usuario ?>" || senha !== "<?php $Senha ?>") {
-                alert('erro')
-            }else {
-                const alertaErro = document.createElement("div")
-                alertaErro.className = "div-erro"
-                alertaErro.innerHTML = "<span>Usuário ou senha incorretos</span>"
-                document.body.appendChild(alertaErro)
-            } 
-
+        function load(){
+            document.getElementById('loginForm').addEventListener('submit', async function (event){
+                event.preventDefault()
+            })
         }
+
+        function logar(){
+
+            const formData = new FormData(this);
+
+try {
+    const response = await fetch('../php/login.php', {
+        method: 'POST',
+        body: formData
+    });
+
+    const responseText = await response.text();
+    console.log(responseText);
+
+    if (response.ok) {
+        window.location.href = "../php/index.php"; // Redireciona em caso de sucesso
+    } else {
+        window.alert('Erro: ' + responseText); // Exibe um alerta em caso de erro
+    }
+} catch (error) {
+    console.error('Erro na atualização: ', error);
+    window.alert('Erro ao enviar o formulário. Tente Novamente.');
+}
+
+            }
 
     </script>
 </body>
