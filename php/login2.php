@@ -12,8 +12,9 @@
 </head>
 <body>
     <div id="container">
-        <div id="logo"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></div>       
-            <form action="../php/login.php" method="POST">
+        <div id="logo"><a href="index.php"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></a></div>       
+            <form method="POST" id="loginForm">
+
                     <div id="titulo">
                         <h1 id="tiulo-login">Login</h1>
                     </div>
@@ -44,6 +45,26 @@
                     </div>
             </form>
     </div>
+    <script>
 
+        function logar(){
+            var login = document.querySelector("input[name='Usuario']").value;
+            var senha = document.querySelector("input[name='Password']").value;
+
+            if(login == "<?php $usuario ?>" && senha == "<?php $Senha ?>"){
+                alert('Sucesso');
+                location.href = "login.php";
+            } else if (login !== "<?php $usuario ?>" || senha !== "<?php $Senha ?>") {
+                alert('erro')
+            }else {
+                const alertaErro = document.createElement("div")
+                alertaErro.className = "div-erro"
+                alertaErro.innerHTML = "<span>Usuário ou senha incorretos</span>"
+                document.body.appendChild(alertaErro)
+            } 
+
+        }
+
+    </script>
 </body>
 </html>

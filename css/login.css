@@ -167,3 +167,13 @@ form {
     width: 25px;
     height: 25px;
 }
+
+.div-erro {
+    display: inline-flex;
+    background-color: rgb(255, 150, 150);
+    color: #ff0000;
+    padding: 10px;
+    position: absolute;
+    transform: translate(275%, -1700%);
+    border-radius: 10px;
+}
