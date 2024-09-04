@@ -44,9 +44,7 @@
 
     <script>
 
-        
         function logar(){
-
             var login = document.querySelector("input[name='Usuario']").value;
             var senha = document.querySelector("input[name='Password']").value;
 
@@ -63,6 +61,7 @@
             } 
 
         }
+
     </script>
 
 </body>
