@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 </head>
-<body onload="load()">
+<body>
     <div id="container">
         <div id="logo"><a href="index.php"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></a></div>       
             <form action="login.php" method="POST" id="loginForm">
@@ -47,35 +47,37 @@
     </div>
     <script>
 
-        function load(){
-            document.getElementById('loginForm').addEventListener('submit', async function (event){
-                event.preventDefault()
-            })
-        }
-
         function logar(){
 
-            const formData = new FormData(this);
+            const form = document.querySelector('#loginForm'); // Formulário com id 'loginForm'
 
-try {
-    const response = await fetch('../php/login.php', {
-        method: 'POST',
-        body: formData
-    });
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault(); // Evita o redirecionamento padrão ao enviar o formulário
 
-    const responseText = await response.text();
-    console.log(responseText);
+                const formData = new FormData(this); // Pega os dados do formulário
 
-    if (response.ok) {
-        window.location.href = "../php/index.php"; // Redireciona em caso de sucesso
-    } else {
-        window.alert('Erro: ' + responseText); // Exibe um alerta em caso de erro
-    }
-} catch (error) {
-    console.error('Erro na atualização: ', error);
-    window.alert('Erro ao enviar o formulário. Tente Novamente.');
-}
+                try {
+                    const response = await fetch('../php/login.php', {
+                        method: 'POST',
+                        body: formData
+                    });
 
+                    const result = await response.json(); // Espera a resposta JSON do servidor
+
+                    if (response.ok) {
+                        // Se a resposta for sucesso, por exemplo, login correto
+                        window.alert('Login bem-sucedido! Redirecionando...');
+                        window.location.href = "../php/index.php"; // Redirecionar apenas em caso de sucesso
+                    } else {
+                        // Se houver erro, mostra um alerta com a mensagem retornada do servidor
+                        window.alert('Erro: ' + result.message);
+                    }
+                } catch (error) {
+                    // Lida com erros no envio da requisição
+                    console.error('Erro ao enviar o formulário:', error);
+                    window.alert('Erro ao enviar o formulário. Tente novamente.');
+                }
+            });
             }
 
     </script>
