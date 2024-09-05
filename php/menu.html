@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>telefone</label>
+<input type="text"name="tel"maxlegth="15"onkwypress="formatar('(##)####-#####',this)">
+</body>
+<script
+function formatar(mascara,documento){
+    let i=documento.value.length;
+    let saida='#';
+    let texto=mascara.substring(i);
+    whhile (texto.substring(0,1) !=saida && texto.length){
+        documento.value += texto.substring(0.1);
+        i++;
+        texto=mascara.substring(i);
+    }
+}
+<script></script>
+</html>
