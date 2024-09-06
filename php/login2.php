@@ -12,37 +12,36 @@
 </head>
 <body>
     <div id="container">
-        <div id="logo"><a href="index.php"><img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"></a></div>       
+        <div id="logo">
+            <a href="index.php">
+                <img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso">
+            </a>
+        </div>       
             <form action="login.php" method="POST" id="loginForm">
 
                     <div id="titulo">
                         <h1 id="tiulo-login">Login</h1>
                     </div>
-                    <div id="usuario">
-                        <span>Usuário</span> <br>
+                    <div id="email">
+                        <label for="email">Email</label> 
                     </div>
-                        <div id="usuario-input">
-                            <input type="text" name="Usuario" class="input-usuario-senha"> <br>
-                        </div>
+                    <div id="email-input">
+                        <input type="text" id="email" name="Email" class="input-email-senha"> 
+                    </div>
                     <div id="senha">
-                        <span>Senha</span> <br>
+                        <label for="senha">Senha</label> 
                     </div>
-                        <div id="senha-input">
-                            <input type="password" name="Password" class="input-usuario-senha">
-                        </div>
-                    <div id="checkbox"><input type="checkbox" id="checkbox-lembrar"> <span>Lembrar de mim</span><br> </div>
+                    <div id="senha-input">
+                        <input type="password" id="senha" name="Password" class="input-email-senha">
+                    </div>
+                    <div id="checkbox">
+                        <input type="checkbox" id="checkbox-lembrar"> <label for="checkbox-lembrar">Lembrar de mim</label> 
+                    </div>
                     <div id="esqueceu-a-senha">
                         <a href="#">Esqueceu a senha?</a>
                     </div>
-                    <div id="botao"><button id="enviar" onclick="logar()">Entrar</button> <br></div>
-                    <div id="inscrever-se"><span>Não tem uma conta? <a href="cadastro.php">Inscrever-se</a></span> <br></div>
-                    <div id="entrar-com">
-                        <span>Entrar com</span> <br>
-                    </div>
-                    <div id="google-facebook">
-                            <a href="#"><img src="../resources/images/google-logo.png" alt="" id="google"></a>
-                            <a href="#" ><img src="../resources/images/facebook-logo.png" alt="" id="facebook"></a>
-                    </div>
+                    <div id="botao"><button id="enviar" onclick="logar()">Entrar</button> </div>
+                    <div id="inscrever-se"><span>Não tem uma conta? <a href="cadastro.php">Inscrever-se</a></span> </div>
             </form>
     </div>
     <script>

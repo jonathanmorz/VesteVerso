@@ -9,7 +9,7 @@ header('Content-Type: application/json'); // Indica que a resposta será em JSON
 if (isset($_POST['Usuario']) && isset($_POST['Password'])) {
     if (strlen($_POST['Usuario']) == 0) {
         http_response_code(400);
-        echo json_encode(['message' => "O campo 'Usuário' não pode estar vazio."]);
+        echo json_encode(['message' => "O campo 'Email' não pode estar vazio."]);
         exit();
     } elseif (strlen($_POST['Password']) == 0) {
         http_response_code(400);
@@ -19,7 +19,7 @@ if (isset($_POST['Usuario']) && isset($_POST['Password'])) {
         $usuario = $mysqli->real_escape_string($_POST['Usuario']);
         $Senha = $mysqli->real_escape_string($_POST['Password']);
 
-        $sql_code = "SELECT * FROM clientes WHERE username = '$usuario' AND senha = '$Senha'";
+        $sql_code = "SELECT * FROM clientes WHERE email = '$usuario' AND senha = '$Senha'";
         $sql_query = $mysqli->query($sql_code) or die(json_encode(['message' => "Falha na execução do código SQL"]));
 
         $quantidade = $sql_query->num_rows;
