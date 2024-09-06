@@ -41,7 +41,7 @@ function htmlHeaderNoNavBar($username = null, $role)
       <div id="div-direita-header">        
                   <ul id="ul-dropdown">
                       <li class="dropdown" type="none">
-                          <a id="menu-drop" href="#"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
+                          <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
                           <div class="dropdown-menu">
                               <?php if ($username && $role == "cliente"): ?>
                                   <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span>
@@ -90,37 +90,37 @@ function htmlCardsPadrao($row, $result)
     if ($result->num_rows > 0) {
         $html = '';
         while($row = $result->fetch_assoc()) {
-            $html .= '<div class="cards-wrapper">
-            <div class="card-produto d-md-block">
-            <a href="produto.php?id=' . $row["id"] . '">
-            <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
-            <div class="nome-produto">
-            <h2 class="titulo-produto">' . $row["nome"] . '</h2>
-                                </div>
-                                <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
-                                </a>
-                                <div class="div-botao">
-                                <button class="button-card-outline">
-                                    <a href="enviar-carrinho.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
-                                    </button>
-                                    <a href="enviar-favoritos.php?acao=add&id=' . $row['id'] . '">
-                                    <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
-                                    </a>
-                                    <script>
-                                    function trocarImagem' . $row["id"] . '() {
-                                        var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
-                                        if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                                            coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                                            } else {
-                                                coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                                        }
-                                        }
-                                        </script>
-                                        </div>
-                                        </div>
-                                        </div>';
-                                    }
-                                    return $html;
+            $html .=  '<div class="cards-wrapper">
+                      <div class="card-produto d-md-block">
+                        <a href="produto.php?id=' . $row["id"] . '">
+                          <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
+                          <div class="nome-produto">
+                            <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+                          </div>
+                          <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
+                        </a>
+                        <div class="div-botao">
+                          <button class="button-card-outline">
+                            <a href="enviar-carrinho.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
+                          </button>
+                          <a href="enviar-favoritos.php?acao=add&id=' . $row['id'] . '">
+                            <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
+                          </a>
+                            <script>
+                                function trocarImagem' . $row["id"] . '() {
+                                var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
+                                if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
+                                  coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
+                                  } else {
+                                    coracaofavoritar.src = "../resources/images/coracao-roxo.png";
+                                  }
+                                }
+                            </script>
+                          </div>
+                        </div>
+                        </div>';
+                }
+                return $html;
     } else {
         return "0 resultados";
     }
@@ -173,7 +173,7 @@ function htmlFooter()
             <h4>Sobre nós</h4><br>
           </div>
           <div id="atendimento-footer">
-            <h4>Atendimento ao Cliente: (21) 99818-2680</h4><br>
+            <h4>Atendimento ao Cliente: (XX) XXXXX-XXXX</h4><br>
           </div>
           <div id="social-footer">
             <h4>Redes Sociais:</h4><br>

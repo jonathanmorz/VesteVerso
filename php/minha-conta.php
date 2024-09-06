@@ -24,9 +24,9 @@
     <div id="informacoes">
       <h1><strong> Minhas Informações: </strong></h1>
       <ul id="lista">
-        Usuário: <?php echo htmlspecialchars($username); ?><br>
-        Nome completo: <?php echo htmlspecialchars($fullname); ?><br>
-        E-mail: <?php echo htmlspecialchars($email); ?>
+        <li>Usuário: <?php echo htmlspecialchars($username); ?></li>
+        <li>Nome completo: <?php echo htmlspecialchars($fullname); ?></li>
+        <li>E-mail: <?php echo htmlspecialchars($email);?></li>
 
       </ul>
         
