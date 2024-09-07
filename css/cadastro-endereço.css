@@ -1,0 +1,32 @@
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    background-color: #561AA4;
+    margin: 0px;
+}
+
+form {
+    background-color: white;
+    padding: 40px 55px;
+    margin: 30px 100px;
+    border-radius: 50px;
+}
+
+#selecionar-titulo {
+    display: flex;
+    padding: 10px 0px;
+    font-size: 28px;
+}
+
+#enviar {
+    padding: 10px 0px;
+    width: 80px;
+    border-radius: 10px;
+    border-color: #ffffff00;
+    background-color: #561AA4;
+    font-size: 20px;
+    color: #ffd;
+    transition: all .2s ease-in-out;
+}
