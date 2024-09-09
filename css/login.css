@@ -57,24 +57,59 @@ form {
     justify-content: center; 
 }
 
-#email {
+#nome-div {
     display: flex;
     padding: 0px 0px 0px 5px; 
 }
 
-#email-input {
+#nome-input-div {
     display: flex;
     padding: 0px 0px 20px 0px;
     justify-content: center;
     
 }
 
-#senha {
+#sobrenome-div {
     display: flex;
     padding: 0px 0px 0px 5px; 
 }
 
-#senha-input {
+#sobrenome-input-div {
+    display: flex;
+    padding: 0px 0px 20px 0px;
+    justify-content: center;
+    
+}
+
+#email-div {
+    display: flex;
+    padding: 0px 0px 0px 5px; 
+}
+
+#email-input-div {
+    display: flex;
+    padding: 0px 0px 20px 0px;
+    justify-content: center;
+    
+}
+
+#senha-div {
+    display: flex;
+    padding: 0px 0px 0px 5px; 
+}
+
+#senha-input-div {
+    display: flex;
+    padding: 0px 0px 20px 0px;
+    justify-content: center;    
+}
+
+#cpf-div {
+    display: flex;
+    padding: 0px 0px 0px 5px; 
+}
+
+#cpf-input-div {
     display: flex;
     padding: 0px 0px 20px 0px;
     justify-content: center;    
@@ -91,6 +126,7 @@ input:focus {
     color: #561AA4;
     border: 0px;
     padding: 0px 0px 0px 5px;
+    font-weight: bold;
 }
 
 #checkbox {
@@ -137,36 +173,8 @@ input:focus {
     font-weight: bold;
 }
 
-#entrar-com {
-    display: flex;
-    padding: 10px 0px;
-    justify-content: center;
-    
-}
-
-#google-facebook {
-    display: flex;
-    padding: 10px 89px;
-    justify-content: space-between;
-    
-}
-
-#titulo-login {
-    padding-bottom: 10px;
-}
-
-#login {
-    padding: 10px 0px 10px 0px;
-}
-
-#google {
-    width: 25px;
-    height: 25px;
-}
-
-#facebook {
-    width: 25px;
-    height: 25px;
+#radios {
+    display: inline-flex;
 }
 
 .div-erro {
@@ -178,3 +186,54 @@ input:focus {
     transform: translate(275%, -1700%);
     border-radius: 10px;
 }
+
+/* Esconder o input radio padrão */
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+  
+/* Estilizar o label para simular a caixa do radio */
+label {
+    position: relative;
+    padding-left: 30px; /* Espaço para o pseudo-elemento */
+    cursor: pointer;
+    display: inline-block;
+    line-height: 20px;
+    color: #fff;
+}
+  
+/* Criar a aparência do botão de rádio */
+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    background-color: #fff; /* Cor da caixa do radio */
+}
+  
+/* Estilizar a caixa do radio quando o input está selecionado */
+input[type="radio"]:checked + label::before {
+    background-color: #fff; /* Cor de fundo quando selecionado */
+    border-color: #fff; /* Cor da borda quando selecionado */
+}
+  
+/* Adicionar um círculo interno ao botão de rádio quando selecionado */
+input[type="radio"]:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #561AA4; /* Cor do círculo interno */
+}
+  

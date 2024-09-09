@@ -6,8 +6,8 @@ $Senha = 0;
 
 header('Content-Type: application/json'); // Indica que a resposta será em JSON
 
-if (isset($_POST['Usuario']) && isset($_POST['Password'])) {
-    if (strlen($_POST['Usuario']) == 0) {
+if (isset($_POST['Email']) && isset($_POST['Password'])) {
+    if (strlen($_POST['Email']) == 0) {
         http_response_code(400);
         echo json_encode(['message' => "O campo 'Email' não pode estar vazio."]);
         exit();
@@ -16,7 +16,7 @@ if (isset($_POST['Usuario']) && isset($_POST['Password'])) {
         echo json_encode(['message' => "O campo 'Senha' não pode estar vazio."]);
         exit();
     } else {
-        $usuario = $mysqli->real_escape_string($_POST['Usuario']);
+        $usuario = $mysqli->real_escape_string($_POST['Email']);
         $Senha = $mysqli->real_escape_string($_POST['Password']);
 
         $sql_code = "SELECT * FROM clientes WHERE email = '$usuario' AND senha = '$Senha'";
@@ -45,7 +45,7 @@ if (isset($_POST['Usuario']) && isset($_POST['Password'])) {
     }
 } else {
     http_response_code(400);
-    echo json_encode(['message' => "Campos de usuário e senha são obrigatórios."]);
+    echo json_encode(['message' => "Campos de email e senha são obrigatórios."]);
     exit();
 }
 ?>
