@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include 'connection.php'; //conexão com bd
 
 if (!isset($_SESSION['id']) && isset($_COOKIE['session_token'])) {
     $sessionToken = $_COOKIE['session_token'];

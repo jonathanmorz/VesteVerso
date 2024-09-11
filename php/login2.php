@@ -11,37 +11,41 @@
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="container">
-        <div id="logo">
-            <a href="index.php">
-                <img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso">
+    <div id="container"> <!-- div geral -->
+        <div id="logo"> <!-- div da logo -->
+            <a href="index.php"> <!-- âncora para retornar à página inicial -->
+                <img src="../resources/images/logo-roxa-grande.png" alt="Logo VesteVerso"> <!-- imagem logo -->
             </a>
         </div>       
-            <form action="login.php" method="POST" id="loginForm">
+            <form action="login.php" method="POST" id="loginForm"> <!-- formulário do login -->
 
-                    <div id="titulo">
-                        <h1 id="tiulo-login">Login</h1>
+                    <div id="titulo"> <!-- div para posicionar título -->
+                        <h1 id="tiulo-login">Login</h1> <!-- título -->
                     </div>
-                    <div id="email">
-                        <label for="email">Email</label> 
+                    <div id="email"> <!-- div para posicionar título email -->
+                        <label for="email">Email</label>  <!-- título email -->
                     </div>
-                    <div id="email-input">
-                        <input type="text" id="email" name="Email" class="input-email-senha"> 
+                    <div id="email-input"> <!-- div para posicionar input email -->
+                        <input type="email" id="email" name="Email" class="input-email-senha"> <!-- input email -->
                     </div>
-                    <div id="senha">
-                        <label for="senha">Senha</label> 
+                    <div id="senha"> <!-- div para posicionar título senha -->
+                        <label for="senha">Senha</label>  <!-- título senha -->
                     </div>
-                    <div id="senha-input">
-                        <input type="password" id="senha" name="Password" class="input-email-senha">
+                    <div id="senha-input"> <!-- div para posicionar input senha -->
+                        <input type="password" id="senha" name="Password" class="input-email-senha">  <!-- input senha -->
                     </div>
-                    <div id="checkbox">
-                        <input type="checkbox" id="checkbox-lembrar"> <label for="checkbox-lembrar">Lembrar de mim</label> 
+                    <div id="checkbox"> <!-- div para posicionar checkbox -->
+                        <input type="checkbox" id="checkbox-lembrar"> <label for="checkbox-lembrar">Lembrar de mim</label> <!-- checkbox --> 
                     </div>
-                    <div id="esqueceu-a-senha">
-                        <a href="#">Esqueceu a senha?</a>
+                    <div id="esqueceu-a-senha"> <!-- div para posicionar esqueceu a senha -->
+                        <a href="#">Esqueceu a senha?</a> <!-- esqueceu a senha -->
                     </div>
-                    <div id="botao"><button id="enviar" onclick="logar()">Entrar</button> </div>
-                    <div id="inscrever-se"><span>Não tem uma conta? <a href="cadastro.php">Inscrever-se</a></span> </div>
+                    <div id="botao"> <!-- div para posicionar botão de entrar -->
+                        <button id="enviar" onclick="logar()">Entrar</button>  <!-- botão de entrar -->
+                    </div>
+                    <div id="inscrever-se"> <!-- div para posicionar inscrever-se -->
+                        <span>Não tem uma conta? <a href="cadastro.php">Inscrever-se</a></span> <!-- inscrever-se -->
+                    </div>
             </form>
     </div>
     <script>

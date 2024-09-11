@@ -1,6 +1,6 @@
 <?php
-   require_once 'connection.php';
-   require_once 'presets.php';
+   require_once 'connection.php';   //conexão com bd
+   require_once 'presets.php';      //inclusão dos presets, como header, cards e etc
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +17,16 @@
 </head>
 <body>
     <?php
-        echo htmlHeaderNoNavBar($username, $role);
+        echo htmlHeaderNoNavBar($username, $role); //header
     ?>
 
-    <p style="padding-left: 20px;">Você não tem autorização para entrar nessa página, por favor, entre como administrador. <a href="login2.php">Clique aqui para fazer login</a></p>
+    <p style="padding-left: 20px;"> <!-- Mensagem de erro -->
+        Você não tem autorização para entrar nessa página, por favor, entre como administrador. 
+        <a href="login2.php">Clique aqui para fazer login</a>
+    </p>
     
     <?php
-        echo htmlFooter();
+        echo htmlFooter();  //footer
     ?>
 </body>
 </html>

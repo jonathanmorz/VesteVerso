@@ -1,6 +1,6 @@
 <?php
-   require_once 'connection.php';
-   require_once 'presets.php';
+   require_once 'connection.php';   //conexão com bd
+   require_once 'presets.php';      //inclusão dos presets, como header, cards e etc
 ?>
 
 <!DOCTYPE html>
