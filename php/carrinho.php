@@ -54,6 +54,7 @@ include 'connection.php';
 
 $username = '';
 
+//Verifica se o usuário está logado, e, caso esteja, ele busca o nome de usuário correspondente ao id do usuário no banco de dados
 if (isset($_SESSION['id'])) {
     $userId = $_SESSION['id'];
     $sql = "SELECT username FROM clientes WHERE id = ?";

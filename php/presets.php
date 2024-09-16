@@ -1,11 +1,13 @@
 <?php
    include 'connection.php';
-   session_start(); 
+   session_start(); //inicia a sessão
+   //Variáveis para serem usada para armazenamento de dados e utilização em páginas que precisam dessas informações
    $username = '';
    $role = '';
    $email = '';
    $fullname = '';
    
+   //Este código verifica se o usuário está logado, obtém o id da sessão, e então busca no banco de dados as informações desejadas usando uma consulta SQL preparada, protegendo assim contra injeção de SQL
    if (isset($_SESSION['id'])) {
       $userId = $_SESSION['id'];
       $sql = "SELECT username, cargo, email, nome FROM clientes WHERE id = ?";

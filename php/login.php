@@ -18,7 +18,8 @@ if (isset($_POST['Email']) && isset($_POST['Password'])) {
     } else {
         $usuario = $mysqli->real_escape_string($_POST['Email']);
         $Senha = $mysqli->real_escape_string($_POST['Password']);
-
+        
+        //Verifica se o email e a senha correspondem aos dados inseridos no banco de dados
         $sql_code = "SELECT * FROM clientes WHERE email = '$usuario' AND senha = '$Senha'";
         $sql_query = $mysqli->query($sql_code) or die(json_encode(['message' => "Falha na execução do código SQL"]));
 
