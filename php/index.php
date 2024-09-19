@@ -59,9 +59,50 @@
   ?>
   </div>
     
-  <?php
-   echo htmlFooter();
-  ?>  
+  <footer>
+    <div id="footer-content">
+        <div id="footer-top">
+          <section id="section1">
+            <img src="../resources/images/logo-branca-grande.png" id="logo-footer">
+            <p>Cadastre-se em nossa Newsletter para receber novidades e promoções!</p>
+            <input type="email" name="e-news" id="email-news">
+          </section>
+          <section id="section2">
+            <h4>Grupo Soma</h4>
+            <ul>
+              <li>Home</li>
+              <li>Sobre</li>
+              <li>Time</li>
+            </ul>
+          </section>
+          <section id="section3">
+            <h4>Documentação</h4>
+            <ul>
+              <li>Central de Ajuda</li>
+              <li>Contato</li>
+              <li>FAQ</li>
+              <li>Política de privacidade</li>
+            </ul>
+          </section>
+          <section id="section4">
+            <h4>Redes Sociais</h4>
+            <ul>
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>Youtube</li>
+              <li>Twitter</li>
+            </ul>
+          </section>
+        </div>
+        <div id="footer-bottom">
+          <div id="linha"></div>
+          <div id="direitos">
+            <h5>&copy;VesteVerso. Todos os direitos reservados 2024</h5>
+            <h5>Termos & Condições</h5>
+          </div>
+        </div>
+    </div>
+  </footer>
     
     <script>
       function trocarImagem() {
