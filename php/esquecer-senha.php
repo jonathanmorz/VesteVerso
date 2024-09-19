@@ -23,13 +23,15 @@
 
         <div class="direita">
             <h2>Esqueceu a senha?</h2>
-            <p> Não se preocupe, nós podemos ajudar.</p>
-            <form>
+            <p id="informacao"> Não se preocupe, nós podemos ajudar.</p>
+            
                 <input type="email" id="email" placeholder="Insira seu endereço de e-mail">
-                <p class="instrucoes">
+                <p id="instrucoes">
                     Se existir uma conta com o e-mail informado, você receberá um e-mail com as instruções para recuperar sua conta.
                 </p>
+                <div id="botão">
                 <button type="submit">Continuar</button>
+                </div>
             </form>
         </div>
     </div>

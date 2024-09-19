@@ -17,36 +17,42 @@
     max-height: 100vh;
     padding: 40px;
     align-items: center;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
+    
 }
 
 .icone-info img {
-    width: 50px;
-    height: 50px;
-    margin: 50px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 80px;
+    margin-top: 50px;
 }
 
 .esquerda h2 {
     color: #555;
-    font-size: 30px;
-    margin-bottom: 15px;
+    font-size: 34px;
+    margin-bottom: 25px;
     text-align: center;
+    font-weight: bold;
 }
 
 .esquerda p {
-    font-size: 20px;
+    font-size: 22px;
     color: #666;
     margin-bottom: 20px;
     text-align: center;
 }
 
 .esquerda ul {
-    list-style: circle;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .esquerda ul li {
-    font-size: 18px;
+    font-size: 20px;
     color: #666;
     margin-bottom: 5px;
 }
@@ -59,18 +65,27 @@
     width: 45%;
     height: 645px;
     max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .direita h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
+    font-size: 50px;
+    margin-bottom: 5px;
     color: white;
 }
 
-.direita p {
+#informacao {
+    font-size: 18px;
+    color: rgba(228, 218, 218, 0.822);
+    margin-left: 15px;
+}
+
+#instrucoes {
     font-size: 14px;
     margin-bottom: 30px;
-    color: rgb(228, 218, 218);
+    color: rgba(228, 218, 218, 0.822);
 }
 
 form {
@@ -81,10 +96,12 @@ form {
 #email {
     padding: 15px;
     margin-bottom: 20px;
+    margin-top: 40px;
     border: none;
     border-radius: 5px;
-    width: 80%;
+    width: 490px;
     align-items: center;
+    font-size: 18px;
 }
 
 button {
@@ -97,6 +114,13 @@ button {
     font-size: 16px;
     width: 20%;
     transition: all .2s ease-in-out;
+    margin-top: 30px;
+    margin-right: 48px;
+}
+
+#botão {
+    justify-content: end;
+    display: flex;
 }
 
 button:hover {
