@@ -1,7 +1,8 @@
 <?php
-  require_once 'presets.php';
   require_once 'connection.php';
+  require_once 'presets.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,50 +17,60 @@
 
 </head>
 <body>
-    <?php
-      echo htmlHeader($username, $role);
-    ?>
-    <h1>Produtos</h1>
-    <div id="produtos">
-    <?php $sql = "SELECT * FROM produtos WHERE categoria = 'roupa_fem'";    
-          $result = $mysqli->query($sql);
+  <?php
+    echo htmlHeader($username, $role);
+  ?>
     
-          if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-              echo '<div class="cards-no-wrap">
-                        <div class="card-produto d-none d-md-block">
-                          <a href="produto.php?id=' . $row["id"] . '">
-                            <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 13rem;">
-                            <h2 class="titulo-produto">' . $row["nome"] . '</h2>
-                            <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
-                          </a>
-                          <div class="div-botao">
-                            <button class="button-card-outline"><a href="enviar-carrinho.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
-                            <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
-                            <script>
-                              function trocarImagem' . $row["id"] . '() {
-                                var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
-                                if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                                  coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                                } else {
-                                  coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                                }
-                              }
-                            </script>
-                          </div>
-                        </div>
-                        </div>
-                      </div>';
-            }
-        } else {
-            echo "0 resultados";
-        }
-        ?>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" >
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="../resources/images/banner_fem/banner001.png" alt="Primeiro Slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../resources/images/banner_fem/banner002.png" alt="Segundo Slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../resources/images/banner_fem/banner003.png" alt="Terceiro Slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../resources/images/banner_fem/banner004.png" alt="Segundo Slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../resources/images/banner_fem/banner005.png" alt="Terceiro Slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../resources/images/banner_fem/banner006.png" alt="Segundo Slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+      </a>
+    </div>
 
-    <?php
-      echo htmlFooter();
-    ?>
+  <h1>Em destaque</h1>
+  <div id="overflow">
+  <?php
+    //Seleciona produtos que estão em alta a partir de uma pesquisa no banco de dados utilizando de um código SQL
+    $sql = "SELECT * FROM produtos WHERE categoria = 'roupa_fem' and em_alta = 1";    
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    echo htmlCardsPadrao($row, $result)
+  ?>
+  </div>
     
+  <?php
+   echo htmlFooter();
+  ?>  
     
     <script>
       function trocarImagem() {

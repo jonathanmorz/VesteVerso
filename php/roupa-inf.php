@@ -1,22 +1,8 @@
 <?php
-  require_once 'presets.php';
   require_once 'connection.php';
+  require_once 'presets.php';
 ?>
 
-<?php
-$username = '';
-
-if (isset($_SESSION['id'])) {
-    $userId = $_SESSION['id'];
-    $sql = "SELECT username FROM clientes WHERE id = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $userId);
-    $stmt->execute();
-    $stmt->bind_result($username);
-    $stmt->fetch();
-    $stmt->close();
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,9 +10,8 @@ if (isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VesteVerso</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/presets.css">
-    <link rel="stylesheet" href="../css/card.css">
+    <link rel="stylesheet" href="../css/categorias-roupas.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 
@@ -35,18 +20,45 @@ if (isset($_SESSION['id'])) {
   <?php
     echo htmlHeader($username, $role);
   ?>
+    
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" >
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="../resources/images/banner_inf/banner001.png" alt="Primeiro Slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="../resources/images/banner_inf/banner002.png" alt="Segundo Slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+      </a>
+    </div>
 
-  <div id="produtos">
-  <?php $sql = "SELECT * FROM produtos WHERE categoria = 'roupa_inf'";    
-        $result = $mysqli->query($sql);
-        $row = $result->fetch_assoc();
-        echo htmlCardsNoWrap($row, $result);
+  <h1>Em destaque</h1>
+  <div id="overflow">
+  <?php
+    //Seleciona produtos que estão em alta a partir de uma pesquisa no banco de dados utilizando de um código SQL
+    $sql = "SELECT * FROM produtos WHERE categoria = 'roupa_inf' and em_alta = 1";    
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    echo htmlCardsPadrao($row, $result)
   ?>
   </div>
-  
+    
   <?php
-    echo htmlFooter();
-  ?>
+   echo htmlFooter();
+  ?>  
     
     <script>
       function trocarImagem() {
