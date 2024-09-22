@@ -151,17 +151,25 @@ function htmlCardsNoWrap($row, $result)
                       </a>
                       <div class="div-botao">
                         <button class="button-card-outline"><a href="enviar-carrinho.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
-                        <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '" onclick="trocarImagem' . $row["id"] . '()">
-                        <script>
-                          function trocarImagem' . $row["id"] . '() {
-                            var coracaofavoritar = document.getElementById("coracao-favoritar' . $row["id"] . '");
-                            if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                              coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                            } else {
-                              coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                            }
-                          }
-                        </script>
+                        <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
+                                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
+                                  </button>
+                                  <script>
+                                  function favoritarProduto(produtoId) {
+                                      var coracaofavoritar = document.getElementById("coracao-favoritar" + produtoId);
+                                      
+                                      // Verifica a imagem atual e troca a imagem ao clicar
+                                      if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
+                                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
+                                      } else {
+                                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
+                                      }
+                                      
+                                      // Faz a requisição AJAX
+                                      var xhr = new XMLHttpRequest();
+                                      xhr.open("GET", "enviar-favoritos.php?acao=add&id=" + produtoId, true);
+                                      xhr.send();
+                                  }
                       </div>
                     </div>
                     </div>
