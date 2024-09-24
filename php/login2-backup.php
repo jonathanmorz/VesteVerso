@@ -23,50 +23,50 @@
                         <h1 id="tiulo-cadastro">Cadastro</h1>
                     </div>
                     <div id="nome-div">
-                        <span for="nome">Nome</span> 
+                        <span>Nome</span> 
                     </div>
                     <div id="nome-input-div">
                         <input type="text" id="nome" name="Nome" class="input-email-senha">
                     </div>
                     <div id="sobrenome-div">
-                        <span for="sobrenome">Sobrenome</span> 
+                        <span>Sobrenome</span> 
                     </div>
                     <div id="sobrenome-input-div">
                         <input type="text" id="sobrenome" name="Sobrenome" class="input-email-senha">
                     </div>
                     <div id="email-div">
-                        <span for="email">Email</span> 
+                        <span>Email</span> 
                     </div>
                     <div id="email-input-div">
                         <input type="text" id="email" name="Email" class="input-email-senha"> 
                     </div>
                     <div id="senha-div">
-                        <span for="senha">Senha</span> 
+                        <span>Senha</span> 
                     </div>
                     <div id="senha-input-div">
                         <input type="password" id="senha" name="Password" class="input-email-senha">
                     </div>
                     <div id="cpf-div">
-                        <span for="cpf">CPF</span> 
+                        <span>CPF</span> 
                     </div>
                     <div id="cpf-input-div">
                         <input type="number" id="cpf" name="CPF" class="input-email-senha">
                     </div>
                     <div id="sexo-div">
-                        <span for="senha">Sexo</span> 
+                        <span>Sexo</span> 
                     </div>
                     <div id="radios">
 
                         <input type="radio" class="radio" id="masc" name="sex-rad" value="Masculino" checked>
-                        <label for="masc">Masculino</label>
+                        <label for="masc" class="label-sexo">Masculino</label>
 
 
                         <input type="radio" class="radio" id="fem" name="sex-rad" value="Feminino">
-                        <label for="fem">Feminino</label>
+                        <label for="fem" class="label-sexo">Feminino</label>
 
 
                         <input type="radio" class="radio" id="outro" name="sex-rad" value="Outro">
-                        <label for="outro">Outro</label>
+                        <label for="outro" class="label-sexo">Outro</label>
 
                     </div>
                     <div id="botao"><button id="enviar" onclick="logar()">Enviar</button> </div>

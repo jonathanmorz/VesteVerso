@@ -21,7 +21,7 @@ body {
     font-family: "Josefin-Sans", sans-serif;
     background-image: url(../resources/images/fundo-login.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
 }
 
 h1 {
@@ -177,6 +177,14 @@ input:focus {
     display: inline-flex;
 }
 
+#sexo-div {
+    padding-bottom: 10px;
+}
+
+.label-sexo {
+    padding: 0px 5px;
+}
+
 .div-erro {
     display: inline-flex;
     background-color: rgb(255, 150, 150);
@@ -186,54 +194,3 @@ input:focus {
     transform: translate(275%, -1700%);
     border-radius: 10px;
 }
-
-/* Esconder o input radio padrão */
-input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-  
-/* Estilizar o label para simular a caixa do radio */
-label {
-    position: relative;
-    padding-left: 30px; /* Espaço para o pseudo-elemento */
-    cursor: pointer;
-    display: inline-block;
-    line-height: 20px;
-    color: #fff;
-}
-  
-/* Criar a aparência do botão de rádio */
-label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    border: 2px solid #ddd;
-    border-radius: 50%;
-    background-color: #fff; /* Cor da caixa do radio */
-}
-  
-/* Estilizar a caixa do radio quando o input está selecionado */
-input[type="radio"]:checked + label::before {
-    background-color: #fff; /* Cor de fundo quando selecionado */
-    border-color: #fff; /* Cor da borda quando selecionado */
-}
-  
-/* Adicionar um círculo interno ao botão de rádio quando selecionado */
-input[type="radio"]:checked + label::after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #561AA4; /* Cor do círculo interno */
-}
-  
