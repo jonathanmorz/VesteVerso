@@ -21,19 +21,19 @@
     echo htmlHeaderNoNavBar($username, $role);
   ?>
 
-    <div id="informacoes">
+  <div id="informacoes">
       <h1><strong> Minhas Informações: </strong></h1>
       <ul id="lista">
         <li>Usuário: <?php echo htmlspecialchars($username); ?></li>
         <li>Nome completo: <?php echo htmlspecialchars($fullname); ?></li>
         <li>E-mail: <?php echo htmlspecialchars($email);?></li>
-
       </ul>
-        
 
+       
+        <button type="submit" id="cadastrar"><a id="link" href="../php/cadastro-endereço.php">Cadastrar endereço</a></button>
+  
 
-
-
+      
     </div>
           
 

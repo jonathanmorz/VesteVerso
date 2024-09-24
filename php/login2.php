@@ -22,16 +22,16 @@
                     <div id="titulo"> <!-- div para posicionar título -->
                         <h1 id="tiulo-login">Login</h1> <!-- título -->
                     </div>
-                    <div id="email"> <!-- div para posicionar título email -->
-                        <label for="email">Email</label>  <!-- título email -->
+                    <div id="email-div"> <!-- div para posicionar título email -->
+                        <span>Email</span>  <!-- título email -->
                     </div>
-                    <div id="email-input"> <!-- div para posicionar input email -->
+                    <div id="email-input-div"> <!-- div para posicionar input email -->
                         <input type="email" id="email" name="Email" class="input-email-senha"> <!-- input email -->
                     </div>
-                    <div id="senha"> <!-- div para posicionar título senha -->
-                        <label for="senha">Senha</label>  <!-- título senha -->
+                    <div id="senha-div"> <!-- div para posicionar título senha -->
+                        <span>Senha</span>  <!-- título senha -->
                     </div>
-                    <div id="senha-input"> <!-- div para posicionar input senha -->
+                    <div id="senha-input-div"> <!-- div para posicionar input senha -->
                         <input type="password" id="senha" name="Password" class="input-email-senha">  <!-- input senha -->
                     </div>
                     <div id="checkbox"> <!-- div para posicionar checkbox -->

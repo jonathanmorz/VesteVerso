@@ -7,8 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <title>VesteVerso</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/cadastro-endereço.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/cadastro-endereço.css">
     <link rel="stylesheet" href="../css/presets.css">
     <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
