@@ -14,14 +14,16 @@
 
 html, body {
     max-height: 100vh;
-    max-height: 100vh;
+    overflow: hidden;
 }
 
 body {
     font-family: "Josefin-Sans", sans-serif;
     background-image: url(../resources/images/fundo-login.png);
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-attachment: fixed;
 }
 
 h1 {
@@ -36,7 +38,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 7% 12%;
 }
 
 #logo {
@@ -49,6 +50,20 @@ form {
     padding: 40px 55px;
     margin: 10px;
     border-radius: 20px;
+}
+
+form.cadastro {
+    background-color: #561AA4;
+    color: #fff;
+    padding: 25px 55px;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+#titulo.cadastro {
+    display: flex;
+    padding: 5px 0px;
+    justify-content: center; 
 }
 
 #titulo {
@@ -193,4 +208,42 @@ input:focus {
     position: absolute;
     transform: translate(275%, -1700%);
     border-radius: 10px;
+}
+
+#login-content{
+    transform: translateX(-25%);
+}
+
+#logo{
+    transform: translateX(-55%);
+}
+
+#login-content.show {
+    transform: translateX(-25%);
+    transition: 1s;
+}
+
+#login-content.hide {
+    transform: translateX(100%);
+    transition: 1s;
+}
+
+#cadastro-content.hide {
+    transform: translateX(-150%);
+    transition: 1s;
+}
+
+#cadastro-content.show {
+    transform: translateX(45%);
+    transition: 1s;
+}
+
+#logo.show{
+    transform: translateX(-55%);
+    transition: 1s;
+}
+
+#logo.hide{
+    transform: translateX(55%);
+    transition: 1s;
 }
