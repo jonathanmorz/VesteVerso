@@ -38,31 +38,36 @@ function htmlHeaderNoNavBar($username = null, $role)
         <button id="button-pesquisa" type="submit"><a href="#" class="pesquisa-btn"><img src="../resources/images/lupa2.png" alt="Lupa" width="20" height="20"></a>
         </button>
     </div>
-      </form>
+        </form>
       
-      <div id="div-direita-header">        
-                  <ul id="ul-dropdown">
-                      <li class="dropdown" type="none">
-                          <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
-                          <div class="dropdown-menu">
-                              <?php if ($username && $role == "cliente"): ?>
-                                  <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span>
-                                  <a href="logout.php" class="link-header">Sair</a>
-                              <?php elseif ($username && $role == "admin"): ?>
-                                  <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
-                                  <a href="produtos.php" class="link-header">Lista de produtos</a>
-                                  <a href="logout.php" class="link-header">Sair</a>
-                              <?php else: ?>
-                                  <a href="../php/Cadastro.php" class="login-drop">Cadastre-se</a>
-                                  <a href="../php/login2.php" class="login-drop">Entrar</a>
-                              <?php endif; ?>
-                          </div>
-                      </li>
-                  </ul>
-                  <a href="carrinho.php"><img src="../resources/images/carrinho.svg" alt="carrinho" id="carrinho" class="img-header" height="51px" width="51px"></a>
-                  <a href="favoritos.php"><img src="../resources/images/solid-heart.svg" alt="coracao-favorito" id="coracao-favorito" class="img-header" height="51px" width="51px"></a>
-              
-      </div>
+        <div id="div-direita-header">        
+          <?php if ($username && $role == "cliente"): ?>
+            <ul id="ul-dropdown">
+                <li class="dropdown" type="none">
+                    <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
+                    <div class="dropdown-menu">
+                        <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span>
+                        <a href="logout.php" class="link-header">Sair</a>
+                    </div>
+                </li>
+            </ul>
+            <?php elseif ($username && $role == "admin"): ?>
+                <ul id="ul-dropdown">
+                    <li class="dropdown" type="none">
+                        <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
+                        <div class="dropdown-menu">
+                            <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
+                            <a href="produtos.php" class="link-header">Lista de produtos</a>
+                            <a href="logout.php" class="link-header">Sair</a>
+                        </div>
+                    </li>
+                </ul>
+            <?php else: ?>
+                <a id="menu-drop" href="../php/login2.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
+            <?php endif; ?>
+            <a href="carrinho.php"><img src="../resources/images/carrinho.svg" alt="carrinho" id="carrinho" class="img-header" height="51px" width="51px"></a>
+            <a href="favoritos.php"><img src="../resources/images/solid-heart.svg" alt="coracao-favorito" id="coracao-favorito" class="img-header" height="51px" width="51px"></a>       
+        </div>
     </header>
     <?php
     return ob_get_clean();
@@ -186,9 +191,51 @@ function htmlFooter()
 {
     $htmlFooter = <<<HTML
     <footer>
-      <div id="footer-content">
-          <img src="../resources/images/logo-roxa-grande" alt="" srcset="">
-      </div>
+        <div id="footer-content">
+            <div id="footer-top">
+            <section class="footer-grid" id="section1">
+                <img src="../resources/images/logo-branca-grande.png" id="logo-footer">
+                <p>Cadastre-se em nossa Newsletter para receber novidades e promoções!</p>
+                <div class="div-email">
+                <input type="email" name="e-news" class="input-email" placeholder="Digite seu email">
+                <button id="btn-enviar"><img id="seta-direita" src="../resources/images/seta-direita.png" alt="Seta-Direita" width="20" height="20"></button>
+                </div>
+            </section>
+            <section class="footer-grid" id="section2">
+                <h4>Grupo Soma</h4>
+                <ul>
+                <li>Home</li>
+                <li>Sobre</li>
+                <li>Time</li>
+                </ul>
+            </section>
+            <section class="footer-grid" id="section3">
+                <h4>Documentação</h4>
+                <ul>
+                <li>Central de Ajuda</li>
+                <li>Contato</li>
+                <li>FAQ</li>
+                <li>Política de privacidade</li>
+                </ul>
+            </section>
+            <section class="footer-grid" id="section4">
+                <h4>Redes Sociais</h4>
+                <ul>
+                <li>Facebook</li>
+                <li>Instagram</li>
+                <li>Youtube</li>
+                <li>Twitter</li>
+                </ul>
+            </section>
+            </div>
+            <div id="footer-bottom">
+            <div id="linha"></div>
+            <div id="direitos">
+                <h5>&copy;VesteVerso. Todos os direitos reservados 2024</h5>
+                <h5>Termos & Condições</h5>
+            </div>
+            </div>
+        </div>
     </footer>
     HTML;
 

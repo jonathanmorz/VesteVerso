@@ -59,54 +59,8 @@
   ?>
   </div>
     
-  <footer>
-    <div id="footer-content">
-        <div id="footer-top">
-          <section class="footer-grid" id="section1">
-            <img src="../resources/images/logo-branca-grande.png" id="logo-footer">
-            <p>Cadastre-se em nossa Newsletter para receber novidades e promoções!</p>
-            <div class="div-email">
-              <input type="email" name="e-news" class="input-email" placeholder="Digite seu email">
-              <button id="btn-enviar"><img id="seta-direita" src="../resources/images/seta-direita.png" alt="Seta-Direita" width="20" height="20"></button>
-            </div>
-          </section>
-          <section class="footer-grid" id="section2">
-            <h4>Grupo Soma</h4>
-            <ul>
-              <li>Home</li>
-              <li>Sobre</li>
-              <li>Time</li>
-            </ul>
-          </section>
-          <section class="footer-grid" id="section3">
-            <h4>Documentação</h4>
-            <ul>
-              <li>Central de Ajuda</li>
-              <li>Contato</li>
-              <li>FAQ</li>
-              <li>Política de privacidade</li>
-            </ul>
-          </section>
-          <section class="footer-grid" id="section4">
-            <h4>Redes Sociais</h4>
-            <ul>
-              <li>Facebook</li>
-              <li>Instagram</li>
-              <li>Youtube</li>
-              <li>Twitter</li>
-            </ul>
-          </section>
-        </div>
-        <div id="footer-bottom">
-          <div id="linha"></div>
-          <div id="direitos">
-            <h5>&copy;VesteVerso. Todos os direitos reservados 2024</h5>
-            <h5>Termos & Condições</h5>
-          </div>
-        </div>
-    </div>
-  </footer>
-    
+  <?php echo htmlFooter() ?>
+
     <script>
       function trocarImagem() {
           var coracaofavoritar = document.getElementById('coracao-favoritar');
