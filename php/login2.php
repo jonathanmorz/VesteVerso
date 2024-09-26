@@ -91,7 +91,7 @@
                         <input type="checkbox" id="checkbox-lembrar"> <label for="checkbox-lembrar">Lembrar de mim</label> <!-- checkbox -->
                     </div>
                     <div id="esqueceu-a-senha"> <!-- div para posicionar esqueceu a senha -->
-                        <a href="#">Esqueceu a senha?</a> <!-- esqueceu a senha -->
+                        <a href="../php/esquecer-senha.php">Esqueceu a senha?</a> <!-- esqueceu a senha -->
                     </div>
                     <div id="botao"> <!-- div para posicionar botão de entrar -->
                         <button id="enviar" onclick="logar()">Entrar</button>  <!-- botão de entrar -->
