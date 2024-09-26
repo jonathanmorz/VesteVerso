@@ -65,7 +65,10 @@
           <section class="footer-grid" id="section1">
             <img src="../resources/images/logo-branca-grande.png" id="logo-footer">
             <p>Cadastre-se em nossa Newsletter para receber novidades e promoções!</p>
-            <input type="email" name="e-news" id="email-news" placeholder="Digite seu email">
+            <div class="div-email">
+              <input type="email" name="e-news" class="input-email" placeholder="Digite seu email">
+              <button id="btn-enviar"><img id="seta-direita" src="../resources/images/seta-direita.png" alt="Seta-Direita" width="20" height="20"></button>
+            </div>
           </section>
           <section class="footer-grid" id="section2">
             <h4>Grupo Soma</h4>

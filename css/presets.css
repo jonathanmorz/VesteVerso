@@ -81,6 +81,7 @@ header {
     color: black;
     font-size: 16px;
     width: 600px;
+    margin-left: 5px;
 }
 
 #button-pesquisa {
