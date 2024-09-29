@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29/09/2024 às 06:10
+-- Tempo de geração: 29/09/2024 às 16:00
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,14 +57,13 @@ INSERT INTO `carrinho` (`id`, `user_id`, `produto_id`, `quantidade`, `criado_em`
 
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
-  `nome` varchar(30) DEFAULT NULL,
-  `username` varchar(20) DEFAULT NULL,
-  `email` varchar(40) DEFAULT NULL,
-  `senha` varchar(20) DEFAULT NULL,
-  `telefone` varchar(12) DEFAULT NULL,
-  `cpf` varchar(11) DEFAULT NULL,
-  `endereco` varchar(40) DEFAULT NULL,
-  `cep` varchar(8) DEFAULT NULL,
+  `nome` varchar(20) NOT NULL,
+  `sobrenome` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `senha` varchar(20) NOT NULL,
+  `sexo` varchar(12) NOT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `cep` varchar(8) NOT NULL,
   `cargo` varchar(20) NOT NULL DEFAULT 'cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -72,20 +71,21 @@ CREATE TABLE `clientes` (
 -- Despejando dados para a tabela `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nome`, `username`, `email`, `senha`, `telefone`, `cpf`, `endereco`, `cep`, `cargo`) VALUES
-(1, 'Yuri Lopes', 'yuzzy', 'tpnvlnd@gmail.com', 'luiz1227', '21982893856', '140.961.387', 'Rua Frei Alexandre', '21230070', 'admin'),
-(2, 'dwads', '', '', '', '', '', '', '', 'cliente'),
-(3, 'Tico Teco', 'Tetoticoteco', 'Tecotico@gmail.com', '12345678', '21982893856', '29712474647', 'Rua Frei Alexandre', '21230070', 'cliente'),
-(4, 'Daniel Dias', 'danielnoites07', 'robloxlandia456123@gmail.com', 'Ba456123', '21 982324256', '02374802753', 'Rua Gonçalves Crespo, 22', '25032904', 'cliente'),
-(21, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', '', 'cliente'),
-(22, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', '', 'cliente'),
-(23, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', '', 'cliente'),
-(24, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', '', 'cliente'),
-(25, 'wkajkldj', 'aaabbb', 'aaabbb@gmail.com', 'aaabbb', '321331', '1232131', '3131', '31313', 'cliente'),
-(26, 'Teste', 'teste', 'teste@gmail.com', 'teste123', '11111111111', '11111111111', 'Teste', '11111111', 'cliente'),
-(27, 'Teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'teste', 'cliente'),
-(28, 'Teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'teste', 'cliente'),
-(29, 'teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'teste', 'cliente');
+INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `email`, `senha`, `sexo`, `cpf`, `cep`, `cargo`) VALUES
+(1, 'Yuri Lopes', 'yuzzy', 'tpnvlnd@gmail.com', 'luiz1227', '21982893856', '140.961.387', '21230070', 'admin'),
+(2, 'dwads', '', '', '', '', '', '', 'cliente'),
+(3, 'Tico Teco', 'Tetoticoteco', 'Tecotico@gmail.com', '12345678', '21982893856', '29712474647', '21230070', 'cliente'),
+(4, 'Daniel Dias', 'danielnoites07', 'robloxlandia456123@gmail.com', 'Ba456123', '21 982324256', '02374802753', '25032904', 'cliente'),
+(21, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
+(22, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
+(23, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
+(24, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
+(25, 'wkajkldj', 'aaabbb', 'aaabbb@gmail.com', 'aaabbb', '321331', '1232131', '31313', 'cliente'),
+(26, 'Teste', 'teste', 'teste@gmail.com', 'teste123', '11111111111', '11111111111', '11111111', 'cliente'),
+(27, 'Teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'cliente'),
+(28, 'Teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'cliente'),
+(29, 'teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'cliente'),
+(30, 'Raio', 'Irrita Ler', 'neguinhodamata@gmail.com', 'ritogomes', 'Outro', '19232084222', '', 'cliente');
 
 -- --------------------------------------------------------
 
@@ -206,7 +206,7 @@ ALTER TABLE `carrinho`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `favoritos`

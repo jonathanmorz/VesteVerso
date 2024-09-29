@@ -14,7 +14,7 @@
     <div id="container"> <!-- div geral -->
         
         <div id="cadastro-content" class="hide">
-            <form action="" method="POST" id="cadastroForm" class="cadastro">
+            <form action="enviar-cadastro.php" method="POST" id="cadastroForm" class="cadastro">
                 <div id="titulo" class="cadastro">
                     <h1 id="tiulo-cadastro">Cadastro</h1>
                 </div>
