@@ -18,7 +18,7 @@
 </head>
 <body>
   <?php
-    echo htmlHeader($username, $role);
+    echo htmlHeader($nome, $role);
   ?>
     
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -55,7 +55,7 @@
     $sql = "SELECT * FROM produtos WHERE em_alta = 1";    
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
-    echo htmlCardsPadrao($row, $result)
+    echo htmlCardsPadrao($row, $result, $mysqli) 
   ?>
   </div>
     

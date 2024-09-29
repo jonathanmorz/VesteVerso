@@ -17,7 +17,7 @@
 </head>
 <body>
     <?php
-        echo htmlHeaderNoNavBar($username, $role); //header
+        echo htmlHeaderNoNavBar($nome, $role); //header
     ?>
 
     <p style="padding-left: 20px;"> <!-- Mensagem de erro -->

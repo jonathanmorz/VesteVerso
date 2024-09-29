@@ -2,7 +2,7 @@
    include 'connection.php';
    session_start(); //inicia a sessão
    //Variáveis para serem usada para armazenamento de dados e utilização em páginas que precisam dessas informações
-   $username = '';
+   $nome = '';
    $role = '';
    $email = '';
    $fullname = '';
@@ -10,18 +10,18 @@
    //Este código verifica se o usuário está logado, obtém o id da sessão, e então busca no banco de dados as informações desejadas usando uma consulta SQL preparada, protegendo assim contra injeção de SQL
    if (isset($_SESSION['id'])) {
       $userId = $_SESSION['id'];
-      $sql = "SELECT username, cargo, email, nome FROM clientes WHERE id = ?";
+      $sql = "SELECT nome, cargo, email, nome FROM clientes WHERE id = ?";
       $stmt = $mysqli->prepare($sql);
       $stmt->bind_param("i", $userId);
       $stmt->execute();
-      $stmt->bind_result($username, $role, $email, $fullname);
+      $stmt->bind_result($nome, $role, $email, $fullname);
       $stmt->fetch();
       $stmt->close();
    }
 ?>
 
 <?php
-function htmlHeaderNoNavBar($username = null, $role) 
+function htmlHeaderNoNavBar($nome = null, $role) 
 {
     ob_start();
     ?>
@@ -41,22 +41,22 @@ function htmlHeaderNoNavBar($username = null, $role)
         </form>
       
         <div id="div-direita-header">        
-          <?php if ($username && $role == "cliente"): ?>
+          <?php if ($nome && $role == "cliente"): ?>
             <ul id="ul-dropdown">
                 <li class="dropdown" type="none">
                     <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
                     <div class="dropdown-menu">
-                        <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span>
+                        <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($nome); ?></span>
                         <a href="logout.php" class="link-header">Sair</a>
                     </div>
                 </li>
             </ul>
-            <?php elseif ($username && $role == "admin"): ?>
+            <?php elseif ($nome && $role == "admin"): ?>
                 <ul id="ul-dropdown">
                     <li class="dropdown" type="none">
                         <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
                         <div class="dropdown-menu">
-                            <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($username); ?></span></div>
+                            <div><span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($nome); ?></span></div>
                             <a href="produtos.php" class="link-header">Lista de produtos</a>
                             <a href="logout.php" class="link-header">Sair</a>
                         </div>
@@ -75,11 +75,11 @@ function htmlHeaderNoNavBar($username = null, $role)
    ?>
 
 <?php
-function htmlHeader($username = null, $role) 
+function htmlHeader($nome = null, $role) 
 {
     ob_start();
     ?>
-    <?php echo htmlHeaderNoNavBar($username, $role) ?> 
+    <?php echo htmlHeaderNoNavBar($nome, $role) ?> 
     <nav>
       <a href="roupa-masc.php">Roupas Masculinas</a>
       <a href="roupa-fem.php">Roupas Femininas</a>
@@ -92,54 +92,62 @@ function htmlHeader($username = null, $role)
 ?>
 
 <?php
-function htmlCardsPadrao($row, $result) 
+function htmlCardsPadrao($row, $result, $mysqli) 
 {
-    if ($result->num_rows > 0) {
-        $html = '';
-        while($row = $result->fetch_assoc()) {
-          $html .= '<div class="cards-wrapper">
-          <div class="card-produto d-md-block">
-          <a href="produto.php?id=' . $row["id"] . '">
-          <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
-          <div class="nome-produto">
-          <h2 class="titulo-produto">' . $row["nome"] . '</h2>
-                              </div>
-                              <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
-                              </a>
-                              <div class="div-botao">
-                              <button class="button-card-outline">
-                                  <a href="enviar-carrinho.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
-                                  </button>
-                                  <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
-                                  <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
-                                  </button>
-                                  <script>
-                                  function favoritarProduto(produtoId) {
-                                      var coracaofavoritar = document.getElementById("coracao-favoritar" + produtoId);
-                                      
-                                      // Verifica a imagem atual e troca a imagem ao clicar
-                                      if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                                          coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                                      } else {
-                                          coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                                      }
-                                      
-                                      // Faz a requisição AJAX
-                                      var xhr = new XMLHttpRequest();
-                                      xhr.open("GET", "enviar-favoritos.php?acao=add&id=" + produtoId, true);
-                                      xhr.send();
-                                  }
-                                  </script>
-                              </div>
-                              </div>
-                              </div>';
+    include('connection.php');
 
-                }
-                return $html;
-    } else {
-        return "0 resultados";
+    $html = '';
+    while($row = $result->fetch_assoc()) {
+        // Verifica se o produto já foi favoritado pelo usuário
+        $stmt = $mysqli->prepare("SELECT * FROM favoritos WHERE user_id = ? AND produto_id = ?");
+        $stmt->bind_param("ii", $userId, $row['id']);
+        $stmt->execute();
+        $favoritado = $stmt->get_result()->num_rows > 0;
+
+        // Define a imagem inicial do coração com base no status de favoritado
+        $coracaoImg = $favoritado ? "../resources/images/coracao-solido-roxo.png" : "../resources/images/coracao-roxo.png";
+
+        $html .= '<div class="cards-wrapper">
+                    <div class="card-produto d-md-block">
+                    <a href="produto.php?id=' . $row["id"] . '">
+                    <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
+                    <div class="nome-produto">
+                    <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+                                    </div>
+                                    <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
+                                    </a>
+                                    <div class="div-botao">
+                                    <button class="button-card-outline">
+                                        <a href="enviar-carrinho.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
+                                        </button>
+                                        <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
+                                        <img src="' . $coracaoImg . '" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
+                                        </button>
+                                        <script>
+                                        function favoritarProduto(produtoId) {
+                                            var coracaofavoritar = document.getElementById("coracao-favoritar" + produtoId);
+                                            
+                                            // Verifica a imagem atual e troca a imagem ao clicar
+                                            if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
+                                                coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
+                                            } else {
+                                                coracaofavoritar.src = "../resources/images/coracao-roxo.png";
+                                            }
+                                            
+                                            // Faz a requisição AJAX para salvar ou remover dos favoritos
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("GET", "enviar-favoritos.php?acao=toggle&id=" + produtoId, true);
+                                            xhr.send();
+                                        }
+                                        </script>
+                                    </div>
+                                    </div>
+                                    </div>';
     }
+
+    return $html;
 }
+
 ?>
 
 <?php

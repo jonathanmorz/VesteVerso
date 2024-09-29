@@ -57,7 +57,7 @@ $username = '';
 //Verifica se o usuário está logado, e, caso esteja, ele busca o nome de usuário correspondente ao id do usuário no banco de dados
 if (isset($_SESSION['id'])) {
     $userId = $_SESSION['id'];
-    $sql = "SELECT username FROM clientes WHERE id = ?";
+    $sql = "SELECT email FROM clientes WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $userId);
     $stmt->execute();
@@ -82,7 +82,7 @@ if (isset($_SESSION['id'])) {
 </head>
 <body>
    <?php
-      echo htmlHeader($username, $role);
+      echo htmlHeader($nome, $role);
    ?>
    <div id="conteudo">
       <table>

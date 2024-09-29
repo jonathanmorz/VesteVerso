@@ -23,7 +23,7 @@ $result = $mysqli->query($sql);
 </head>
 <body>
   <?php
-      echo htmlHeader($username, $role);
+      echo htmlHeader($nome, $role);
       ?>
     <div id="conteudo">
     <h4>Resultados da Pesquisa: </h4>

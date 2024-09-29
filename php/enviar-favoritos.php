@@ -9,10 +9,16 @@ if (!isset($_SESSION['id'])) {
 
 $userId = $_SESSION['id'];
 
+// Verifica se o produto já está nos favoritos
+$stmt = $mysqli->prepare("SELECT * FROM favoritos WHERE user_id = ? AND produto_id = ?");
+$stmt->bind_param("ii", $userId, $produtoId);
+$stmt->execute();
+$result = $stmt->get_result();
+
 // Restaurar carrinho a partir dos cookies, se existir
 if (isset($_COOKIE["favoritos_$userId"])) {
     $_SESSION['favoritos'] = unserialize($_COOKIE["favoritos_$userId"]);
-    setcookie("carrinho_$userId", '', time() - 3600, "/"); // Limpa o cookie
+    setcookie("favoritos$userId", '', time() - 3600, "/"); // Limpa o cookie
 } else {
     if (!isset($_SESSION['favoritos'])) {
         $_SESSION['favoritos'] = array();
