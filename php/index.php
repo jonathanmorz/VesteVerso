@@ -51,11 +51,23 @@
   <h1>Em destaque</h1>
   <div id="overflow">
   <?php
-    //Seleciona produtos que estão em alta a partir de uma pesquisa no banco de dados utilizando de um código SQL
-    $sql = "SELECT * FROM produtos WHERE em_alta = 1";    
-    $result = $mysqli->query($sql);
-    $row = $result->fetch_assoc();
-    echo htmlCardsPadrao($row, $result, $mysqli) 
+
+// Verifica se o usuário está logado e define o $userId
+if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+} else {
+    // Define o $userId como null ou qualquer outro valor padrão
+    $userId = null; // ou faça outro tratamento
+}
+$sql = "SELECT * FROM produtos WHERE em_alta = 1"; // Exemplo de consulta
+$result = $mysqli->query($sql);
+
+// Verifica se o resultado da consulta é válido
+if ($result) {
+    echo htmlCardsPadrao($result, $mysqli, $userId);
+} else {
+    echo "Erro ao buscar produtos: " . $mysqli->error;
+}
   ?>
   </div>
     

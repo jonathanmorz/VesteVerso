@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 include 'presets.php';
-include 'check_session.php';
+include 'check-session.php';
 
 // Buscar produtos do banco de dados
 $stmt = $pdo->query("SELECT * FROM produtos");
@@ -22,7 +22,7 @@ $username = '';
 
 if (isset($_SESSION['id'])) {
     $userId = $_SESSION['id'];
-    $sql = "SELECT username FROM clientes WHERE id = ?";
+    $sql = "SELECT email FROM clientes WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $userId);
     $stmt->execute();

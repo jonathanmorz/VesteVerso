@@ -19,7 +19,7 @@ $username = '';
 
 if (isset($_SESSION['id'])) {
     $userId = $_SESSION['id'];
-    $sql = "SELECT username FROM clientes WHERE id = ?";
+    $sql = "SELECT email FROM clientes WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $userId);
     $stmt->execute();

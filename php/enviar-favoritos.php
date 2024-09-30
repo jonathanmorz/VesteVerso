@@ -1,66 +1,51 @@
 <?php
+// enviar-favoritos.php
 session_start();
+require_once 'connection.php';
+require_once 'check-session.php';
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['id'])) {
-    header('Location:login2.php');
-    exit;
+    die("Usuário não logado.");
 }
 
 $userId = $_SESSION['id'];
+$produtoId = intval($_GET['id']);
+$acao = $_GET['acao'];
 
-// Verifica se o produto já está nos favoritos
-$stmt = $mysqli->prepare("SELECT * FROM favoritos WHERE user_id = ? AND produto_id = ?");
-$stmt->bind_param("ii", $userId, $produtoId);
-$stmt->execute();
-$result = $stmt->get_result();
-
-// Restaurar carrinho a partir dos cookies, se existir
-if (isset($_COOKIE["favoritos_$userId"])) {
-    $_SESSION['favoritos'] = unserialize($_COOKIE["favoritos_$userId"]);
-    setcookie("favoritos$userId", '', time() - 3600, "/"); // Limpa o cookie
-} else {
-    if (!isset($_SESSION['favoritos'])) {
-        $_SESSION['favoritos'] = array();
-    }
-}
-
-// Adiciona produto
-if (isset($_GET['acao'])) {
-    // ADICIONAR CARRINHO
-    if ($_GET['acao'] == 'add') {
-        $id = intval($_GET['id']);
-        if (!isset($_SESSION['favoritos'][$id])) {
-            $_SESSION['favoritos'][$id] = 1;
+if ($acao == 'add') {
+    // Verifica se o produto já está nos favoritos
+    $stmt = $mysqli->prepare("SELECT id FROM favoritos WHERE user_id = ? AND produto_id = ?");
+    $stmt->bind_param("ii", $userId, $produtoId);
+    $stmt->execute();
+    $stmt->store_result();
+    
+    // Se o produto não está nos favoritos, adiciona
+    if ($stmt->num_rows == 0) {
+        $stmt = $mysqli->prepare("INSERT INTO favoritos (user_id, produto_id, criado_em, atualizado_em) VALUES (?, ?, NOW(), NOW())");
+        $stmt->bind_param("ii", $userId, $produtoId);
+        if ($stmt->execute()) {
+            echo "Produto favoritado com sucesso!";
         } else {
-            $_SESSION['favoritos'][$id] += 1;
+            echo "Erro ao favoritar o produto.";
         }
+    } else {
+        echo "Produto já está nos favoritos.";
     }
-
-    // REMOVER CARRINHO
-    if ($_GET['acao'] == 'del') {
-        $id = intval($_GET['id']);
-        if (isset($_SESSION['favoritos'][$id])) {
-            unset($_SESSION['favoritos'][$id]);
-        }
-    }
-
-    // ALTERAR QUANTIDADE
-    if ($_GET['acao'] == 'up') {
-        if (is_array($_POST['prod'])) {
-            foreach ($_POST['prod'] as $id => $qtd) {
-                $id = intval($id);
-                $qtd = intval($qtd);
-                if (!empty($qtd) || $qtd != 0) {
-                    $_SESSION['favoritos'][$id] = $qtd;
-                } else {
-                    unset($_SESSION['favoritos'][$id]);
-                }
-            }
-        }
-    }
+    $stmt->close();
 }
 
-header('Location:index.php');
-exit;
+if ($acao == 'del') {
+    // Remove o produto dos favoritos
+    $stmt = $mysqli->prepare("DELETE FROM favoritos WHERE user_id = ? AND produto_id = ?");
+    $stmt->bind_param("ii", $userId, $produtoId);
+    if ($stmt->execute()) {
+        echo "Produto removido dos favoritos.";
+    } else {
+        echo "Erro ao remover produto dos favoritos.";
+    }
+    $stmt->close();
+}
+
+$mysqli->close();
+
 ?>

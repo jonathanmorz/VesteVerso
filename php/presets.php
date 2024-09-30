@@ -1,3 +1,4 @@
+
 <?php
    include 'connection.php';
    session_start(); //inicia a sessão
@@ -34,7 +35,7 @@ function htmlHeaderNoNavBar($nome = null, $role)
 
       <form action="pesquisa.php" method="GET">
       <div class="div-barra-pesquisa">
-        <input type="text" class="input-pesquisa" placeholder="Digite sua pesquisa...">
+        <input type="text" class="input-pesquisa" placeholder="Digite sua pesquisa..." name="query">
         <button id="button-pesquisa" type="submit"><a href="#" class="pesquisa-btn"><img src="../resources/images/lupa2.png" alt="Lupa" width="20" height="20"></a>
         </button>
     </div>
@@ -92,61 +93,81 @@ function htmlHeader($nome = null, $role)
 ?>
 
 <?php
-function htmlCardsPadrao($row, $result, $mysqli) 
+function htmlCardsPadrao($result, $mysqli, $userId) 
 {
-    include('connection.php');
-
     $html = '';
-    while($row = $result->fetch_assoc()) {
-        // Verifica se o produto já foi favoritado pelo usuário
-        $stmt = $mysqli->prepare("SELECT * FROM favoritos WHERE user_id = ? AND produto_id = ?");
-        $stmt->bind_param("ii", $userId, $row['id']);
-        $stmt->execute();
-        $favoritado = $stmt->get_result()->num_rows > 0;
 
+    // Consulta todos os produtos favoritados do usuário de uma vez
+    $stmtFavoritos = $mysqli->prepare("SELECT produto_id FROM favoritos WHERE user_id = ?");
+    $stmtFavoritos->bind_param("i", $userId);
+    $stmtFavoritos->execute();
+    $favoritosResult = $stmtFavoritos->get_result();
+    
+    // Armazena os produtos favoritados em um array para consulta rápida
+    $favoritos = [];
+    while ($rowFavorito = $favoritosResult->fetch_assoc()) {
+        $favoritos[] = $rowFavorito['produto_id'];
+    }
+    
+    // Gera o HTML para cada produto
+    while($row = $result->fetch_assoc()) {
+        // Verifica se o produto está na lista de favoritos
+        $favoritado = in_array($row['id'], $favoritos);
+        
         // Define a imagem inicial do coração com base no status de favoritado
         $coracaoImg = $favoritado ? "../resources/images/coracao-solido-roxo.png" : "../resources/images/coracao-roxo.png";
 
+        // Gera o HTML para o produto
         $html .= '<div class="cards-wrapper">
                     <div class="card-produto d-md-block">
-                    <a href="produto.php?id=' . $row["id"] . '">
-                    <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
-                    <div class="nome-produto">
-                    <h2 class="titulo-produto">' . $row["nome"] . '</h2>
-                                    </div>
-                                    <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
-                                    </a>
-                                    <div class="div-botao">
-                                    <button class="button-card-outline">
-                                        <a href="enviar-carrinho.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
-                                        </button>
-                                        <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
-                                        <img src="' . $coracaoImg . '" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
-                                        </button>
-                                        <script>
-                                        function favoritarProduto(produtoId) {
-                                            var coracaofavoritar = document.getElementById("coracao-favoritar" + produtoId);
-                                            
-                                            // Verifica a imagem atual e troca a imagem ao clicar
-                                            if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
-                                                coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
-                                            } else {
-                                                coracaofavoritar.src = "../resources/images/coracao-roxo.png";
-                                            }
-                                            
-                                            // Faz a requisição AJAX para salvar ou remover dos favoritos
-                                            var xhr = new XMLHttpRequest();
-                                            xhr.open("GET", "enviar-favoritos.php?acao=toggle&id=" + produtoId, true);
-                                            xhr.send();
+                        <a href="produto.php?id=' . $row["id"] . '">
+                            <img src="' . $row["imagem"] . '" alt="imagem-roupa" class="imagem-card">
+                            <div class="nome-produto">
+                                <h2 class="titulo-produto">' . $row["nome"] . '</h2>
+                            </div>
+                            <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
+                        </a>
+                        <div class="div-botao">
+                            <button class="button-card-outline">
+                                <a href="enviar-favoritos.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
+                            </button>
+                            <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
+                                <img src="' . $coracaoImg . '" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
+                            </button>
+                            <script>
+                                function favoritarProduto(produtoId) {
+                                    var coracaofavoritar = document.getElementById("coracao-favoritar" + produtoId);
+                                    
+                                    // Verifica a imagem atual e troca a imagem ao clicar
+                                    if (coracaofavoritar.src.match("../resources/images/coracao-roxo.png")) {
+                                        coracaofavoritar.src = "../resources/images/coracao-solido-roxo.png";
+                                        var acao = "add";
+                                    } else {
+                                        coracaofavoritar.src = "../resources/images/coracao-roxo.png";
+                                        var acao = "del";
+                                    }
+                                    
+                                    // Faz a requisição AJAX para salvar ou remover dos favoritos
+                                    var xhr = new XMLHttpRequest();
+                                    xhr.open("GET", "enviar-favoritos.php?acao=" + acao + "&id=" + produtoId, true);
+                                    xhr.onreadystatechange = function() {
+                                        if (xhr.readyState === 4 && xhr.status === 200) {
+                                            console.log(xhr.responseText);  // Para verificar a resposta do servidor
                                         }
-                                        </script>
-                                    </div>
-                                    </div>
-                                    </div>';
+                                    };
+                                    xhr.send();
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>';
     }
 
     return $html;
 }
+
+
+
 
 ?>
 
@@ -163,7 +184,7 @@ function htmlCardsNoWrap($row, $result)
                         <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
                       </a>
                       <div class="div-botao">
-                        <button class="button-card-outline"><a href="enviar-carrinho.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
+                        <button class="button-card-outline"><a href="enviar-favoritos.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
                         <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
                                   <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
                                   </button>

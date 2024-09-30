@@ -3,10 +3,7 @@
 require_once 'presets.php';
 require_once 'check-session.php';
 
-session_start();
 include 'connection.php'; // Inclui a conexão ao banco de dados
-
-echo "User ID: " . $userId;
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['id'])) {
