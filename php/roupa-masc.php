@@ -51,14 +51,36 @@
   <h1>Em destaque</h1>
   <div id="overflow">
   <?php
+  if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+} else {
+    // Define o $userId como null ou qualquer outro valor padrão
+    $userId = null; // ou faça outro tratamento
+}
     //Seleciona produtos que estão em alta a partir de uma pesquisa no banco de dados utilizando de um código SQL
     $sql = "SELECT * FROM produtos WHERE categoria = 'roupa_masc' and em_alta = 1";    
     $result = $mysqli->query($sql);
     $row = $result->fetch_assoc();
-    echo htmlCardsPadrao($row, $result)
+    echo htmlCardsPadrao($result, $mysqli, $userId);
   ?>
   </div>
-    
+   
+  <h1>Veja mais</h1>
+
+  <?php
+  if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+} else {
+    // Define o $userId como null ou qualquer outro valor padrão
+    $userId = null; // ou faça outro tratamento
+}
+    //Seleciona produtos que estão em alta a partir de uma pesquisa no banco de dados utilizando de um código SQL
+    $sql = "SELECT * FROM produtos WHERE categoria = 'roupa_masc'";    
+    $result = $mysqli->query($sql);
+    $row = $result->fetch_assoc();
+    echo htmlCardsPadrao($result, $mysqli, $userId);
+    ?>
+
   <?php
    echo htmlFooter();
   ?>  

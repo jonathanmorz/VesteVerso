@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30/09/2024 às 22:20
+-- Tempo de geração: 01/10/2024 às 20:28
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -101,13 +101,6 @@ CREATE TABLE `favoritos` (
   `atualizado_em` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `favoritos`
---
-
-INSERT INTO `favoritos` (`id`, `user_id`, `produto_id`, `criado_em`, `atualizado_em`) VALUES
-(6, 1, 4, '2024-09-30 19:43:32', '2024-09-30 19:43:32');
-
 -- --------------------------------------------------------
 
 --
@@ -135,12 +128,28 @@ INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `preco`, `imagem`, `categori
 (2, 'Camisa Manga Longa', 100, 42.30, 'arquivos/66fb029b24748.jpeg', 'roupa_masc', 'Camisa Manga Longa Feminina', 1, 0),
 (3, 'Camisa Lilás ', 100, 72.50, 'arquivos/66fb02dd452f4.jpeg', 'roupa_fem', 'Camisa Lilás Feminina', 1, 0),
 (4, 'Camisa Manga Curta', 100, 35.60, 'arquivos/66fb03a3e3ef9.jpeg', 'roupa_fem', 'Camisa de Manga Curta Feminina', 1, 0),
-(5, 'Camisa Oversized Branca', 100, 98.20, 'arquivos/66fb03ff72bdf.jpeg', 'roupa_fem', 'Camisa Oversized Branca Feminina', 1, 0),
+(5, 'Camisa Preta Fem', 100, 79.99, 'arquivos/66fc3dbeae22b.jpeg', 'roupa_fem', 'Camisa Preta Manga Longa', 1, 0),
 (6, 'Camisa Polo ', 100, 72.50, 'arquivos/66fb04c6ba536.jpeg', 'roupa_masc', 'Camisa Polo Verde', 1, 0),
 (7, 'Camisa Oversized ', 100, 35.90, 'arquivos/66fb05069cf5f.jpeg', 'roupa_masc', 'Camisa Oversized Grafite', 1, 0),
 (8, 'Camisa Social', 100, 78.20, 'arquivos/66fb05381e785.jpeg', 'roupa_masc', 'Camisa Social Preta', 1, 0),
 (9, 'Camisa Gola Alta', 100, 62.50, 'arquivos/66fb059e6a2b5.jpeg', 'roupa_masc', 'Camisa de Gola Alta', 1, 0),
-(10, 'Camisa Gráfica Verde', 100, 84.90, 'arquivos/66fb05ca2bdd0.jpeg', 'roupa_masc', 'Camisa Gráfica Verde', 1, 0);
+(11, 'Camisa Gráfica Verde', 100, 84.90, 'arquivos/66fb05ca2bdd0.jpeg', 'roupa_masc', 'Camisa Gráfica Verde', 1, 0),
+(12, 'Camisa Oversized', 100, 98.20, 'arquivos/66fb03ff72bdf.jpeg', 'roupa_fem', 'Camisa Oversized Branca Feminina', 1, 0),
+(17, 'Camiseta de Manga', 1, 63.80, 'arquivos/66fc30f396d67.jpeg', 'roupa_masc', 'Camiseta de Manga curta', 0, 0),
+(18, ' Camisa Lisa Básica', 47, 110.90, 'arquivos/66fc3192cafa8.jpg', 'roupa_masc', ' Camisa Lisa Básica', 1, 0),
+(19, 'Calça Cargo ', 5, 42.30, 'arquivos/66fc31f57ff7c.jpeg', 'roupa_masc', 'Calça Cargo Masculina', 1, 0),
+(20, 'Short de Praia', 13, 72.50, 'arquivos/66fc325304b49.jpg', 'roupa_masc', 'Short Masculino Moda Praia', 1, 0),
+(21, 'Camiseta Listrada', 18, 35.60, 'arquivos/66fc32b07c8c0.jpeg', 'roupa_masc', 'Camiseta Polo Listrada', 1, 0),
+(22, 'Macacão Gráfica', 8, 98.20, 'arquivos/66fc3318eb442.jpg', 'roupa_inf', 'Macacão Feminina Gráfica', 1, 0),
+(23, 'T-Shirt com Bainha', 15, 125.40, 'arquivos/66fc3355e8f91.jpeg', 'roupa_inf', 'T-Shirt com Bainha', 1, 0),
+(24, 'Suéter Tweed', 10, 84.70, 'arquivos/66fc33d0be9fe.jpg', 'roupa_inf', 'Suéter Tweed Estampado', 1, 0),
+(25, 'Vestido Estampado', 24, 63.80, 'arquivos/66fc38daede83.jpeg', 'roupa_inf', 'Vestido Cami Estampado', 1, 0),
+(26, 'Saia e Top Plissada ', 1, 110.90, 'arquivos/66fc395ebed67.jpeg', 'roupa_inf', 'Saia Plissada e Top Cami', 1, 0),
+(27, 'Camiseta + Short', 11, 42.30, 'arquivos/66fc3a5ff267d.jpeg', 'roupa_inf', 'Camiseta + Short', 0, 0),
+(28, 'Body Algodão', 12, 72.50, 'arquivos/66fc3a94f32ad.jpeg', 'roupa_inf', 'Body Algodão', 0, 0),
+(29, 'Camisa Rosa Fem', 100, 56.20, 'arquivos/66fc3d36934b0.jpeg', 'roupa_fem', 'Camisa Cropped Rosa', 0, 1),
+(30, 'Camisa Gráfica Fem', 100, 84.70, 'arquivos/66fc3d4f15eab.jpeg', 'roupa_fem', 'Camisa Fráfica Oversized Feminina', 0, 0),
+(32, 'Camisa Social', 100, 83.00, 'arquivos/66fc3e1db56aa.jpeg', 'roupa_fem', 'Camisa Social Fem Preta', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -218,7 +227,7 @@ ALTER TABLE `favoritos`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de tabela `user_sessions`
