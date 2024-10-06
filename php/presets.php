@@ -64,7 +64,7 @@ function htmlHeaderNoNavBar($nome = null, $role)
                     </li>
                 </ul>
             <?php else: ?>
-                <a id="menu-drop" href="../php/login-cadastro.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
+                <a id="menu-drop" href="../php/login2.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
             <?php endif; ?>
             <a href="carrinho.php"><img src="../resources/images/carrinho.svg" alt="carrinho" id="carrinho" class="img-header" height="51px" width="51px"></a>
             <a href="favoritos.php"><img src="../resources/images/solid-heart.svg" alt="coracao-favorito" id="coracao-favorito" class="img-header" height="51px" width="51px"></a>       

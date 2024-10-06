@@ -22,6 +22,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['carrinho'])) {
 
 session_unset();
 session_destroy();
-header('Location:login-cadastro.php');
+header('Location:login2.php');
 exit;
 ?>
