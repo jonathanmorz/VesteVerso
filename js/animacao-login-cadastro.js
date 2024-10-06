@@ -3,7 +3,7 @@ const cadastroContent = document.getElementById('cadastro-content');
 const logo = document.getElementById('logo');
 
 function mostrarLogin() {
-
+    
     loginContent.classList.add('show');
     cadastroContent.classList.remove('show');
     cadastroContent.classList.add('hide');
@@ -16,7 +16,7 @@ function mostrarLogin() {
 }
 
 function mostrarCadastro() {
-
+    
     loginContent.classList.remove('show');
     cadastroContent.classList.add('show');
     cadastroContent.classList.remove('hide');
@@ -25,5 +25,15 @@ function mostrarCadastro() {
     setTimeout(() => {
         loginContent.classList.add('hide');
         logo.classList.add('hide');
+    }, 100);
+}
+
+function errorMsg() {
+    let errorDiv = document.createElement('div');
+    errorDiv.id = 'error-msg';
+    errorDiv.classList.add('show');
+
+    setTimeout(() => {
+        errorDiv.classList.remove('hide')
     }, 100);
 }
