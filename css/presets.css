@@ -33,21 +33,25 @@ input:focus{
 .link-header {
     color: #fff;
     text-decoration: none;
+    transition: transform .3s;
 }
 
 .link-header:hover {
     color: #fff;
     text-decoration: none;
+    transform: scale(1.02);
 }
 
 .login-drop {
     text-decoration: none;
     color: #fff;
+    transition: transform .3s;
 }
 
 .login-drop:hover {
     text-decoration: none;
     color: #fff;
+    transform: scale(1.02);
 }
 
 header {
@@ -90,20 +94,37 @@ header {
     background-color: #ffffff00;
     padding: 5px;
     margin-bottom: 2.5px;
+    transition: transform .2s;
 }
 
 #img-lupa {
     height: 23px;
+}
+#button-pesquisa:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 #div-direita-header {
     margin-top: -2.5px;
     justify-content: space-around;
     display: inline-flex;
+    a{
+        transition: all .5s;
+    }
+}
+
+#div-direita-header > a:hover{
+    transform: scale(1.05);
 }
 
 .img-header {
     padding: 0px 8px;
+    transition: all .5s;
+}
+
+.img-header:hover{
+    transform: scale(1.07);
 }
 
 #div-dropdown {
@@ -112,17 +133,16 @@ header {
     margin: 0px;
 }
 
-.dropdown2:hover .dropdown-menu{
-    display: block;
-}
-
-.dropdown-menu a{
-    display: block;
+#dropdown-menu{
+    transition: all 2s;
 }
 
 .dropdown-menu{
     position: absolute;
     display: none;
+    a{
+        display: flex;
+    }
 }
 
 .dropdown:hover .dropdown-menu{
@@ -156,10 +176,12 @@ nav > a {
     color: #000;
     font-size: 20px;
     font-weight: 600;
+    transition: transform .3s;
 }
 
 nav > a:hover {
     color: #000;
+    transform: scale(1.05);
     text-decoration: none;
 }
 
@@ -178,6 +200,11 @@ a > h5, h6 {
 .cards-wrapper {
     display: inline-flex;
     flex-wrap: nowrap;
+    transition: .3s;
+}
+
+.cards-wrapper:hover{
+    transform:scale(.99);
 }
 
 .card-produto {
@@ -216,10 +243,6 @@ h3 {
     color: #000;
 }
 
-.button-card-outline > a {
-    color: #561AA4;
-}
-
 .titulo-produto {
     display: inline-flex;
     text-align: start;
@@ -240,9 +263,14 @@ h3 {
 .favoritar {
     border: none;
     background-color: #ffffff00;
+    transition: transform .3s
+}
+.favoritar:hover {
+    transform: scale(1.1);
 }
 
 .button-card-outline {
+    cursor: pointer;
     background-color: #fff;
     color: #561aa4;
     border: 3px solid #561aa4;
@@ -251,6 +279,20 @@ h3 {
     font-weight: bold;
     padding-left: 2.5px;
     padding-right: 2.5px;
+    transition: transform .3s;
+    a{
+        color: #561AA4;
+    }
+}
+.button-card-outline:hover{
+    background-color: #561AA4;
+    color: rgb(255, 255, 255);
+    border: 3px solid #561AA4;
+    transform: scale(1.05);
+    a{
+        cursor: pointer;
+        color: #ffffff;
+        text-decoration: none;}
 }
 /*Cards*/
 

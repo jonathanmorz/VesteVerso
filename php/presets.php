@@ -1,57 +1,56 @@
-
 <?php
-   include 'connection.php';
-   session_start(); //inicia a sessão
-   //Variáveis para serem usada para armazenamento de dados e utilização em páginas que precisam dessas informações
-   $nome = '';
-   $role = '';
-   $email = '';
-   $fullname = '';
-   
-   //Este código verifica se o usuário está logado, obtém o id da sessão, e então busca no banco de dados as informações desejadas usando uma consulta SQL preparada, protegendo assim contra injeção de SQL
-   if (isset($_SESSION['id'])) {
-      $userId = $_SESSION['id'];
-      $sql = "SELECT nome, cargo, email, nome FROM clientes WHERE id = ?";
-      $stmt = $mysqli->prepare($sql);
-      $stmt->bind_param("i", $userId);
-      $stmt->execute();
-      $stmt->bind_result($nome, $role, $email, $fullname);
-      $stmt->fetch();
-      $stmt->close();
-   }
+include 'connection.php';
+session_start(); //inicia a sessão
+//Variáveis para serem usada para armazenamento de dados e utilização em páginas que precisam dessas informações
+$nome = '';
+$role = '';
+$email = '';
+$fullname = '';
+
+//Este código verifica se o usuário está logado, obtém o id da sessão, e então busca no banco de dados as informações desejadas usando uma consulta SQL preparada, protegendo assim contra injeção de SQL
+if (isset($_SESSION['id'])) {
+    $userId = $_SESSION['id'];
+    $sql = "SELECT nome, cargo, email, nome FROM clientes WHERE id = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($nome, $role, $email, $fullname);
+    $stmt->fetch();
+    $stmt->close();
+}
 ?>
 
 <?php
-function htmlHeaderNoNavBar($nome = null, $role) 
+function htmlHeaderNoNavBar($nome = null, $role)
 {
     ob_start();
-    ?>
+?>
     <header>
-      <div id="div-logo">
-        <a href="index.php">
-          <img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo">
-        </a>
-      </div>
+        <div id="div-logo">
+            <a href="index.php">
+                <img src="../resources/images/logo-branca-grande.png" alt="logo-vesteverso" id="img-logo">
+            </a>
+        </div>
 
-      <form action="pesquisa.php" method="GET">
-      <div class="div-barra-pesquisa">
-        <input type="text" class="input-pesquisa" placeholder="Digite sua pesquisa..." name="query">
-        <button id="button-pesquisa" type="submit"><a href="#" class="pesquisa-btn"><img src="../resources/images/lupa2.png" alt="Lupa" width="20" height="20"></a>
-        </button>
-    </div>
+        <form action="pesquisa.php" method="GET">
+            <div class="div-barra-pesquisa">
+                <input type="text" class="input-pesquisa" placeholder="Digite sua pesquisa..." name="query">
+                <button id="button-pesquisa" type="submit"><a href="#" class="pesquisa-btn"><img src="../resources/images/lupa2.png" alt="Lupa" width="20" height="20"></a>
+                </button>
+            </div>
         </form>
-      
-        <div id="div-direita-header">        
-          <?php if ($nome && $role == "cliente"): ?>
-            <ul id="ul-dropdown">
-                <li class="dropdown" type="none">
-                    <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
-                    <div class="dropdown-menu">
-                        <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($nome); ?></span>
-                        <a href="logout.php" class="link-header">Sair</a>
-                    </div>
-                </li>
-            </ul>
+
+        <div id="div-direita-header">
+            <?php if ($nome && $role == "cliente"): ?>
+                <ul id="ul-dropdown">
+                    <li class="dropdown" type="none">
+                        <a id="menu-drop" href="minha-conta.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
+                        <div class="dropdown-menu">
+                            <span class="login-drop">Bem-vindo, <?php echo htmlspecialchars($nome); ?></span>
+                            <a href="logout.php" class="link-header">Sair</a>
+                        </div>
+                    </li>
+                </ul>
             <?php elseif ($nome && $role == "admin"): ?>
                 <ul id="ul-dropdown">
                     <li class="dropdown" type="none">
@@ -67,33 +66,33 @@ function htmlHeaderNoNavBar($nome = null, $role)
                 <a id="menu-drop" href="../php/login-cadastro.php"><img src="../resources/images/user.svg" alt="user" class="img-header" height="51px" width="51px"></a>
             <?php endif; ?>
             <a href="carrinho.php"><img src="../resources/images/carrinho.svg" alt="carrinho" id="carrinho" class="img-header" height="51px" width="51px"></a>
-            <a href="favoritos.php"><img src="../resources/images/solid-heart.svg" alt="coracao-favorito" id="coracao-favorito" class="img-header" height="51px" width="51px"></a>       
+            <a href="favoritos.php"><img src="../resources/images/solid-heart.svg" alt="coracao-favorito" id="coracao-favorito" class="img-header" height="51px" width="51px"></a>
         </div>
     </header>
-    <?php
-    return ob_get_clean();
-  }
-   ?>
-
 <?php
-function htmlHeader($nome = null, $role) 
-{
-    ob_start();
-    ?>
-    <?php echo htmlHeaderNoNavBar($nome, $role) ?> 
-    <nav>
-      <a href="roupa-masc.php">Roupas Masculinas</a>
-      <a href="roupa-fem.php">Roupas Femininas</a>
-      <a href="roupa-inf.php">Roupas Infantis</a>
-      <a href="roupa-promo.php">Promoções</a>
-    </nav>
-    <?php
     return ob_get_clean();
 }
 ?>
 
 <?php
-function htmlCardsPadrao($result, $mysqli, $userId) 
+function htmlHeader($nome = null, $role)
+{
+    ob_start();
+?>
+    <?php echo htmlHeaderNoNavBar($nome, $role) ?>
+    <nav>
+        <a href="roupa-masc.php">Roupas Masculinas</a>
+        <a href="roupa-fem.php">Roupas Femininas</a>
+        <a href="roupa-inf.php">Roupas Infantis</a>
+        <a href="roupa-promo.php">Promoções</a>
+    </nav>
+<?php
+    return ob_get_clean();
+}
+?>
+
+<?php
+function htmlCardsPadrao($result, $mysqli, $userId)
 {
     $html = '';
 
@@ -102,18 +101,18 @@ function htmlCardsPadrao($result, $mysqli, $userId)
     $stmtFavoritos->bind_param("i", $userId);
     $stmtFavoritos->execute();
     $favoritosResult = $stmtFavoritos->get_result();
-    
+
     // Armazena os produtos favoritados em um array para consulta rápida
     $favoritos = [];
     while ($rowFavorito = $favoritosResult->fetch_assoc()) {
         $favoritos[] = $rowFavorito['produto_id'];
     }
-    
+
     // Gera o HTML para cada produto
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         // Verifica se o produto está na lista de favoritos
         $favoritado = in_array($row['id'], $favoritos);
-        
+
         // Define a imagem inicial do coração com base no status de favoritado
         $coracaoImg = $favoritado ? "../resources/images/coracao-solido-roxo.png" : "../resources/images/coracao-roxo.png";
 
@@ -172,11 +171,11 @@ function htmlCardsPadrao($result, $mysqli, $userId)
 ?>
 
 <?php
-function htmlCardsNoWrap($row, $result) 
+function htmlCardsNoWrap($row, $result)
 {
     if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-          echo '<div class="cards-no-wrap">
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="cards-no-wrap">
                     <div class="card-produto d-none d-md-block">
                       <a href="produto.php?id=' . $row["id"] . '">
                         <img src="' . $row["imagem"] . '" alt="imagem-roupa" style="width: 13rem;">
@@ -184,7 +183,7 @@ function htmlCardsNoWrap($row, $result)
                         <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
                       </a>
                       <div class="div-botao">
-                        <button class="button-card-outline"><a href="enviar-favoritos.php?acao=add&id='.$row['id'].'">Adicionar ao Carrinho</a></button>
+                        <button class="button-card-outline"><a href="enviar-favoritos.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a></button>
                         <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
                                   <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
                                   </button>
