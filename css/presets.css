@@ -72,7 +72,7 @@ header {
 }
 
 #img-lupa {
-    height: 20px;
+    height: 15px;
 }
 
 #div-direita-header {
@@ -169,7 +169,7 @@ a > h5, h6 {
 }
 
 .imagem-card {
-    width: 13vh; 
+    width: 100%; 
     display: inline-flex;
 }
 
