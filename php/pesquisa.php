@@ -31,7 +31,7 @@ $result = $mysqli->query($sql);
     <?php
       $result = $mysqli->query($sql);
       $row = $result->fetch_assoc();
-      echo htmlCardsPadrao($result, $mysqli, $userId);
+      echo htmlCardsPadrao($result, $mysqli, $email);
     ?>
     </div>
     </div>

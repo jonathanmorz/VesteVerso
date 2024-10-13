@@ -35,7 +35,7 @@ function htmlHeaderNoNavBar($nome = null, $role)
         <form action="pesquisa.php" method="GET">
             <div class="div-barra-pesquisa">
                 <input type="text" class="input-pesquisa" placeholder="Digite sua pesquisa..." name="query">
-                <button id="button-pesquisa" type="submit"><a href="#" class="pesquisa-btn"><img src="../resources/images/lupa2.png" alt="Lupa" width="20" height="20"></a>
+                <button id="button-pesquisa" type="submit"><a href="#" class="pesquisa-btn"><img src="../resources/images/lupa2.png" alt="Lupa" id="img-lupa"></a>
                 </button>
             </div>
         </form>
@@ -80,12 +80,31 @@ function htmlHeader($nome = null, $role)
     ob_start();
 ?>
     <?php echo htmlHeaderNoNavBar($nome, $role) ?>
-    <nav>
+    <nav onload="ajustarLinks()">
         <a href="roupa-masc.php">Roupas Masculinas</a>
         <a href="roupa-fem.php">Roupas Femininas</a>
         <a href="roupa-inf.php">Roupas Infantis</a>
         <a href="roupa-promo.php">Promoções</a>
     </nav>
+
+    <script>
+  function ajustarLinks() {
+    if (window.innerWidth <= 450) {
+      document.querySelector('a[href="roupa-masc.php"]').textContent = 'Masculinas';
+      document.querySelector('a[href="roupa-fem.php"]').textContent = 'Femininas';
+      document.querySelector('a[href="roupa-inf.php"]').textContent = 'Infantis';
+      document.querySelector('a[href="roupa-promo.php"]').textContent = 'Promoções';
+    } else {
+      document.querySelector('a[href="roupa-masc.php"]').textContent = 'Roupas Masculinas';
+      document.querySelector('a[href="roupa-fem.php"]').textContent = 'Roupas Femininas';
+      document.querySelector('a[href="roupa-inf.php"]').textContent = 'Roupas Infantis';
+      document.querySelector('a[href="roupa-promo.php"]').textContent = 'Promoções';
+    }
+  }
+
+  window.addEventListener('resize', ajustarLinks);
+  window.addEventListener('DOMContentLoaded', ajustarLinks);
+</script>
 <?php
     return ob_get_clean();
 }
@@ -243,7 +262,6 @@ function htmlFooter()
                 <li>Central de Ajuda</li>
                 <li>Contato</li>
                 <li>FAQ</li>
-                <li>Política de privacidade</li>
                 </ul>
             </section>
             <section class="footer-grid" id="section4">

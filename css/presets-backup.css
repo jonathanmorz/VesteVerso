@@ -8,130 +8,114 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Josefin-Sans', Arial, sans-serif;
-    box-sizing: border-box; /* Para garantir que padding e border sejam incluídos na largura total */
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Josefin-Sans', arial, sans-serif;
 }
 
 html, body {
     height: 100%;
 }
 
-button:focus, input:focus {
-    outline: none;
-    box-shadow: none;
+button:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
 }
 
-/* Header Mobile */
-
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #291343;
-    padding: 10px;
-    width: 100vw;
+input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
 }
 
-#img-logo {
-    width: 150px;
-    margin-bottom: 10px;
-}
+/*Header*/
 
 .div-barra-pesquisa {
-    width: 100%;
-    height: 30px;
-    background-color: #ffffff;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 10px;
+    width: 100vh;
+    height: 7vh;
 }
 
 .input-pesquisa {
-    flex: 1;
     border: none;
     background: none;
     outline: none;
     color: black;
-    padding: 5px;
+    font-size: 16px;
+    width: 100vh;
+    margin-left: 5px;
 }
 
 #button-pesquisa {
-    background-color: transparent;
+    outline: none;
     border: none;
+    background-color: #ffffff00;
     padding: 5px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-#button-pesquisa:hover {
-    transform: scale(1.1);
+    margin-bottom: 2.5px;
+    transition: transform .2s;
 }
 
 #img-lupa {
-    height: 20px;
+    height: 23px;
 }
 
-#div-direita-header {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.img-header {
-    width: 25px;
-    transition: transform 0.5s;
-}
-
-.img-header:hover {
+#button-pesquisa:hover{
+    cursor: pointer;
     transform: scale(1.1);
 }
 
-/* Estilo para navegação mobile */
-nav {
-    display: flex;
+#div-direita-header {
+    margin-top: -2.5px;
     justify-content: space-around;
-    width: 100%;
+    display: inline-flex;
+    a{
+        transition: all .5s;
+    }
 }
 
-nav > a {
-    color: #000;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    transition: transform 0.3s;
-}
-
-nav > a:hover {
+#div-direita-header > a:hover{
     transform: scale(1.05);
 }
 
-a > h5, h6 {
-    color: #000;
-    text-decoration: none;
+.img-header {
+    padding: 0px 8px;
+    transition: all .5s;
 }
 
-/* Dropdown */
-.dropdown-menu {
+.img-header:hover{
+    transform: scale(1.07);
+}
+
+#div-dropdown {
+    display: inline-flex;
+    padding: 0px;
+    margin: 0px;
+}
+
+#dropdown-menu{
+    transition: all 2s;
+}
+
+.dropdown-menu{
+    position: absolute;
     display: none;
-    background-color: #291343;
-    padding: 10px;
-    border-radius: 10px;
+    a{
+        display: flex;
+    }
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu{
     display: block;
 }
 
-.dropdown-menu a {
+.dropdown-menu {
     color: white;
     text-decoration: none;
-    padding: 10px;
+    background-color: #291343;
+    padding: 0px 0px 10px 10px;
+    border-radius: 10px;
+    border: none;
+    margin: 0;
 }
 
 #botao-logout {
@@ -140,9 +124,34 @@ a > h5, h6 {
     border: none;
     cursor: pointer;
 }
-/* Header Mobile */
 
-/*Cards Mobile*/
+nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 130px;
+    width: 100%;
+}
+
+nav > a {
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    transition: transform .3s;
+}
+
+nav > a:hover {
+    color: #000;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+a > h5, h6 {
+    color: #000;
+    text-decoration: none;
+}
+/*Header*/
+
+/*Cards*/
 .produtos {
     display: flex;
     flex-wrap: wrap;
@@ -163,19 +172,19 @@ a > h5, h6 {
     border: 1px solid rgb(170, 170, 170);
     border-radius: 10px;
     display: inline-flex;
-    flex-direction: column;
     margin: 5px;
     align-items: flex-start;
 }
 
 .imagem-card {
-    width: 13vh; 
+    width: 30vh; 
     display: inline-flex;
 }
 
 h2, h3 {
-    font-size: 100%;
+    font-size: 130%;
     display: inline-flex;
+    word-wrap: break-word;
 }
 
 h3 {
@@ -203,7 +212,7 @@ h3 {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden; 
-    width: 7em;
+    width: 12em;
 }
 
 .div-botao {
@@ -226,7 +235,7 @@ h3 {
     color: #561aa4;
     border: 3px solid #561aa4;
     border-radius: 10px;
-    font-size: 60%;
+    font-size: 77%;
     font-weight: bold;
     padding-left: 2.5px;
     padding-right: 2.5px;
@@ -246,16 +255,14 @@ h3 {
         color: #ffffff;
         text-decoration: none;}
 }
-/*Cards Mobile*/
+/*Cards*/
 
-/*Footer Mobile*/
+/*Footer*/
 footer {
-    width: 100%;
     background-color: #291343;
     padding: 20px 30px 0px 30px;
     color: #fff;
     margin-top: 50px;
-    text-align: center;
 }
 
 #footer-content {
@@ -299,7 +306,7 @@ footer {
     outline: none;
     color: black;
     font-size: 18px;
-    width: 50%;
+    width: 300px;
 }
 
 #seta-direita {
@@ -319,44 +326,34 @@ footer {
 li {
     list-style: none;
 }
-
 #footer-top {
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    padding-bottom: 10px;
+    grid-template-columns: 2fr repeat(4, 1fr);
+    padding-bottom: 50px;
 }
 
 #section1 {
-    grid-row: 1;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    grid-column: 1;
 }
 
 #section2 {
-    grid-row: 2;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    grid-column: 3;
 }
 
 #section3 {
-    grid-row: 3;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    grid-column: 4;
+    
 }
 
 #section4 {
-    grid-row: 4;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    grid-column: 5;
+
 }
 
 #logo-footer {
-    width: 50%;
+    width: 70%;
     height: auto;
+    padding-bottom: 20px;
 }
 
 #footer-bottom {
@@ -376,4 +373,4 @@ li {
     justify-content: space-between;
     width: 100%;
 }
-/*Footer Mobile*/
+/*Footer*/

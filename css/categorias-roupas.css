@@ -44,20 +44,6 @@ footer {
   border-radius: 10px;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  background-color: #561aa4;
-  width: 5vh;
-  height: 5vh;
-  border-radius: 50%;
-  top: 11.5em;
-  margin: 0 3vh;
-}
-
-.carousel-indicators {
-  color: #561aa4;
-}
-
 .cards-wrapper {
   display: inline-flex;
   flex-wrap: nowrap;

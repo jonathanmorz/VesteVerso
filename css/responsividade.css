@@ -1,0 +1,39 @@
+@media (max-width: 450px) {
+    header {
+        height: 15vh;
+        display: grid;
+        grid-template-rows: 20%, 80%;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    #img-logo{
+        width: 20vh;
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    #div-direita-header {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .div-barra-pesquisa {
+        width: 35vh;
+        height: 3vh;
+        justify-content: center;
+        grid-row: 2;
+        grid-column: 1/2;
+    }
+
+    .input-pesquisa {
+        width: 35vh;
+    }
+
+    nav {
+        width: 100vh;
+    }
+
+    nav > a {
+       font-size: 20px;
+    }
+}
