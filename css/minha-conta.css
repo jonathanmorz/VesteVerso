@@ -1,43 +1,147 @@
-h1{
-    font-size: 3rem;
-}
 
-#informacoes {
-padding: 40px 55px;
-margin: 20px 30px;
-border-radius: 30px;
-border: 2.5px solid #561aa4;
+@media only screen and (min-width: 921px) {
+    h1 {
+        text-align: center;
+        padding: auto;
+        margin: auto;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        font-size: 3rem;
+    }
+    #informacoes {
+        margin-top: 50px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    #lista {
+        text-align: start;
+        align-items: center;
+        align-self: center;
+        align-content: start;
+        
+        p{
+            margin: auto;
+            margin-top: 10px;
+            margin-right: 55%;
+            width: 200px;
+            color: rgb(255, 255, 255);
+            border: black;
+            background-color: rgb(0, 0, 0);
+        }
+        li {
+            font-size: 1.3rem;
+            width: 500px;
+            margin: auto;
+            align-items: center;
+            align-self: center;
+            align-content: center;
+            border: #561aa4 solid 2px;
+        }
+        a{
+            transition: all .5s;
+            background-color: rgb(0, 0, 0);
+        }
+        a:hover{
+            background-color: rgb(78, 78, 78);
+        }
+    }
+    
+    #cadastrar {
+        background-color: #561aa4;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all .2s;
+        padding: 10px;
+        font-size: 16px;
+        width: 200px;
+        margin-top: 15px;
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+    #cadastrar:hover {
+        background-color: #894cd8;
+    }
+    a:hover {
+        text-decoration: none;
+        color: white;
+    }
 }
-
-#lista{
-    font-size: 1.6rem;
-}
-
-#cadastrar {
-    padding: 10px;
-    background-color: #561aa4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 20%;
-    transition: all .2s ease-in-out;
-    margin-right: 48px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#cadastrar:hover {
-    background-color: #6f22d3; 
-}
-
-a{
-    text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    text-decoration: none;
-    color: white;
+@media only screen and (max-width: 920px) {
+    h1 {
+        text-align: center;
+        padding: auto;
+        margin: auto;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        font-size: 2rem;
+    }
+    #informacoes {
+        margin-top: 50px;
+        text-align: center;
+        margin-bottom: 100px;
+    }
+    
+    #lista {
+        text-align: start;
+        align-items: center;
+        align-self: center;
+        align-content: start;
+        
+        p{
+            margin-top: 10px;
+            margin-left: 3px;
+            font-size: 1.1rem;
+            margin-bottom: -1px;
+            width: 37%;
+            color: rgb(255, 255, 255);
+            border: black;
+            background-color: rgb(0, 0, 0);
+        }
+        li {
+            font-size: 1.2rem;
+            width: 400px;
+            padding: auto;
+            margin: auto;
+            align-items: center;
+            align-self: center;
+            align-content: center;
+            border: #561aa4 solid 2px;
+        }
+        a{
+            transition: all .5s;
+            background-color: rgb(0, 0, 0);
+        }
+        a:hover{
+            background-color: rgb(78, 78, 78);
+        }
+    }
+    
+    #cadastrar {
+        background-color: #561aa4;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all .2s;
+        padding: 10px;
+        font-size: 16px;
+        width: 200px;
+        margin-top: 15px;
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
+    #cadastrar:hover {
+        background-color: #894cd8;
+    }
+    a:hover {
+        text-decoration: none;
+        color: white;
+    }
 }

@@ -10,11 +10,11 @@ $fullname = '';
 //Este código verifica se o usuário está logado, obtém o id da sessão, e então busca no banco de dados as informações desejadas usando uma consulta SQL preparada, protegendo assim contra injeção de SQL
 if (isset($_SESSION['id'])) {
     $userId = $_SESSION['id'];
-    $sql = "SELECT nome, cargo, email, nome FROM clientes WHERE id = ?";
+    $sql = "SELECT nome, sobrenome, email, cpf, cep, cargo FROM clientes WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $userId);
     $stmt->execute();
-    $stmt->bind_result($nome, $role, $email, $fullname);
+    $stmt->bind_result($nome, $sobrenome, $email, $cpf, $cep, $role);
     $stmt->fetch();
     $stmt->close();
 }

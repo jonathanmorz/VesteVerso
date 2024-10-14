@@ -46,7 +46,7 @@
                     <span>CPF</span>
                 </div>
                 <div id="cpf-input-div">
-                    <input type="number" id="cpf" name="CPF" class="input-email-senha">
+                    <input maxlength="11" OnKeyPress="formatar('###.###.###-##',this)" id="cpf" name="CPF" class="input-email-senha">
                 </div>
                 <div id="sexo-div">
                     <span>Sexo</span>
