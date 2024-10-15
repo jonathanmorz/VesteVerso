@@ -26,8 +26,6 @@ body {
     background-attachment: fixed;
 }
 
-
-
 h1 {
     font-size: 40px;
 }
@@ -259,4 +257,48 @@ input:focus {
 #error-msg.hide {
     transform: translateY(-110%);
     transition: .7s;
+}
+
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #login-content{
+        transform: translate(0, -110%);
+    }
+    
+    #logo {
+        transform: translate(0, -275%);
+    }
+    
+    #login-content.show {
+        transform: translate(0, -110%);
+        transition: 1s;
+    }
+    
+    #login-content.hide {
+        transform: translate(0, 20%);
+        transition: 1s;
+    }
+    
+    #cadastro-content.hide {
+        transform: translate(0, -100%);
+        transition: 1s;
+    }
+    
+    #cadastro-content.show {
+        transform: translate(0, 10%);
+        transition: 1.5s;
+    }
+    
+    #logo.show{
+        transform: translate(0, -275%);
+        transition: 1s;
+    }
+    
+    #logo.hide {
+        transform: translate( 0, 30%);
+        transition: 1s;
+    }
 }

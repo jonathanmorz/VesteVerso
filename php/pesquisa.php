@@ -27,7 +27,7 @@ $result = $mysqli->query($sql);
       ?>
     <div id="conteudo">
     <h4>Resultados da Pesquisa: </h4>
-    <div class="produtos">
+    <div id="produtos">
     <?php
       $result = $mysqli->query($sql);
       $row = $result->fetch_assoc();
