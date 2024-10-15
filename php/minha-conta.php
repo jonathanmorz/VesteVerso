@@ -26,16 +26,25 @@ require_once 'presets.php';
   <div id="informacoes">
     <h1><strong> Minhas Informações</strong></h1>
     <ul id="lista">
-    <p><a href="#">📝</a>Usuário</p>
+      <p><a href="#">📝</a>Usuário</p>
       <li><?php echo htmlspecialchars($nome); ?></li>
       <p><a href="#">📝</a>Nome Completo</p>
-      <li><?php echo (htmlspecialchars($nome)." ".htmlspecialchars($sobrenome)); ?></li>
+      <li><?php echo (htmlspecialchars($nome) . " " . htmlspecialchars($sobrenome)); ?></li>
       <p><a href="#">📝</a>E-mail</p>
       <li><?php echo htmlspecialchars($email); ?></li>
       <p><a href="#">📝</a>CPF</p>
-      <li><?php printf('%d%d%d.%d%d%d.%d%d%d-%d%d',...str_split(htmlspecialchars($cpf)));?></li>
+      <li><?php printf('%d%d%d.%d%d%d.%d%d%d-%d%d', ...str_split(htmlspecialchars($cpf))); ?></li>
       <p><a href="#">📝</a>CEP</p>
-      <li><?php if($cep !== null){echo htmlspecialchars($cep);}else{echo 'não informado';};?></li>
+      <li><select name="" id=""><?php
+          $sql = "SELECT * FROM enderecos WHERE id_user = $userId"; // Exemplo de consulta
+          $result = $mysqli->query($sql);
+          if ($result->num_rows > 0) {
+            echo MinhaContaCep($result, $sql, $userId);
+          } else {
+              echo '<option value="">Não registrado</option>';
+          } ?>
+          </select>
+      </li>
     </ul>
 
 

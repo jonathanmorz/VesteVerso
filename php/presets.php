@@ -10,11 +10,11 @@ $fullname = '';
 //Este código verifica se o usuário está logado, obtém o id da sessão, e então busca no banco de dados as informações desejadas usando uma consulta SQL preparada, protegendo assim contra injeção de SQL
 if (isset($_SESSION['id'])) {
     $userId = $_SESSION['id'];
-    $sql = "SELECT nome, sobrenome, email, cpf, cep, cargo FROM clientes WHERE id = ?";
+    $sql = "SELECT nome, sobrenome, email, cpf, cargo FROM clientes WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $userId);
     $stmt->execute();
-    $stmt->bind_result($nome, $sobrenome, $email, $cpf, $cep, $role);
+    $stmt->bind_result($nome, $sobrenome, $email, $cpf, $role);
     $stmt->fetch();
     $stmt->close();
 }
@@ -286,5 +286,18 @@ function htmlFooter()
     HTML;
 
     echo $htmlFooter;
+}
+?>
+<?php
+function MinhaContaCep($result, $mysqli, $userId)
+{
+    $html = '';
+    // Gera o HTML para cada produto
+    while ($row = $result->fetch_assoc()) {
+        // Gera o HTML para o produto
+        $html .= '<option value="' . $row["cep"]. '">' . $row["cep"]. '</option>';
+    }
+
+    return $html;
 }
 ?>

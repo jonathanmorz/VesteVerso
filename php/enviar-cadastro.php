@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssss", $nome, $sobrenome, $email, $senha, $sexo, $cpf);
     $stmt->execute();
     if($stmt){
-        header('Location:login2.php');
+        header('Location:login-cadastro.php');
     }
 }
 ?>
