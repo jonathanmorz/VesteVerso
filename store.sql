@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 01/10/2024 às 20:28
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Host: localhost
+-- Generation Time: Oct 16, 2024 at 12:47 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `store`
+-- Database: `store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `carrinho`
+-- Table structure for table `carrinho`
 --
 
 CREATE TABLE `carrinho` (
@@ -37,7 +37,7 @@ CREATE TABLE `carrinho` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `carrinho`
+-- Dumping data for table `carrinho`
 --
 
 INSERT INTO `carrinho` (`id`, `user_id`, `produto_id`, `quantidade`, `criado_em`, `atualizado_em`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `carrinho` (`id`, `user_id`, `produto_id`, `quantidade`, `criado_em`
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `clientes`
+-- Table structure for table `clientes`
 --
 
 CREATE TABLE `clientes` (
@@ -63,34 +63,49 @@ CREATE TABLE `clientes` (
   `senha` varchar(20) NOT NULL,
   `sexo` varchar(12) NOT NULL,
   `cpf` varchar(11) NOT NULL,
-  `cep` varchar(8) NOT NULL,
+  `cep` varchar(8) DEFAULT NULL,
   `cargo` varchar(20) NOT NULL DEFAULT 'cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `clientes`
+-- Dumping data for table `clientes`
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `email`, `senha`, `sexo`, `cpf`, `cep`, `cargo`) VALUES
-(1, 'Yuri Lopes', 'yuzzy', 'tpnvlnd@gmail.com', 'luiz1227', '21982893856', '140.961.387', '21230070', 'admin'),
-(2, 'dwads', '', '', '', '', '', '', 'cliente'),
-(3, 'Tico Teco', 'Tetoticoteco', 'Tecotico@gmail.com', '12345678', '21982893856', '29712474647', '21230070', 'cliente'),
-(4, 'Daniel Dias', 'danielnoites07', 'robloxlandia456123@gmail.com', 'Ba456123', '21 982324256', '02374802753', '25032904', 'cliente'),
-(21, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
-(22, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
-(23, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
-(24, 'Admin', 'Admin', 'admin@admin.com', '', '', '12345667890', '', 'cliente'),
-(25, 'wkajkldj', 'aaabbb', 'aaabbb@gmail.com', 'aaabbb', '321331', '1232131', '31313', 'cliente'),
-(26, 'Teste', 'teste', 'teste@gmail.com', 'teste123', '11111111111', '11111111111', '11111111', 'cliente'),
-(27, 'Teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'cliente'),
-(28, 'Teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'cliente'),
-(29, 'teste', 'teste', 'teste@gmail.com', 'teste', 'teste', 'teste', 'teste', 'cliente'),
-(30, 'Raio', 'Irrita Ler', 'neguinhodamata@gmail.com', 'ritogomes', 'Outro', '19232084222', '', 'cliente');
+(32, 'Jonathan', 'Morozenviski Toledo', 'jonathanmorozenviski@gmail.com', '12345678', 'Masculino', '12345678912', NULL, 'cliente'),
+(37, 'Titoco', 'Da silva', 'Tecotico@gmail.com', '12345678', 'Masculino', '12345678911', NULL, 'cliente');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `favoritos`
+-- Table structure for table `enderecos`
+--
+
+CREATE TABLE `enderecos` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `cep` int(8) NOT NULL,
+  `estado` char(2) NOT NULL,
+  `cidade` varchar(255) NOT NULL,
+  `bairro` varchar(255) NOT NULL,
+  `rua` varchar(255) NOT NULL,
+  `complemento` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `enderecos`
+--
+
+INSERT INTO `enderecos` (`id`, `id_user`, `cep`, `estado`, `cidade`, `bairro`, `rua`, `complemento`) VALUES
+(9, 32, 15075090, 'SP', 'S&atilde;o Jos&eacute; do Rio Preto', 'Jardim Soraia', 'Rua Jo&atilde;o Gabriel', ''),
+(21, 32, 20010040, 'RJ', 'Rio de Janeiro', 'Centro', 'Travessa Tocantins', 'qweqwe'),
+(23, 32, 20010050, 'RJ', 'Rio de Janeiro', 'Centro', 'Travessa Trajano de Carvalho', ''),
+(24, 37, 20010040, 'RJ', 'Rio de Janeiro', 'Centro', 'Travessa Tocantins', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `favoritos`
 --
 
 CREATE TABLE `favoritos` (
@@ -101,10 +116,18 @@ CREATE TABLE `favoritos` (
   `atualizado_em` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `favoritos`
+--
+
+INSERT INTO `favoritos` (`id`, `user_id`, `produto_id`, `criado_em`, `atualizado_em`) VALUES
+(7, 32, 1, '2024-10-13 16:54:29', '2024-10-13 16:54:29'),
+(9, 32, 18, '2024-10-13 16:58:52', '2024-10-13 16:58:52');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `produtos`
+-- Table structure for table `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -120,7 +143,7 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Despejando dados para a tabela `produtos`
+-- Dumping data for table `produtos`
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `preco`, `imagem`, `categoria`, `descricao`, `em_alta`, `promocao`) VALUES
@@ -154,7 +177,7 @@ INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `preco`, `imagem`, `categori
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `user_sessions`
+-- Table structure for table `user_sessions`
 --
 
 CREATE TABLE `user_sessions` (
@@ -166,81 +189,93 @@ CREATE TABLE `user_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `carrinho`
+-- Indexes for table `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `clientes`
+-- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `favoritos`
+-- Indexes for table `enderecos`
+--
+ALTER TABLE `enderecos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `favoritos`
 --
 ALTER TABLE `favoritos`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_produto_unique` (`user_id`,`produto_id`);
 
 --
--- Índices de tabela `produtos`
+-- Indexes for table `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `user_sessions`
+-- Indexes for table `user_sessions`
 --
 ALTER TABLE `user_sessions`
   ADD PRIMARY KEY (`token_id`),
   ADD KEY `id` (`id`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `carrinho`
+-- AUTO_INCREMENT for table `carrinho`
 --
 ALTER TABLE `carrinho`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT de tabela `clientes`
+-- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
--- AUTO_INCREMENT de tabela `favoritos`
+-- AUTO_INCREMENT for table `enderecos`
+--
+ALTER TABLE `enderecos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de tabela `produtos`
+-- AUTO_INCREMENT for table `produtos`
 --
 ALTER TABLE `produtos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT de tabela `user_sessions`
+-- AUTO_INCREMENT for table `user_sessions`
 --
 ALTER TABLE `user_sessions`
   MODIFY `token_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para tabelas despejadas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `user_sessions`
+-- Constraints for table `user_sessions`
 --
 ALTER TABLE `user_sessions`
   ADD CONSTRAINT `user_sessions_ibfk_1` FOREIGN KEY (`id`) REFERENCES `clientes` (`id`);
