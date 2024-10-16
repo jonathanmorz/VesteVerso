@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 16, 2024 at 12:47 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Host: 127.0.0.1
+-- Tempo de geração: 16/10/2024 às 18:25
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `store`
+-- Banco de dados: `store`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carrinho`
+-- Estrutura para tabela `carrinho`
 --
 
 CREATE TABLE `carrinho` (
@@ -37,7 +37,7 @@ CREATE TABLE `carrinho` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `carrinho`
+-- Despejando dados para a tabela `carrinho`
 --
 
 INSERT INTO `carrinho` (`id`, `user_id`, `produto_id`, `quantidade`, `criado_em`, `atualizado_em`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `carrinho` (`id`, `user_id`, `produto_id`, `quantidade`, `criado_em`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clientes`
+-- Estrutura para tabela `clientes`
 --
 
 CREATE TABLE `clientes` (
@@ -64,21 +64,24 @@ CREATE TABLE `clientes` (
   `sexo` varchar(12) NOT NULL,
   `cpf` varchar(11) NOT NULL,
   `cep` varchar(8) DEFAULT NULL,
-  `cargo` varchar(20) NOT NULL DEFAULT 'cliente'
+  `cargo` varchar(20) NOT NULL DEFAULT 'cliente',
+  `reset_token` varchar(32) DEFAULT NULL,
+  `token_expires` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `clientes`
+-- Despejando dados para a tabela `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `email`, `senha`, `sexo`, `cpf`, `cep`, `cargo`) VALUES
-(32, 'Jonathan', 'Morozenviski Toledo', 'jonathanmorozenviski@gmail.com', '12345678', 'Masculino', '12345678912', NULL, 'cliente'),
-(37, 'Titoco', 'Da silva', 'Tecotico@gmail.com', '12345678', 'Masculino', '12345678911', NULL, 'cliente');
+INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `email`, `senha`, `sexo`, `cpf`, `cep`, `cargo`, `reset_token`, `token_expires`) VALUES
+(32, 'Jonathan', 'Morozenviski Toledo', 'jonathanmorozenviski@gmail.com', '12345678', 'Masculino', '12345678912', NULL, 'cliente', NULL, NULL),
+(37, 'Titoco', 'Da silva', 'Tecotico@gmail.com', '12345678', 'Masculino', '12345678911', NULL, 'cliente', NULL, NULL),
+(38, 'Crente', 'Do Cu Quente', 'neretay390@jameagle.com', 'teucu123', 'Masculino', '19203141944', NULL, 'cliente', NULL, '2024-10-16 14:18:33');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `enderecos`
+-- Estrutura para tabela `enderecos`
 --
 
 CREATE TABLE `enderecos` (
@@ -93,7 +96,7 @@ CREATE TABLE `enderecos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `enderecos`
+-- Despejando dados para a tabela `enderecos`
 --
 
 INSERT INTO `enderecos` (`id`, `id_user`, `cep`, `estado`, `cidade`, `bairro`, `rua`, `complemento`) VALUES
@@ -105,7 +108,7 @@ INSERT INTO `enderecos` (`id`, `id_user`, `cep`, `estado`, `cidade`, `bairro`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favoritos`
+-- Estrutura para tabela `favoritos`
 --
 
 CREATE TABLE `favoritos` (
@@ -117,7 +120,7 @@ CREATE TABLE `favoritos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `favoritos`
+-- Despejando dados para a tabela `favoritos`
 --
 
 INSERT INTO `favoritos` (`id`, `user_id`, `produto_id`, `criado_em`, `atualizado_em`) VALUES
@@ -127,7 +130,7 @@ INSERT INTO `favoritos` (`id`, `user_id`, `produto_id`, `criado_em`, `atualizado
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
@@ -143,7 +146,7 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `produtos`
+-- Despejando dados para a tabela `produtos`
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `preco`, `imagem`, `categoria`, `descricao`, `em_alta`, `promocao`) VALUES
@@ -177,7 +180,7 @@ INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `preco`, `imagem`, `categori
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_sessions`
+-- Estrutura para tabela `user_sessions`
 --
 
 CREATE TABLE `user_sessions` (
@@ -189,93 +192,93 @@ CREATE TABLE `user_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `carrinho`
+-- Índices de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `clientes`
+-- Índices de tabela `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `enderecos`
+-- Índices de tabela `enderecos`
 --
 ALTER TABLE `enderecos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `favoritos`
+-- Índices de tabela `favoritos`
 --
 ALTER TABLE `favoritos`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_produto_unique` (`user_id`,`produto_id`);
 
 --
--- Indexes for table `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_sessions`
+-- Índices de tabela `user_sessions`
 --
 ALTER TABLE `user_sessions`
   ADD PRIMARY KEY (`token_id`),
   ADD KEY `id` (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `carrinho`
+-- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `clientes`
+-- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `enderecos`
+-- AUTO_INCREMENT de tabela `enderecos`
 --
 ALTER TABLE `enderecos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `favoritos`
+-- AUTO_INCREMENT de tabela `favoritos`
 --
 ALTER TABLE `favoritos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `produtos`
+-- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `user_sessions`
+-- AUTO_INCREMENT de tabela `user_sessions`
 --
 ALTER TABLE `user_sessions`
   MODIFY `token_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restrições para tabelas despejadas
 --
 
 --
--- Constraints for table `user_sessions`
+-- Restrições para tabelas `user_sessions`
 --
 ALTER TABLE `user_sessions`
   ADD CONSTRAINT `user_sessions_ibfk_1` FOREIGN KEY (`id`) REFERENCES `clientes` (`id`);
