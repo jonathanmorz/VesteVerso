@@ -1,20 +1,8 @@
-document.getElementById('formulario').addEventListener('submit', async function (event) {
-    event.preventDefault();
-    
-    let nome = document.querySelector('input[name="nome-completo"]').value;
-    let email = document.querySelector('input[name="email"]').value;
-    let senhaA = document.querySelector('input[name="senha"]').value;
-    let senhaB = document.querySelector('input[name="SenhaB"]').value;
-    let cpf = document.querySelector('input[name="cpf"]').value;
-    let endereco = document.querySelector('input[name="endereco"]').value;
-    let tel = document.querySelector('input[name="tel"]').value;
-    let cep = document.querySelector('input[name="cep"]').value;
+function cadastrar() {
+    const form = document.querySelector('#cadastroForm');
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
 
-    if (nome == '' || email == '' || senhaA == '' || senhaB == '' || cpf == '' || endereco == '' || tel == '' || cep == '') {
-        window.alert('Preencha todos os campos obrigatórios')
-    } else if (senhaA !== senhaB) {
-        window.alert('Senhas não coincidem');
-    } else {
         const formData = new FormData(this);
 
         try {
@@ -22,19 +10,74 @@ document.getElementById('formulario').addEventListener('submit', async function 
                 method: 'POST',
                 body: formData
             });
-        
-            const responseText = await response.text(); // Ler a resposta como texto
-            console.log(responseText); // Log da resposta
-        
+
+            const result = await response.json();
+
+            // Limpa qualquer mensagem de erro anterior
+            let errorDiv = document.getElementById('error-msg');
+            if (errorDiv) {
+                errorDiv.remove();
+            }
+
+            errorDiv = document.createElement('div');
+            errorDiv.id = 'error-msg';
+            document.body.prepend(errorDiv);
+
             if (response.ok) {
-                window.location.href = "../php/login2.php";
+                errorDiv.classList.add('show');
+                errorDiv.innerHTML = 'Cadastro bem-sucedido! Redirecionando...';
+                setTimeout(() => {
+                    window.location.href = "../php/index.php";
+                }, 2000); // Tempo para o usuário ver a mensagem
             } else {
-                window.alert('Erro ao enviar o formulário. Tente novamente.');
+                errorDiv.classList.add('show');
+                errorDiv.innerHTML = 'Erro: ' + result.message;
             }
         } catch (error) {
-            console.error('Erro na requisição:', error);
-            window.alert('Erro ao enviar o formulário. Tente novamente.');
+            console.error('Erro ao enviar o formulário:', error);
+
+            // Limpa qualquer mensagem de erro anterior
+            let errorDiv = document.getElementById('error-msg');
+            if (errorDiv) {
+                errorDiv.remove();
+            }
+
+            errorDiv = document.createElement('div');
+            errorDiv.id = 'error-msg';
+            errorDiv.classList.add('show');
+            errorDiv.innerHTML = 'Erro ao enviar o formulário. Tente novamente.';
+            document.body.prepend(errorDiv);
         }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", cadastrar);
+
+document.addEventListener("DOMContentLoaded", function() {
+    const cpfInput = document.getElementById("cpf");
+
+    cpfInput.addEventListener("input", function(e) {
+        let cpf = e.target.value;
         
-    }
+        // Remove caracteres não numéricos
+        cpf = cpf.replace(/\D/g, "");
+        
+        // Aplica a máscara com "." e "-"
+        if (cpf.length > 3 && cpf.length <= 6) {
+            cpf = cpf.replace(/(\d{3})(\d+)/, "$1.$2");
+        } else if (cpf.length > 6 && cpf.length <= 9) {
+            cpf = cpf.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
+        } else if (cpf.length > 9) {
+            cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, "$1.$2.$3-$4");
+        }
+
+        e.target.value = cpf;
+    });
+
+    // Remover formatação do CPF antes do envio
+    const form = document.getElementById("cadastroForm");
+    form.addEventListener("submit", function() {
+        const cpf = cpfInput.value;
+        cpfInput.value = cpf.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    });
 });
