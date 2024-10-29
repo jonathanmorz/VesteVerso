@@ -50,7 +50,13 @@ require_once 'presets.php';
 
     <button type="submit" id="cadastrar"><a id="link" href="../php/cadastro-endereço.php">Cadastrar endereço</a></button>
 
-
+    <div class="form-cadastro">
+      <form action="">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+      </form>
+    </div>
 
   </div>
 
@@ -64,7 +70,7 @@ require_once 'presets.php';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/ajax-login.js"></script>
+  <script src="../js/cadastrar-endereco.js"></script>
 </body>
 
 </html>
