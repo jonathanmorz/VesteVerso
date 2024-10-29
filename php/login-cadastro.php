@@ -46,7 +46,7 @@
                     <span>CPF</span>
                 </div>
                 <div id="cpf-input-div">
-                    <input maxlength="11" id="cpf" name="CPF" class="input-email-senha">
+                    <input maxlength="14" id="cpf" name="CPF" class="input-email-senha">
                 </div>
                 <div id="sexo-div">
                     <span>Sexo</span>
@@ -59,7 +59,7 @@
                     <input type="radio" class="radio" id="outro" name="sex-rad" value="Outro">
                         <label for="outro" class="label-sexo">Outro</label>
                 </div>
-                <div id="botao"><button id="enviar" onclick="logar()">Enviar</button> </div>
+                <div id="botao"><button id="enviar" onclick="cadastrar()">Enviar</button> </div>
                 <div id="inscrever-se"><span>Já tem uma conta? <a href="#" onclick="mostrarLogin()">Entrar</a></span> </div>
             </form>
         </div>
@@ -104,5 +104,6 @@
     </div>
     <script src="../js/animacao-login-cadastro.js"></script>
     <script src="../js/ajax-login.js"></script>
+    <script src="../js/ajax-cadastro.js"></script>
 </body>
 </html>
