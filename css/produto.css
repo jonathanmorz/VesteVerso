@@ -131,3 +131,63 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
 }
+
+@media (min-width: 1024px) {
+
+    #img-produto {
+        display: inline-flex;
+        height: 300vw;
+        width: auto;
+    }
+
+
+    .produto-descricao {
+        font-size: 4vw;
+    }
+    
+    h2 {
+        font-size: 1rem;
+        color: #555555;
+    }
+    
+    .text {
+        padding-top: 10px;
+    }
+        
+    .class-botoes {
+        padding: 10px 10px 0px 0px;
+    }
+    
+    #adicionar-carrinho {
+        width: 200px;
+        background-color: white;
+    }
+    
+    #comprar-agora {
+        width: 200px;
+        font-size: 20px;
+    }
+    
+    #container {
+        display: inline-flex;
+        justify-content: space-between;
+        padding: 10px 150px 0px 40px;
+        flex-direction: row;
+    }
+        
+    #img-produto {
+        max-height: 30rem;
+    
+    }
+    
+    #div-conteudo {
+        margin-left: 45px;
+    }
+
+    #coracao-favoritar {
+        height: 6vw;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+}

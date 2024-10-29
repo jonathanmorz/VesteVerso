@@ -47,7 +47,7 @@ $mysqli->close();
 
     <div id="container">
         <div id="img-div">
-            <img class="imagem-produto" src="<?php echo htmlspecialchars($produto['imagem']); ?>" alt="Imagem do produto" id="img-produto">
+            <img id="img-produto" src="<?php echo htmlspecialchars($produto['imagem']); ?>" alt="Imagem do produto" id="img-produto">
         </div>
         <div id="div-conteudo">
             <div id="nome-produto">

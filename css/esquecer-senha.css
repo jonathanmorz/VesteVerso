@@ -8,18 +8,20 @@
 .global {
     display: inline-flex;
     align-items: center;
+    height: 100vh;
+    width: auto;
 }
 
 .esquerda {
-    width: 55%;
+    width: auto;
     background-color: #fefefe;
     height: 645px;
     max-height: 100vh;
+    width: auto;
     padding: 40px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    
 }
 
 .icone-info img {
@@ -63,7 +65,7 @@
     border-radius: 30px 0 0 30px;
     padding: 40px;
     width: 45%;
-    height: 645px;
+    height: 100vh;
     max-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -79,7 +81,6 @@
 #informacao {
     font-size: 18px;
     color: rgba(228, 218, 218, 0.822);
-    margin-left: 15px;
 }
 
 #instrucoes {
@@ -127,7 +128,7 @@ button {
     width: 20%;
     transition: all .2s ease-in-out;
     margin-top: 30px;
-    margin-right: 48px;
+    margin-right: 7.5px;
 }
 
 #botão {
@@ -139,6 +140,48 @@ button:hover {
     background-color: #fdfdfd69;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 1024px) {
+    .global {
+        display: inline-flex;
+        align-items: center;
+        height: 100vh;
+        width: auto;
+        flex-direction: column;
+    }
+
+    .direita {
+        border-radius: 30px 30px 0 0px;
+        padding: 40px;
+        margin-top: 20px;
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #div-email {
+        width: 100%;
+    }
+    
+    #input-email {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px;
+        background-color: white;
+        color: #561aa4;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        transition: all .2s ease-in-out;
+        margin-top: 30px;
+        margin-right: 7.5px;
+    }
     
 }
