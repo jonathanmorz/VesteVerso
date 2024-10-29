@@ -1,5 +1,6 @@
 h1 {
-    padding: 1rem 0px 1rem 2rem;
+    font-size: 30px;
+    padding: 10px 0 0 20px;
 }
 
 #overflow::-webkit-scrollbar {

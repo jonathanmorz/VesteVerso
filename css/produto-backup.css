@@ -1,29 +1,18 @@
-#container {
-    padding: 0 10px;
+h1 {
+    font-size: 2.4rem;
 }
 
-#img-div {
-    display: flex;
-    justify-content: center;
-}
-
-#img-produto {
-    width: 80vw;
-    padding: 0px 10px;
-}
-
-.produto-descricao {
-    padding: 15px 0 0 0;
-    font-size: 8vw;
-}
-
-.produto-preco {
+h2 {
     font-size: 2rem;
     color: #555555;
 }
 
 .text {
     padding-top: 10px;
+}
+
+#imagem-produto {
+    display: inline-flex;
 }
 
 #input-cep {
@@ -49,28 +38,33 @@
     display: flex;
 }
 
-#div-button {
-    display: flex;
-    justify-content: space-around;
+
+.class-botoes {
+    padding: 10px 10px 0px 0px;
 }
 
 #adicionar-carrinho {
-    width: 130px;
+    width: 200px;
     height: 70px;
     background-color: white;
     border: #561AA4 5px solid;
     border-radius: 10px;
-    font-size: 15;
 }
 
 #comprar-agora {
-    width: 130px;
+    width: 200px;
     height: 70px;
     background-color: #561AA4;
     border: #561AA4 5px solid;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 20px;
     color: #fff;
+}
+
+container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 150px 0px 40px;
 }
 
 #quantidade {
@@ -112,6 +106,10 @@
     margin: 0px;
 }
 
+#img-produto {
+    max-height: 30rem;
+    
+}
 
 #div-conteudo {
     display: inline-flex;
@@ -123,9 +121,6 @@
     display: inline-flex;
 }
 
-#coracao-favoritar {
-    height: 20vw;
-}
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

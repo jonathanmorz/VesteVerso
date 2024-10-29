@@ -38,7 +38,6 @@ $mysqli->close();
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/presets.css">
     <link rel="stylesheet" href="../css/produto.css">
-    <link rel="stylesheet" href="../css/coracao-favoritar.css">
     <link rel="shortcut icon" href="../resources/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -46,8 +45,8 @@ $mysqli->close();
         echo htmlHeader($nome, $role);
     ?>
 
-    <container>
-        <div class="conteudo">
+    <div id="container">
+        <div id="img-div">
             <img class="imagem-produto" src="<?php echo htmlspecialchars($produto['imagem']); ?>" alt="Imagem do produto" id="img-produto">
         </div>
         <div id="div-conteudo">
@@ -99,7 +98,7 @@ $mysqli->close();
                 </div>
             </div>
         </div>
-    </container>
+    </div>
 
     <?php
         echo htmlFooter();
