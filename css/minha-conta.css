@@ -29,6 +29,7 @@
             color: rgb(255, 255, 255);
             border: black;
             background-color: rgb(0, 0, 0);
+            border-radius: 10.5px;
         }
         li {
             font-size: 1.3rem;
@@ -38,10 +39,13 @@
             align-self: center;
             align-content: center;
             border: #561aa4 solid 2px;
+            border-radius: 10.5px;
+            padding-left: 10px;
         }
         a{
             transition: all .5s;
             background-color: rgb(0, 0, 0);
+            margin-left: 5px;
         }
         a:hover{
             background-color: rgb(78, 78, 78);

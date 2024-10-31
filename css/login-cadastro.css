@@ -266,7 +266,7 @@ input:focus {
         color: #fff;
         padding: 65px 55px;
         border-radius: 20px;
-        margin-bottom: 150px;
+        margin-bottom: 105px;
     }
 
     #container {
@@ -304,6 +304,7 @@ input:focus {
     #cadastro-content.show {
         transform: translate(0, 10%);
         transition: 1.5s;
+        margin-top: -14.5%;
     }
     
     #logo.show{
@@ -313,6 +314,17 @@ input:focus {
     
     #logo.hide {
         transform: translate( 0, 30%);
+        transition: 1s;
+    }
+}
+
+@media (max-width: 360px) {
+    form.cadastro{
+    padding: 20px 40px;
+    }
+
+    #logo.hide {
+        transform: translate( 0, 40%);
         transition: 1s;
     }
 }
