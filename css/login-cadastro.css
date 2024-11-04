@@ -13,7 +13,7 @@
 }
 
 html, body {
-    max-height: 100vh;
+    max-height: 100vh;  
     overflow: hidden;
 }
 
@@ -320,12 +320,50 @@ input:focus {
 
 @media (max-width: 360px) {
     form.cadastro{
-    padding: 20px 40px;
+        padding: 20px 40px;
+    }
+
+    #loginForm{
+        padding: 30px 40px;
     }
 
     #logo.hide {
         transform: translate( 0, 40%);
         transition: 1s;
+        margin-top: -20%;
+    }
+}
+
+@media (max-width: 344px) {
+    #cadastro-content.show {
+        margin-top: 7.5%;
+    }
+    
+    #login-content.show{
+        margin-top: 10%;
+    }
+
+    #login-content{
+        margin-top: 7.5%;
+    }
+
+    #login-content{
+        margin-top: 5%;
+    }
+
+    #logo {
+        margin-top: 20%;
+    }
+
+    #logo.hide {
+        margin-top: -11%;
+    }
+
+}
+
+@media (max-width: 390px) {
+    #logo.hide {
+        margin-top: -10%;
     }
 }
 
