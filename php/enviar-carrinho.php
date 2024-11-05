@@ -3,7 +3,7 @@ session_start();
 
 // Verifica se o usuário está logado e o envia para página de login caso não esteja
 if (!isset($_SESSION['id'])) {
-    header('Location:login2.php');
+    header('Location:login-cadastro.php');
     exit;
 }
 

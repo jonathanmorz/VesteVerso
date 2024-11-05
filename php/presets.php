@@ -147,7 +147,7 @@ function htmlCardsPadrao($result, $mysqli, $userId)
                         </a>
                         <div class="div-botao">
                             <button class="button-card-outline">
-                                <a href="enviar-favoritos.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
+                                <a href="enviar-carrinho.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a>
                             </button>
                             <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
                                 <img src="' . $coracaoImg . '" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
@@ -202,7 +202,7 @@ function htmlCardsNoWrap($row, $result)
                         <h3 class="titulo-produto">R$' . number_format($row["preco"], 2, ',', '.') . '</h3>
                       </a>
                       <div class="div-botao">
-                        <button class="button-card-outline"><a href="enviar-favoritos.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a></button>
+                        <button class="button-card-outline"><a href="enviar-carrinho.php?acao=add&id=' . $row['id'] . '">Adicionar ao Carrinho</a></button>
                         <button class="favoritar" onclick="favoritarProduto(' . $row['id'] . ')">
                                   <img src="../resources/images/coracao-roxo.png" alt="Coração Favorito" id="coracao-favoritar' . $row["id"] . '">
                                   </button>

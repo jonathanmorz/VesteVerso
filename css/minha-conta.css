@@ -1,151 +1,191 @@
+/* Estilos para Mobile */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 10px auto;
+}
 
-@media only screen and (min-width: 921px) {
+#informacoes {
+    margin: 50px auto 100px;
+    text-align: center;
+}
+
+#lista {
+    text-align: start;
+    margin: 0 auto;
+
+    p {
+        margin: 10px 3px 0;
+        width: 90%;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #561aa4;
+        border-radius: 10.5px;
+        padding: 5px;
+    }
+
+    li {
+        font-size: 1.1rem;
+        width: 100%;
+        margin: 10px auto;
+        border: 2px solid #561aa4;
+        border-radius: 10.5px;
+        padding: 10px;
+    }
+
+    a:hover {
+        background-color: #4e4e4e;
+    }
+}
+
+#cadastrar {
+    background-color: #561aa4;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 10px;
+    font-size: 16px;
+    width: 90%;
+    margin-top: 15px;
+}
+
+#cadastrar > a {
+    color: #fff;
+}
+/* Estilos para Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
     h1 {
-        text-align: center;
-        padding: auto;
-        margin: auto;
-        align-items: center;
-        align-self: center;
-        align-content: center;
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
+
     #informacoes {
-        margin-top: 50px;
-        text-align: center;
-        margin-bottom: 10px;
+        margin-top: 30px;
+        margin-bottom: 50px;
     }
-    
+
     #lista {
         text-align: start;
-        align-items: center;
-        align-self: center;
-        align-content: start;
-        
-        p{
-            margin: auto;
+
+        p {
             margin-top: 10px;
-            margin-right: 55%;
-            width: 200px;
-            color: rgb(255, 255, 255);
-            border: black;
-            background-color: rgb(0, 0, 0);
-            border-radius: 10.5px;
+            width: 75%;
+            font-size: 1.1rem;
         }
+
+        li {
+            font-size: 1.2rem;
+            width: 80%;
+        }
+    }
+
+    #cadastrar {
+        width: 80%;
+    }
+}
+
+/* Estilos para Desktop */
+@media only screen and (min-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+        margin: auto;
+    }
+
+    #informacoes {
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    #lista {
+        text-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+            width: 200px;
+            font-size: 1.2rem;
+            transform: translateX(-75%);
+
+        }
+
         li {
             font-size: 1.3rem;
             width: 500px;
-            margin: auto;
-            align-items: center;
-            align-self: center;
-            align-content: center;
-            border: #561aa4 solid 2px;
-            border-radius: 10.5px;
-            padding-left: 10px;
-        }
-        a{
-            transition: all .5s;
-            background-color: rgb(0, 0, 0);
-            margin-left: 5px;
-        }
-        a:hover{
-            background-color: rgb(78, 78, 78);
         }
     }
-    
+
     #cadastrar {
-        background-color: #561aa4;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: all .2s;
-        padding: 10px;
-        font-size: 16px;
         width: 200px;
-        margin-top: 15px;
-        a {
-            text-decoration: none;
-            color: white;
-        }
-    }
-    #cadastrar:hover {
-        background-color: #894cd8;
-    }
-    a:hover {
-        text-decoration: none;
-        color: white;
     }
 }
-@media only screen and (max-width: 920px) {
-    h1 {
-        text-align: center;
-        padding: auto;
-        margin: auto;
-        align-items: center;
-        align-self: center;
-        align-content: center;
-        font-size: 2rem;
-    }
-    #informacoes {
-        margin-top: 50px;
-        text-align: center;
-        margin-bottom: 100px;
-    }
-    
-    #lista {
-        text-align: start;
-        align-items: center;
-        align-self: center;
-        align-content: start;
-        
-        p{
-            margin-top: 10px;
-            margin-left: 3px;
-            font-size: 1.1rem;
-            margin-bottom: -1px;
-            width: 37%;
-            color: rgb(255, 255, 255);
-            border: black;
-            background-color: rgb(0, 0, 0);
-        }
-        li {
-            font-size: 1.2rem;
-            width: 400px;
-            padding: auto;
-            margin: auto;
-            align-items: center;
-            align-self: center;
-            align-content: center;
-            border: #561aa4 solid 2px;
-        }
-        a{
-            transition: all .5s;
-            background-color: rgb(0, 0, 0);
-        }
-        a:hover{
-            background-color: rgb(78, 78, 78);
-        }
-    }
-    
-    #cadastrar {
-        background-color: #561aa4;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: all .2s;
-        padding: 10px;
-        font-size: 16px;
-        width: 200px;
-        margin-top: 15px;
-        a {
-            text-decoration: none;
-            color: white;
-        }
-    }
-    #cadastrar:hover {
-        background-color: #894cd8;
-    }
-    a:hover {
-        text-decoration: none;
-        color: white;
-    }
-}
+
+
+/* Estilo para a sobreposição do pop-up */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Estilo para o conteúdo do pop-up */
+  .popup-content {
+    background: #ffffff;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  /* Botão para fechar o pop-up */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .popup-content form {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .popup-content form label {
+    font-size: 14px;
+    color: #333;
+    grid-column: span 4; /* Faz os labels ocuparem uma linha inteira */
+  }
+  
+  .popup-content form input,
+  .popup-content form select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  button[type="submit"] {
+    grid-column: span 4; /* Botão de Enviar ocupa as quatro colunas */
+    background-color: #5f259f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #4e2080;
+  }
+  

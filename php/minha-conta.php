@@ -48,15 +48,42 @@ require_once 'presets.php';
     </ul>
 
 
-    <button type="submit" id="cadastrar"><a id="link" href="../php/cadastro-endereço.php">Cadastrar endereço</a></button>
+    <!-- Botão para abrir o pop-up -->
+<button id="openPopupBtn">Cadastrar Endereço</button>
 
-    <div class="form-cadastro">
-      <form action="">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-      </form>
-    </div>
+<!-- Estrutura do pop-up -->
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <span id="closePopupBtn" class="close-btn">&times;</span>
+    <h2>Cadastre seu endereço:</h2>
+    
+    <form>
+      <label for="cep">CEP</label>
+      <input type="text" id="cep" name="cep" placeholder="00000-000" required>
+
+      <label for="estado">Estado</label>
+      <select id="estado" name="estado">
+        <option value="SP">SP</option>
+        <!-- Adicione outros estados conforme necessário -->
+      </select>
+
+      <label for="cidade">Cidade</label>
+      <input type="text" id="cidade" name="cidade" placeholder="ex: Duque de Caxias" required>
+
+      <label for="bairro">Bairro</label>
+      <input type="text" id="bairro" name="bairro" placeholder="ex: 25 de Agosto" required>
+
+      <label for="rua">Rua</label>
+      <input type="text" id="rua" name="rua" placeholder="ex: Rua Assunção" required>
+
+      <label for="complemento">Complemento</label>
+      <input type="text" id="complemento" name="complemento" placeholder="ex: Do lado de uma cafeteria">
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
 
   </div>
 
@@ -70,7 +97,7 @@ require_once 'presets.php';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/cadastrar-endereco.js"></script>
+  <script src="../js/cadastrar-endereco-teste.js"></script>
 </body>
 
 </html>
