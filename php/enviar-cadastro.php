@@ -1,6 +1,15 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include('connection.php');
+
+    $email = $_POST['Email'];
+    $sql = "SELECT email FROM clientes WHERE email = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->bind_result($email_comparacao);
+    $stmt->fetch();
+    $stmt->close();
     
     header('Content-Type: application/json'); // Indica que a resposta será em JSON
 
@@ -35,20 +44,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cpf = htmlentities($_POST['CPF']);
     $sexo = $_POST['sex-rad'];
 
-    // Preparação da consulta SQL para inserir os dados no banco
-    $stmt = $mysqli->prepare("INSERT INTO clientes (nome, sobrenome, email, senha, sexo, cpf) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $nome, $sobrenome, $email, $senha, $sexo, $cpf);
-    $success = $stmt->execute();
-
-    if ($success) {
-        http_response_code(200);
-        echo json_encode(['success' => true, 'message' => 'Cadastro realizado com sucesso!']);
+    // Verifica se o e-mail já existe no banco de dados
+    if($email_comparacao == $email){
+        exit();
     } else {
-        http_response_code(500); // Erro no servidor
-        echo json_encode(['success' => false, 'message' => 'Erro ao realizar cadastro.']);
-    }
+        // Prepara a consulta SQL para inserir os dados no banco
+        $stmt = $mysqli->prepare("INSERT INTO clientes (nome, sobrenome, email, senha, sexo, cpf) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $nome, $sobrenome, $email, $senha, $sexo, $cpf);
+        $success = $stmt->execute();
 
-    $stmt->close();
-    $mysqli->close();
+        if ($success) {
+            http_response_code(200);
+            echo json_encode(['success' => true, 'message' => 'Cadastro realizado com sucesso!']);
+        } else {
+            http_response_code(500); // Erro no servidor
+            echo json_encode(['success' => false, 'message' => 'Erro ao realizar cadastro.']);
+        }
+
+        $stmt->close();
+        $mysqli->close();
+    }
 }
 ?>
