@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/10/2024 às 18:25
+-- Tempo de geração: 12/11/2024 às 17:34
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.0.30
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -76,7 +76,8 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `email`, `senha`, `sexo`, `cpf`, `cep`, `cargo`, `reset_token`, `token_expires`) VALUES
 (32, 'Jonathan', 'Morozenviski Toledo', 'jonathanmorozenviski@gmail.com', '12345678', 'Masculino', '12345678912', NULL, 'cliente', NULL, NULL),
 (37, 'Titoco', 'Da silva', 'Tecotico@gmail.com', '12345678', 'Masculino', '12345678911', NULL, 'cliente', NULL, NULL),
-(38, 'Crente', 'Do Cu Quente', 'neretay390@jameagle.com', 'teucu123', 'Masculino', '19203141944', NULL, 'cliente', NULL, '2024-10-16 14:18:33');
+(47, 'Yuri', 'Lopes', 'tpnvlnd@gmail.com', 'luiz1227', 'Masculino', '14096138797', NULL, 'admin', NULL, NULL),
+(49, 'admin', '', 'admin@admin.com', 'admin', '', '', NULL, 'cliente', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -247,7 +248,7 @@ ALTER TABLE `carrinho`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de tabela `enderecos`
