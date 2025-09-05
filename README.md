@@ -1,4 +1,5 @@
-# VesteVerso Vesteverso, Brazilian clothing sales website  
+# VesteVerso 
+Vesteverso, Brazilian clothing sales website  
 
 //Finalized  
 
