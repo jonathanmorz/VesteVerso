@@ -1,3 +1,9 @@
-SIGAM UM PADRÃO PARA O VERSIONAMENTO (v0.1, v0.2...)
-O SITE É UM SÓ, NÃO PRECISA CRIAR UMA VERSÃO PRA CADA PARTE DO SITE (exemplo: v0.1html enquanto v1.4 php)
-ORGANIZAÇÃO TAMBÉM É IMPORTANTE, MANTENHAM O CÓDIGO LIMPO
+# VesteVerso Vesteverso, Brazilian clothing sales website  
+
+//Finalized  
+
+ps: this website was my final project for professional technical education in IT, it is worth remembering that it was a group of students who created this website so the credit is not just mine. 
+
+Has responsivity   
+
+WebSite Online: [https://vesteverso.great-site.net/](https://vesteverso.great-site.net/) 
